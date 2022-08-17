@@ -1,0 +1,59 @@
+<div class="container-fluid">
+           <div class="row">
+              <div class="col-md-12">
+                 <mat-toolbar color="primary">
+                    <mat-toolbar-row>
+                       <h1>Training And Development</h1>
+                       <span class="menu-spacer"></span>
+                       <div *ngFor="let user_roles of userRoleList"
+                       [ngSwitch]="user_roles.roleName">
+                       <!-- admin role link -->
+                       <div *ngSwitchCase="'ROLE_ADMIN'">
+                          <a class="navLink" mat-button
+                             [routerLink]="'/page/viewUsers'">
+                          Users</a>
+                          <a class="navLink" mat-button
+                             [routerLink]="'/page/viewCourse'">
+                          Courses</a>
+                       </div>
+                        <!-- author role link -->
+                       <div *ngSwitchCase="'ROLE_AUTHOR'">
+                       <a class="navLink" mat-button
+                             [routerLink]="'/page/viewCourse'">
+                          View Courses</a>
+                          
+                       <!-- <a class="navLink" mat-button
+                             [routerLink]="'/page/viewTopics'">
+                          View Topics</a> -->
+                       </div>
+                        <!-- mentor role link -->
+                       <div *ngSwitchCase="'ROLE_MENTOR'">
+                          <a *ngIf="check" class="navLink" mat-button
+                             [routerLink]="'/page/viewCourse'">
+                          View Courses</a>
+                          <!-- <a class="navLink" mat-button
+                             [routerLink]="'/page/viewSubTopics'">
+                          View Sub Topics</a>
+                          <a class="navLink" mat-button
+                             [routerLink]="'/page/viewQuestions'">
+                          View Questions</a> -->
+                       </div>
+                        <!-- trainee role link -->
+                       <div *ngSwitchCase="'ROLE_TRAINEE'">
+                                 <a class="navLink" mat-button
+                                    [routerLink]="['/page/performQuestion/'+courseName]"> Perform questions</a>
+                      </div>
+              </div>
+              <a class="navLink" mat-button (click)="logout()">
+              Logout</a>
+              <h3><a class="navLink" mat-button
+               [routerLink]="'/page/viewProfile'">{{user}}</a></h3>
+              </mat-toolbar-row>
+              <mat-toolbar-row>
+              <span style="font-size: 12px;"></span>
+              </mat-toolbar-row>
+              </mat-toolbar>
+             
+           </div>
+        </div>
+</div>

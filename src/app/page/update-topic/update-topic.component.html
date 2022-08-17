@@ -1,0 +1,39 @@
+<div class="container">
+           <div class="row">
+               <div class="col-md-12">
+                   <h2 class="text-center">Update Topic</h2>
+                   <form #topicForm="ngForm" (ngSubmit)="updateTopic(topicForm.value)">
+                       <mat-form-field class="form-field" appearance="outline">
+                           <mat-label>Topic</mat-label>
+                           <input [(ngModel)]="topicName" name="topicName" type="text" matInput placeholder="Enter Topic">
+                           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                       </mat-form-field>
+                       <!-- <mat-form-field class="form-field" appearance="outline">
+                           <mat-label>Course</mat-label>
+                           <mat-select name="course" [(ngModel)]="course">
+                               <mat-option disabled *ngFor="let course of coursesList"  [value]="course">
+                                   {{course.courseName}}
+                               </mat-option>
+                           </mat-select>
+                       </mat-form-field>
+                       -->
+
+                       <div>
+
+                                 <select class="form-control" name="course" #course="ngModel" [(ngModel)]="courseData">
+                                            <option disabled *ngFor="let course of coursesList"  [value]="course"  [selected]="course.courseName === courseName">
+                                                       {{course.courseName}}
+                                            </option>
+                                 </select>
+                                 </div>
+                      
+                       <div class="container text-center">
+                           <div class="example-button-row">
+                               <button type="submit" mat-raised-button color="primary">Update Topic</button>
+                               <button class="navLink button-style" mat-raised-button color="primary" (click)="backButton()">Back To Topic</button>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>

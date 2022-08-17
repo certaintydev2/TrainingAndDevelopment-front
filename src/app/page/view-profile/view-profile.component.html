@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h2>View Profile</h2>
+            <form #profileForm="ngForm" (ngSubmit)="updateProfile(profileForm.value)">
+                <div>
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input [(ngModel)]="log_name" minlength="3" name="name" type="text" matInput
+                        readonly placeholder="Enter Name" />
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div>
+
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input [(ngModel)]="log_email" required #email="ngModel" name="email" type="email" matInput
+                        readonly placeholder="Enter Email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>UserName</mat-label>
+                        <input minlength="8" [(ngModel)]="log_useName" required #userName="ngModel" name="userName"
+                            type="text" matInput placeholder="Enter UserName">
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    </mat-form-field>
+                </div>
+                <!-- <div>
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Password</mat-label> 
+                            <input minlength="8" [(ngModel)]="log_password" required #password="ngModel" name="password" type="password" matInput
+                                placeholder="Enter Password">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                       </div> -->
+                <div>
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Profile</mat-label>
+                        <input [(ngModel)]="log_profile" #profile="ngModel" name="profile"
+                            type="text" matInput readonly >
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>Roles</mat-label>
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        <mat-select name="roles" #roless="ngModel" [(ngModel)]="log_roles" multiple>
+                            <mat-option disabled *ngFor="let role of roles" [value]="role.roleName">
+                                {{role.roleName}}
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+                    <div *ngIf="roless.touched && roless.invalid" class="alert alert-danger">
+                        <div *ngIf="roless.errors?.['required']">
+                            At least one role is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container text-center">
+                    <div class="example-button-row">
+                        <a class="navLink button-style" mat-raised-button color="primary"
+                            [routerLink]="'/page/home'">Back to Home</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>

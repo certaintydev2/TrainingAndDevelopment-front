@@ -1,0 +1,113 @@
+<div class="container">
+           <div class="row">
+               <div class="col-md-12">
+                   <h2 class="text-center">SignUp</h2>
+                   <p *ngIf="msg" class="alert alert-danger">{{errorMsg}}</p>
+                   <form #userForm="ngForm" (ngSubmit)="formSubmit(userForm.value)">
+                      <div>
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Name</mat-label>
+                            <input [(ngModel)]="user.name" minlength="3" required name="name" #name="ngModel" type="text" matInput placeholder="Enter Name"/>
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                        <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+                            <div *ngIf="name.errors?.['required']">
+                                Name is required.
+                            </div>
+                            <div *ngIf="name.errors?.['minlength']">
+                                Name is Invalid.
+                            </div>
+                        </div>
+                      </div>
+                       <div>
+
+                           <mat-form-field class="form-field" appearance="outline">
+                               <mat-label>Email</mat-label>
+                               <input [(ngModel)]="user.email" required #email="ngModel" name="email" type="email" matInput placeholder="Enter Email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
+                               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                               
+                            </mat-form-field>
+                            <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                                <div *ngIf="email.errors?.['required']">
+                                    Email is required.
+                                </div>
+                                <div *ngIf="email.errors?.['pattern']">
+                                    Invalid Email
+                                </div>
+                            </div>
+                        </div>
+                       <div>
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>UserName</mat-label>
+                            <input minlength="8" [(ngModel)]="user.userName" required #userName="ngModel" name="userName" type="text" matInput
+                                placeholder="Enter UserName">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>                       
+                        </mat-form-field>
+                        <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">
+                            <div *ngIf="userName.errors?.['required']">
+                                UserName is required.
+                            </div>
+                            <div *ngIf="userName.errors?.['minlength']">
+                                At least 8 characters required
+                            </div>
+                        </div>
+                       </div>
+                       <div>
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input minlength="8" [(ngModel)]="user.password" required #password="ngModel" name="password" type="password" matInput
+                                placeholder="Enter Password">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                        <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                            <div *ngIf="password.errors?.['required']">
+                                Password is required.
+                            </div>
+                            <div *ngIf="password.errors?.['minlength']">
+                               At least 8 characters required
+                            </div>
+                        </div>
+                       </div>
+                       <div>
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Profile</mat-label>
+                            <mat-select required #profile="ngModel" name="profile" [(ngModel)]="user.profile">
+                                <mat-option *ngFor="let profile of coursesList"  [value]="profile.courseName">
+                                    {{profile.courseName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="profile.touched && profile.invalid" class="alert alert-danger">
+                            <div *ngIf="profile.errors?.['required']">
+                                Profile is required.
+                            </div>
+                        </div>
+                       </div>
+                       <div>
+                        <mat-form-field  class="form-field" appearance="outline">
+                            <mat-label>Roles</mat-label>
+                            <mat-select  name="roles" #roless="ngModel" [(ngModel)]="user.roles" multiple required>
+                                <mat-option *ngFor="let role of rolesList"  [value]="role">
+                                    {{role.roleName}}
+                                </mat-option>
+                            </mat-select>
+                           
+                        </mat-form-field>
+                        <div *ngIf="roless.touched && roless.invalid" class="alert alert-danger">
+                            <div *ngIf="roless.errors?.['required']">
+                            At least one role is required.
+                            </div>
+                        </div>
+                       </div>
+                      
+                       <div class="container text-center">
+                           <div class="example-button-row">
+                               <button type="submit" class="btn " [disabled]="userForm.invalid" mat-raised-button color="primary" >Register</button>
+                               <a class="navLink ml-5" mat-raised-button color="primary"
+                               [routerLink]="'/auth'">Already Register</a>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>

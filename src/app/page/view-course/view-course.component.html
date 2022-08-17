@@ -1,0 +1,48 @@
+<div class="container">
+           <div class="row">
+                      <div class="col-md-12">
+                                 <h2>Course Table</h2>
+                                 <a   class="navLink " mat-raised-button color="primary"
+                                 [routerLink]="'/page/home'">Back to Home</a>
+                                 <a *ngIf="check"  class="navLink ml-10" mat-raised-button color="primary"
+                                 [routerLink]="'/page/course'">Add Course</a>
+                                 <table class="table table-striped">
+                                            <thead>
+                                              <tr>
+                                                <th>Course Id</th>
+                                                <th>Course Name</th>
+                                                <th>Author</th>
+                                                <th>Mentor</th>
+                                                <th *ngIf="check">Actions</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                             <tr *ngFor="let course of courses">
+                                            <td>{{course.courseId}}</td>
+                                            <td><a  class="navLink ml-5" [routerLink]="['/page/topicView/'+course.courseId]">{{course.courseName.toUpperCase()}}</a></td>
+                                            <td>
+                                            <div *ngFor="let user of users">
+                                            <span *ngIf="course.authorId === user.id" >
+                                                       {{user.name}}
+                                            </span>
+                                            </div>
+                                            </td>
+                                            <td>
+                                                       <div *ngFor="let user of users">
+                                                       <span *ngIf="course.mentorId === user.id" >
+                                                                  {{user.name}}
+                                                       </span>
+                                                       </div>
+                                                       </td>
+                                            <td *ngIf="check">
+                                                       <a   class="navLink ml-5" mat-icon-button color="accent"
+                                                       [routerLink]="['/page/updateCourse/'+course.courseId]"><mat-icon class="mat-18">system_update</mat-icon></a>
+            
+                                                       <button class="navLink button-style" mat-icon-button color="warn"><mat-icon (click)="deleteCourse(course.courseId)" class="mat-18">delete</mat-icon></button>
+                                            </td>
+                                             </tr>
+                                            </tbody>
+                                          </table>
+                      </div>
+           </div>
+</div>

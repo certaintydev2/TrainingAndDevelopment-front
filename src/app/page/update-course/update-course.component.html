@@ -1,0 +1,39 @@
+<div class="container">
+           <div class="row">
+               <div class="col-md-12">
+                   <h2 class="text-center">Add Course</h2>
+                   <p *ngIf="msg" style="color: red;">{{errorMsg}}</p>
+                   <form #courseForm="ngForm" (ngSubmit)="updateCourse(courseForm.value)">
+                       <div>
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Course</mat-label>
+                            <input #courses="ngModel" (change)="updateName($event)" (click)="updateName($event)" [(ngModel)]="courseName" name="courseName" type="text" matInput placeholder="Enter Course">
+                        </mat-form-field>
+                       </div>
+                       <div>
+
+                      <select class="form-control" name="authorId" #authorId="ngModel" [(ngModel)]="authorName">
+                                 <option *ngFor="let author of authorRole"  [value]="author.user_id">
+                                            {{author.name}}
+                                 </option>
+                      </select>
+                       </div>
+                       <div>
+                      <select class="form-control" name="mentorId" #mentorId="ngModel" [(ngModel)]="mentorName" >
+                                 <option *ngFor="let mentor of mentorRole"  [value]="mentor.user_id">
+                                            {{mentor.name}}
+                                 </option>
+                      </select>
+                       </div>
+                      
+                       <div class="container text-center">
+                           <div class="example-button-row">
+                               <button type="submit" mat-raised-button color="primary" >Update Course</button>
+                               <a   class="navLink ml-5" mat-raised-button color="primary"
+                               [routerLink]="'/page/viewCourse'">Back to Courses</a>
+                            </div>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>

@@ -1,0 +1,51 @@
+<div class="container">
+           <div class="row">
+            <div class="col-3"></div>
+               <div class="col-6">
+                   <h2 class="text-center">Login</h2>
+                   <p *ngIf="msg"  class="alert alert-danger">{{errorMsg}}</p>
+                   <form  #loginForm="ngForm" (ngSubmit)="loginformSubmit(loginForm.value)">
+                       <div>
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>UserName</mat-label>
+                            <input #userName="ngModel" [(ngModel)]="loginData.userName" required  name="userName" type="text" matInput
+                                placeholder="Enter UserName">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                       <div>
+                        <p *ngIf="userMsg"  class="alert alert-danger">{{errorMsg}}</p>
+                        <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">
+                            <div *ngIf="userName.errors?.['required']">
+                                UserName is required.
+                            </div>
+                            </div>
+                       </div>
+                       </div>
+                       <div>
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input #password="ngModel" [(ngModel)]="loginData.password" required name="password" type="password" matInput
+                                placeholder="Enter Password">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                        <div>
+                            <p *ngIf="passwordMsg" class="alert alert-danger">{{errorMsg}}</p>
+                            <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                                <div *ngIf="password.errors?.['required']">
+                                    Password is required.
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                       <div class="container text-center">
+                           <div class="example-button-row">
+                               <button type="submit" mat-raised-button color="primary">Login</button>
+                               <a   class="navLink button-style" mat-raised-button color="accent"
+                               [routerLink]="'/auth/signup'">Sign Up</a>
+                            </div>
+                       </div>
+                   </form>
+               </div>
+            <div class="col-3"></div>
+           </div>
+       </div>

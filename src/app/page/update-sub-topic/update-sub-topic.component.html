@@ -1,0 +1,30 @@
+<div class="container">
+           <div class="row">
+               <div class="col-md-12">
+                   <h2 class="text-center">Update SubTopic</h2>
+                   <form #topicForm="ngForm" (ngSubmit)="updateSubTopic(topicForm.value)">
+                       <mat-form-field class="form-field" appearance="outline">
+                           <mat-label>SubTopic</mat-label>
+                           <input [(ngModel)]="subTopicName" name="subTopicName" type="text" matInput placeholder="Enter SubTopic">
+                           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                       </mat-form-field>
+                       
+                       <div>
+
+                                 <select class="form-control" name="course" #course="ngModel" [(ngModel)]="topicData">
+                                            <option disabled *ngFor="let topic of topicsList"  [value]="topic" [selected]="topic.topicName === topicName">
+                                                       {{topic.topicName}}
+                                            </option>
+                                 </select>
+                                 </div>
+                      
+                       <div class="container text-center">
+                           <div class="example-button-row">
+                               <button type="submit" mat-raised-button color="primary">Update Topic</button>
+                               <button class="navLink button-style" mat-raised-button color="primary" (click)="backButton()">Back To SubTopic</button>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>

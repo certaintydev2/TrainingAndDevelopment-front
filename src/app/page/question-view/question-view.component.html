@@ -1,0 +1,39 @@
+<div class="container">
+           <div class="row">
+                      <div class="col-md-12">
+                                 <h2>Questions Table</h2>
+                                 <button class="navLink button-style" mat-raised-button color="primary" (click)="backButton()">Back To SubTopic</button>
+                                
+                                 <a *ngIf="check" class="navLink" mat-raised-button color="primary"
+                                            [routerLink]="'/page/question'">
+                                         Add Questions</a>
+                                 <table class="table table-striped">
+                                            <thead>
+                                                       <tr>
+                                                                  <th>Question Id</th>
+                                                                  <th>Question</th>
+                                                                  <th>Sub Topic</th>
+                                                                  <th>Topic</th>
+                                                                  <th>Actions</th>
+                                                       </tr>
+                                            </thead>
+                                            <tbody>
+                                                       <tr *ngFor="let question of questions">
+                                                                  <td>{{question.id}}</td>
+                                                                  <td><a  class="navLink ml-5" [routerLink]="''">{{question.question}}</a></td>
+                                                                  <td>{{question.subTopic.subTopicName}}</td>
+                                                                  <td>{{question.subTopic.topic.topicName}}</td>
+                                                                  <td>
+                                                                             <a class="navLink ml-5" mat-raised-button
+                                                                                        color="primary"
+                                                                                        [routerLink]="''">Update</a>
+                                                                             <a class="navLink button-style"
+                                                                                        mat-raised-button color="danger"
+                                                                                        [routerLink]="''">Delete</a>
+                                                                  </td>
+                                                       </tr>
+                                            </tbody>
+                                 </table>
+                      </div>
+           </div>
+</div>

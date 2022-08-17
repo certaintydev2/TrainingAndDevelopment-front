@@ -1,0 +1,40 @@
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+    <h2 class="text-center">Send Email</h2>
+           <form #sendEmail="ngForm" (ngSubmit)="sendEmailData(sendEmail.value)">
+                      <mat-form-field class="form-field" appearance="outline">
+                          <mat-label>Receiver Email</mat-label>
+                          <input #email="ngModel" [(ngModel)]="emailData.email" name="email" type="email" matInput
+                              placeholder="Enter Receiver Email">
+                          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                      </mat-form-field>
+                      <mat-form-field class="form-field" appearance="outline">
+                          <mat-label>Subject</mat-label>
+                          <input #subject="ngModel" [(ngModel)]="emailData.subject" name="subject" type="text" matInput
+                              placeholder="Enter subject">
+                          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                      </mat-form-field>
+                      <mat-form-field class="form-field" appearance="outline">
+                                 <mat-label>Text</mat-label>
+                                 <textarea #text="ngModel" [(ngModel)]="emailData.text" name="text" matInput
+                                     placeholder="Enter text"></textarea>
+                                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                      </mat-form-field>
+                      <!-- <div class="form-group">
+                                 <input #file="ngModel" class="form-control" [(ngModel)]="emailData.file" required name="file" type="file">
+
+                                </div> -->
+                      
+                      
+                      <div class="container text-center">
+                          <div class="example-button-row">
+                              <button type="submit" mat-raised-button color="primary">Send Email</button>
+                           </div>
+                      </div>
+                  </form>
+</div>
+</div>
+</div>
+
+           

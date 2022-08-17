@@ -1,0 +1,60 @@
+<div class="container">
+           <div class="row">
+               <div class="col-md-12">
+                   <h2 class="text-center">Add Course</h2>
+                   <p *ngIf="msg" style="color: red;">{{errorMsg}}</p>
+                   <form #courseForm="ngForm" (ngSubmit)="AddCourse(courseForm.value)">
+                       <div>
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Course</mat-label>
+                            <input (change)="updatelist()" #courses="ngModel" [(ngModel)]="course.courseName" required name="courseName" type="text" matInput placeholder="Enter Course">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                        <div *ngIf="courses.touched && courses.invalid" class="alert alert-danger">
+                            <div *ngIf="courses.errors?.['required']">
+                             Course is required
+                            </div>
+                        </div>
+                       </div>
+                       <div>
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Author</mat-label>
+                            <mat-select  name="authorId" #authorId="ngModel" [(ngModel)]="course.authorId" required>
+                                <mat-option *ngFor="let author of authorRole"  [value]="author.user_id">
+                                    {{author.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="authorId.touched && authorId.invalid" class="alert alert-danger">
+                            <div *ngIf="authorId.errors?.['required']">
+                                Author must be selected
+                            </div>
+                        </div>
+                       </div>
+                       <div>
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Mentor</mat-label>
+                            <mat-select name="mentorId" #mentorId="ngModel" [(ngModel)]="course.mentorId" required="">
+                                <mat-option *ngFor="let mentor of mentorRole"  [value]="mentor.user_id">
+                                    {{mentor.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="mentorId.touched && mentorId.invalid" class="alert alert-danger">
+                            <div *ngIf="mentorId.errors?.['required']">
+                                Mentor must be selected
+                            </div>
+                        </div>
+                       </div>
+                      
+                       <div class="container text-center">
+                           <div class="example-button-row">
+                               <button type="submit" mat-raised-button color="primary" >Add Course</button>
+                               <a   class="navLink ml-5" mat-raised-button color="primary"
+                               [routerLink]="'/page/viewCourse'">Back to Courses</a>
+                            </div>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>
