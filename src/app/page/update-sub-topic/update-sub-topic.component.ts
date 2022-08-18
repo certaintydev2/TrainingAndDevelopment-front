@@ -43,7 +43,14 @@ export class UpdateSubTopicComponent implements OnInit {
   }
 
   updateSubTopic(data:any) {
-
+    this.userService.updateSubTopic(this.subTopicId,data).subscribe(res=>{
+      let snack = this.snackBar.open("SubTopic Updated Successfully", "Done");
+            snack.afterDismissed().subscribe(() => {
+          });
+            snack.onAction().subscribe(() => {
+          });
+          this.router.navigate(['/page/subTopicView/'+this.topicId]);
+    });
   }
 
   backButton() {

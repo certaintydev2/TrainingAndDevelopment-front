@@ -2,13 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import baseUrl from './helper';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private router: Router) { }
   
 
   //add User
@@ -138,5 +140,26 @@ export class UserService {
 
   public getSubTopicBySubTopicId(id:any) {
     return this.http.get(`${baseUrl}/getSubTopicBySubTopicId/`+id);
+  }
+
+  public deleteQuestion(id:any) {
+    return this.http.delete(`${baseUrl}/deleteQuestion/`+id);
+  }
+
+  public getQuestionsByQuestionId(id:any) {
+    return this.http.get(`${baseUrl}/getQuestionsByQuestionId/`+id);
+  }
+
+  public logout() {
+    localStorage.clear();
+    this.router.navigate(['/auth/login']);
+  }
+
+  public updateSubTopic(id:any,subTopic:any){
+    return this.http.put(`${baseUrl}/updateSubTopic/`+id,subTopic);
+  }
+
+  public updateQuestion(id:any,question:any){
+    return this.http.put(`${baseUrl}/updateQuestion/`+id,question);
   }
 }

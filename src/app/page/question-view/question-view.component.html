@@ -14,7 +14,7 @@
                                                                   <th>Question</th>
                                                                   <th>Sub Topic</th>
                                                                   <th>Topic</th>
-                                                                  <th>Actions</th>
+                                                                  <th *ngIf="check">Actions</th>
                                                        </tr>
                                             </thead>
                                             <tbody>
@@ -23,13 +23,10 @@
                                                                   <td><a  class="navLink ml-5" [routerLink]="''">{{question.question}}</a></td>
                                                                   <td>{{question.subTopic.subTopicName}}</td>
                                                                   <td>{{question.subTopic.topic.topicName}}</td>
-                                                                  <td>
-                                                                             <a class="navLink ml-5" mat-raised-button
-                                                                                        color="primary"
-                                                                                        [routerLink]="''">Update</a>
-                                                                             <a class="navLink button-style"
-                                                                                        mat-raised-button color="danger"
-                                                                                        [routerLink]="''">Delete</a>
+                                                                  <td *ngIf="check">
+                                                                        <a  class="navLink ml-5" mat-icon-button color="accent"
+                                                                        [routerLink]="'/page/updateQuestion/'+question.id"><mat-icon class="mat-18">system_update</mat-icon></a>
+                                                                        <button class="navLink button-style" mat-icon-button color="warn"><mat-icon (click)="deleteQuestion(question.id)" class="mat-18">delete</mat-icon></button>
                                                                   </td>
                                                        </tr>
                                             </tbody>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -25,10 +26,7 @@ export class QuestionViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.subTopic_id = this.route.snapshot.params['id'];
-    this.userService.getQuestionsBySubTopicId(this.subTopic_id).subscribe(res=>{
-      console.log(res);
-      this.questions = res;
-    });
+    this.getQuestions();
     this.userService.getUserById(this.loggedInUserId).subscribe(
       res => {
         this.userData = JSON.stringify(res);
@@ -42,12 +40,39 @@ export class QuestionViewComponent implements OnInit {
         }
       });
   }
+
+  getQuestions() {
+    this.userService.getQuestionsBySubTopicId(this.subTopic_id).subscribe(res=>{
+      console.log(res);
+      this.questions = res;
+    });
+  }
   
   backButton() {
     for (let i = 0; i < this.questions.length; i++) {
       this.topic_id=this.questions[i].subTopic.topic.id;
+      console.log(this.questions[i].subTopic.topic.id);
+      
     }
     this.router.navigate(['/page/subTopicView/'+this.topic_id]);
+  }
+
+  deleteQuestion(id:any) {
+    if(id != null) {
+      Swal.fire({
+        title: 'Do you want to delete Question?',
+        showDenyButton: false,
+        showCancelButton: true,
+        confirmButtonText: 'Delete'
+      }).then((result) => {
+        if (result.isConfirmed === true) {
+          this.userService.deleteQuestion(id).subscribe();
+          setTimeout(() => {
+            this.getQuestions();
+          }, 1000);
+        }
+      })  
+    }
   }
   
 }

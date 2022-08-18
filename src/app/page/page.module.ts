@@ -45,6 +45,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateTopicComponent } from './update-topic/update-topic.component';
 import { UpdateSubTopicComponent } from './update-sub-topic/update-sub-topic.component';
+import { UpdateQuestionComponent } from './update-question/update-question.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { UpdateSubTopicComponent } from './update-sub-topic/update-sub-topic.com
     ConfirmationDialogComponent,
     UpdateTopicComponent,
     UpdateSubTopicComponent,
+    UpdateQuestionComponent,
   ],
   imports: [
     CommonModule,

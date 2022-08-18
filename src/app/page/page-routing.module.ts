@@ -23,6 +23,7 @@ import { UpdateCourseComponent } from './update-course/update-course.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateTopicComponent } from './update-topic/update-topic.component';
 import { UpdateSubTopicComponent } from './update-sub-topic/update-sub-topic.component';
+import { UpdateQuestionComponent } from './update-question/update-question.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -109,6 +110,10 @@ const routes: Routes = [
   {
     path: 'updateSubTopic/:id',
     component: UpdateSubTopicComponent
+  },
+  {
+    path: 'updateQuestion/:id',
+    component: UpdateQuestionComponent
   }
 
 ];

@@ -12,7 +12,7 @@
                                                                   <th>SubTopic Name</th>
                                                                   <th>Topic</th>
                                                                   <th>Course</th>
-                                                                  <th>Actions</th>
+                                                                  <th *ngIf="check">Actions</th>
                                                        </tr>
                                             </thead>
                                             <tbody>
@@ -21,8 +21,8 @@
                                                                   <td><a  class="navLink ml-5" [routerLink]="['/page/questionView/'+subTopic.id]">{{subTopic.subTopicName}}</a></td>
                                                                   <td>{{subTopic.topic.topicName}}</td>
                                                                   <td>{{subTopic.topic.course.courseName}}</td>
-                                                                  <td>
-                                                                        <a *ngIf="check" class="navLink ml-5" mat-icon-button color="accent"
+                                                                  <td *ngIf="check">
+                                                                        <a class="navLink ml-5" mat-icon-button color="accent"
                                                                         [routerLink]="'/page/updateSubTopic/'+subTopic.id"><mat-icon class="mat-18">system_update</mat-icon></a>
                                                                         <button class="navLink button-style" mat-icon-button color="warn"><mat-icon (click)="deleteSubTopic(subTopic.id)" class="mat-18">delete</mat-icon></button>
                                                                   </td>
