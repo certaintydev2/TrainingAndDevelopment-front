@@ -46,6 +46,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateTopicComponent } from './update-topic/update-topic.component';
 import { UpdateSubTopicComponent } from './update-sub-topic/update-sub-topic.component';
 import { UpdateQuestionComponent } from './update-question/update-question.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { UpdateQuestionComponent } from './update-question/update-question.compo
     UpdateTopicComponent,
     UpdateSubTopicComponent,
     UpdateQuestionComponent,
+    SideMenuComponent,
   ],
   imports: [
     CommonModule,

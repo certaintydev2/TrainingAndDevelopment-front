@@ -1,59 +1,125 @@
-<div class="container-fluid">
-           <div class="row">
-              <div class="col-md-12">
-                 <mat-toolbar color="primary">
-                    <mat-toolbar-row>
-                       <h1>Training And Development</h1>
-                       <span class="menu-spacer"></span>
-                       <div *ngFor="let user_roles of userRoleList"
-                       [ngSwitch]="user_roles.roleName">
-                       <!-- admin role link -->
-                       <div *ngSwitchCase="'ROLE_ADMIN'">
-                          <a class="navLink" mat-button
-                             [routerLink]="'/page/viewUsers'">
-                          Users</a>
-                          <a class="navLink" mat-button
-                             [routerLink]="'/page/viewCourse'">
-                          Courses</a>
-                       </div>
-                        <!-- author role link -->
-                       <div *ngSwitchCase="'ROLE_AUTHOR'">
-                       <a class="navLink" mat-button
-                             [routerLink]="'/page/viewCourse'">
-                          View Courses</a>
-                          
-                       <!-- <a class="navLink" mat-button
-                             [routerLink]="'/page/viewTopics'">
-                          View Topics</a> -->
-                       </div>
-                        <!-- mentor role link -->
-                       <div *ngSwitchCase="'ROLE_MENTOR'">
-                          <a *ngIf="check" class="navLink" mat-button
-                             [routerLink]="'/page/viewCourse'">
-                          View Courses</a>
-                          <!-- <a class="navLink" mat-button
-                             [routerLink]="'/page/viewSubTopics'">
-                          View Sub Topics</a>
-                          <a class="navLink" mat-button
-                             [routerLink]="'/page/viewQuestions'">
-                          View Questions</a> -->
-                       </div>
-                        <!-- trainee role link -->
-                       <div *ngSwitchCase="'ROLE_TRAINEE'">
-                                 <a class="navLink" mat-button
-                                    [routerLink]="['/page/performQuestion/'+courseName]"> Perform questions</a>
-                      </div>
-              </div>
-              <a class="navLink" mat-button (click)="logout()">
-              Logout</a>
-              <h3><a class="navLink" mat-button
-               [routerLink]="'/page/viewProfile'">{{user}}</a></h3>
-              </mat-toolbar-row>
-              <mat-toolbar-row>
-              <span style="font-size: 12px;"></span>
-              </mat-toolbar-row>
-              </mat-toolbar>
-             
-           </div>
-        </div>
+<div class="h-100 d-flex">
+   <app-side-menu class="side_menu"></app-side-menu>
+   <div class="w-100 p-4 mt-5">
+      <div class="dashboard_top_box container-fluid">
+         <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+               <div class="card card-stats">
+                  <div class="card-header card-header-warning card-header-icon">
+                     <div class="card-icon">
+                        <i class="material-icons">content_copy</i>
+                     </div>
+                     <p class="card-category">Total courses complate</p>
+                     <h3 class="card-title">34/50 </h3>
+                  </div>
+                  <div class="card-footer">
+                     <div class="stats">
+                        <i class="material-icons">date_range</i>
+                        Last 24 Hours
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+               <div class="card card-stats">
+                  <div class="card-header card-header-s card-header-icon">
+                     <div class="card-icon">
+                        <i class="material-icons">store</i>
+                     </div>
+                     <p class="card-category">Total Students</p>
+                     <h3 class="card-title">34,245</h3>
+                  </div>
+                  <div class="card-footer">
+                     <div class="stats">
+                        <i class="material-icons">date_range</i>
+                        Last 24 Hours
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+               <div class="card card-stats">
+                  <div class="card-header card-header-d card-header-icon">
+                     <div class="card-icon"><i class="material-icons">info_outline</i></div>
+                     <p class="card-category">Fixed Issues</p>
+                     <h3 class="card-title">75</h3>
+                  </div>
+                  <div class="card-footer">
+                     <div class="stats"><i class="material-icons">local_offer</i> Tracked from Github </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+               <div class="card card-stats">
+                  <div class="card-header card-header-i card-header-icon">
+                     <div class="card-icon"><i class="material-icons">update</i></div>
+                     <p class="card-category">Followers</p>
+                     <h3 class="card-title">+245</h3>
+                  </div>
+                  <div class="card-footer">
+                     <div class="stats"><i class="material-icons">update</i> Just Updated </div>
+                  </div>
+               </div>
+            </div> -->
+         </div>
+      </div>
+      <br>
+      <div class="container-fluid dashboard_table mt-5">
+         <div class="row">
+            <div class="col-md-6">
+               <div class="card p-3">
+                  <h4 class="card-title text-dark mb-3">Graph</h4>
+                  <div>
+                     <img src="assets/images/chart.png" class="img-fluid" alt="">
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+               <div class="card">
+                  <div class="card-header card-header-warning">
+                     <h4 class="card-title">Users Stats</h4>
+                     <p class="card-category">New Users on 15th September, 2022</p>
+                  </div>
+                  <div class="card-body table-responsive">
+                     <table class="table table-hover">
+                        <thead class="">
+                           <th>ID</th>
+                           <th>Firstname</th>
+                           <th>Lastname</th>
+                           <th>Email</th>
+                           <th>Mobile</th>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td>1</td>
+                              <td>John</td>
+                              <td>Doe</td>
+                              <td>john@example.com</td>
+                              <td>9876543210</td>
+                           </tr>
+                           <tr>
+                              <td>2</td>
+                              <td>Mary</td>
+                              <td>Moe</td>
+                              <td>mary@example.com</td>
+                              <td>9876543210</td>
+                           </tr>
+                           <tr>
+                              <td>3</td>
+                              <td>July</td>
+                              <td>Dooley</td>
+                              <td>july@example.com</td>
+                              <td>9876543210</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>

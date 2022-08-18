@@ -1,0 +1,60 @@
+<div>
+    <div class="logo">
+        <img src="assets/images/logo1.svg" height="70px" alt=""> 
+         <span class="text-white">T &nbsp;D</span>
+    </div>
+
+    <ul class="nav flex-column" *ngFor="let user_roles of userRoleList" [ngSwitch]="user_roles.roleName">
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/page/home'">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                Dashboard</a>
+        </li>
+        <li *ngSwitchCase="'ROLE_ADMIN'" class="nav-item">
+            <!-- admin role link -->
+            <nav>
+                <ul class="p-0">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="'/page/viewUsers'">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            Users list</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="'/page/viewCourse'">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                            Courses</a>
+                    </li>
+                </ul>
+            </nav>
+        </li>
+
+        <li *ngSwitchCase="'ROLE_AUTHOR'" class="nav-item">
+            <a class="nav-link" [routerLink]="'/page/viewCourse'">
+                <i class="fa fa-book" aria-hidden="true"></i>
+                View Courses</a>
+        </li>
+        <li *ngSwitchCase="'ROLE_MENTOR'" class="nav-item">
+            <a *ngIf="check" class="nav-link" [routerLink]="'/page/viewCourse'">
+                <i class="fa fa-book" aria-hidden="true"></i>
+                View Courses</a>
+        </li>
+        <li *ngSwitchCase="'ROLE_TRAINEE'" class="nav-item">
+            <a class="nav-link" [routerLink]="['/page/performQuestion/'+courseName]"> Perform
+                questions</a>
+        </li>
+        <li  class="nav-item">
+            <a class="nav-link"  [routerLink]="'/page/viewProfile'">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                 Profile
+            </a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link" (click)="logout()">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Logout</a>
+            <!-- <h3><a class="nav-link"  [routerLink]="'/page/viewProfile'">{{user}}</a></h3> -->
+        </li>
+    </ul>
+</div>
