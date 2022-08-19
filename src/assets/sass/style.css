@@ -264,7 +264,7 @@ a:hover {
 }
 
 .card {
-  background-color: #fff;
+  background-color: #ffffff;
   border: 0 solid transparent;
   border-radius: 1.25rem;
   box-shadow: 0 12px 23px 0 hsla(0deg, 0%, 44%, 0.04);
@@ -321,7 +321,7 @@ a:hover {
   list-style-type: none;
 }
 .side_menu .nav-link {
-  color: #fff !important;
+  color: #ffffff !important;
   letter-spacing: 1.1px;
   transition-duration: 0.7s;
   cursor: pointer;
@@ -345,10 +345,10 @@ a:hover {
 }
 .reused_table_header .card-title {
   font-size: 18px;
-  color: #fff;
+  color: #ffffff;
 }
 .reused_table_header .card-category {
   font-size: 15px;
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 0;
 }/*# sourceMappingURL=style.css.map */

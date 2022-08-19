@@ -20,7 +20,7 @@ a {
 }
 
 .card {
-    background-color: #fff;
+    background-color: $white;
     border: 0 solid transparent;
     border-radius: 1.25rem;
     box-shadow: 0 12px 23px 0 hsl(0deg 0% 44% / 4%);
@@ -85,7 +85,7 @@ a {
     }
 
     .nav-link {
-        color: #fff !important;
+        color: $white !important;
         letter-spacing: 1.1px;
         transition-duration: .7s;
         cursor: pointer;
@@ -115,12 +115,12 @@ a {
 
     .card-title {
         font-size: 18px;
-        color: #fff;
+        color: $white;
     }
 
     .card-category {
         font-size: 15px;
-        color: #fff;
+        color: $white;
         margin-bottom: 0;
     }
 }
