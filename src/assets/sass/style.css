@@ -254,8 +254,36 @@
   color: #fff;
 }
 
+.user_list_component .card .card-header-warning {
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+}
+.user_list_component .card .card-header.card-header-warning {
+  border-radius: 3px;
+  margin-top: -20px;
+  padding: 15px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.user_list_component .card .card-header-warning {
+  background: linear-gradient(60deg, #ab47bc, #8e24aa);
+}
+.user_list_component .card-title {
+  font-size: 18px;
+  color: #fff;
+}
+.user_list_component .card-category {
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 0;
+}
+
 body {
   background-color: #f4f6fa;
+}
+
+a:hover {
+  text-decoration: none !important;
+  color: #000 !important;
 }
 
 .card {

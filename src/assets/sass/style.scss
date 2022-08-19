@@ -2,14 +2,22 @@
 @import './pages/login';
 @import './pages/signup';
 @import './pages/profile';
+@import './pages/userList';
 
 
 
 // define 
 body{
     background-color: #f4f6fa;
+    // height: 100% !important;
 }
 
+a{
+    &:hover{
+        text-decoration: none !important;
+        color: #000!important;
+    }
+}
 .card {
     background-color: #fff;
     border: 0 solid transparent;
