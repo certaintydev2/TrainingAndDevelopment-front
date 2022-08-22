@@ -1,39 +1,51 @@
-<div class="container">
-           <div class="row">
-                      <div class="col-md-12">
-                                 <h2>Trainee List</h2>
-                                 <a   class="navLink ml-5" mat-raised-button color="primary"
-                                 [routerLink]="'/page/home'">Back to Home</a>
-                                 <a   class="navLink ml-5" mat-raised-button color="primary"
-                                 [routerLink]="'/page/addUser'">Create User</a>
-                                 <table class="table table-striped">
-                                            <thead>
-                                              <tr>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Profile</th>
-                                                <!-- <th>Role</th> -->
-                                                <th>Actions</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                             <tr *ngFor="let user of users">
-                                            <td>{{user.name}}</td>
-                                            <td>{{user.email}}</td>
-                                            <td>{{user.profile.toUpperCase()}}</td>
-                                            <!-- <td><div *ngFor="let role of user.roles">
-
-                                                       {{role.roleName}}
-                                            </div>
-                                            </td> -->
-                                            <td>
-                                              <a  class="navLink ml-5 button-style" mat-icon-button color="accent" [routerLink]="['/page/updateUser/'+user.id]"><mat-icon  class="mat-18">system_update</mat-icon></a>
-                                              <!-- <button class="navLink button-style" mat-icon-button color="accent"><mat-icon (click)="updateUser(user.id)"  class="mat-18">system_update</mat-icon></button> -->
-                                              <button class="navLink button-style" mat-icon-button color="warn"><mat-icon (click)="deleteUser(user.id)" class="mat-18">delete</mat-icon></button>
-                                            </td>
-                                             </tr>
-                                            </tbody>
-                                          </table>
-                      </div>
-           </div>
+<div class="d-flex h-100vh">
+  <app-side-menu class="side_menu"></app-side-menu>
+  <div class="w-100 p-4 mt-5">
+    <section class="trainee_list_component">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 reused_table_header">
+            <div class="card">
+              <div class="card-header card-header-warning">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h4 class="card-title mb-0 ">Trainee List</h4>
+                  <div>
+                    <a mat-raised-button [routerLink]="'/page/addUser'">Create User</a>
+                  </div>
+                </div>
+              </div>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Profile</th>
+                    <!-- <th>Role</th> -->
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of users">
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.profile.toUpperCase()}}</td>
+                    <td>
+                      <a class="navLink ml-5 button-style" mat-icon-button color="accent"
+                        [routerLink]="['/page/updateUser/'+user.id]">
+                        <mat-icon class="mat-18">system_update</mat-icon>
+                      </a>
+                      <!-- <button class="navLink button-style" mat-icon-button color="accent"><mat-icon (click)="updateUser(user.id)"  class="mat-18">system_update</mat-icon></button> -->
+                      <button class="navLink button-style" mat-icon-button color="warn">
+                        <mat-icon (click)="deleteUser(user.id)" class="mat-18">delete</mat-icon>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
