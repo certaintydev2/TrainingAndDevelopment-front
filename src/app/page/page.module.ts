@@ -47,6 +47,11 @@ import { UpdateTopicComponent } from './update-topic/update-topic.component';
 import { UpdateSubTopicComponent } from './update-sub-topic/update-sub-topic.component';
 import { UpdateQuestionComponent } from './update-question/update-question.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { SolveQuestionComponent } from './solve-question/solve-question.component';
+import { AuthorListComponent } from './author-list/author-list.component';
+import { MentorListComponent } from './mentor-list/mentor-list.component';
+import { TraineeListComponent } from './trainee-list/trainee-list.component';
 
 
 @NgModule({
@@ -75,6 +80,10 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
     UpdateSubTopicComponent,
     UpdateQuestionComponent,
     SideMenuComponent,
+    SolveQuestionComponent,
+    AuthorListComponent,
+    MentorListComponent,
+    TraineeListComponent,
   ],
   imports: [
     CommonModule,
@@ -99,6 +108,14 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
     MatListModule,
     MatDialogModule,
     NgMultiSelectDropDownModule.forRoot(),
+    NgxEchartsModule.forRoot({
+      /**
+       * This will import all modules from echarts.
+       * If you only need custom modules,
+       * please refer to [Custom Build] section.
+       */
+      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
+    }),
   ]
 })
 export class PageModule { }

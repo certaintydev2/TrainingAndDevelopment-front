@@ -10,8 +10,8 @@
                      <div class="card-icon">
                         <i class="material-icons">content_copy</i>
                      </div>
-                     <p class="card-category">Total courses complate</p>
-                     <h3 class="card-title">34/50 </h3>
+                     <p class="card-category">Total Courses</p>
+                     <h3 class="card-title">{{numberOfCourses}}</h3>
                   </div>
                   <div class="card-footer">
                      <div class="stats">
@@ -28,8 +28,8 @@
                      <div class="card-icon">
                         <i class="material-icons">store</i>
                      </div>
-                     <p class="card-category">Total Students</p>
-                     <h3 class="card-title">34,245</h3>
+                     <p class="card-category">Total Users</p>
+                     <h3 class="card-title">{{numberOfUsers}}</h3>
                   </div>
                   <div class="card-footer">
                      <div class="stats">
@@ -44,8 +44,8 @@
                <div class="card card-stats">
                   <div class="card-header card-header-d card-header-icon">
                      <div class="card-icon"><i class="material-icons">info_outline</i></div>
-                     <p class="card-category">Fixed Issues</p>
-                     <h3 class="card-title">75</h3>
+                     <p class="card-category">Total Authors</p>
+                     <h3 class="card-title">{{numberOfAuthors}}</h3>
                   </div>
                   <div class="card-footer">
                      <div class="stats"><i class="material-icons">local_offer</i> Tracked from Github </div>
@@ -72,9 +72,10 @@
             <div class="col-md-6">
                <div class="card p-3">
                   <h4 class="card-title text-dark mb-2">Graph</h4>
-                  <div>
+                  <!-- <div>
                      <img src="assets/images/chart.png" class="img-fluid" alt="">
-                  </div>
+                  </div> -->
+                  <div echarts [options]="gradientChart" class="demo-chart"></div>
                </div>
             </div>
             <div class="col-lg-6 col-md-12">

@@ -58,6 +58,10 @@ export class UserService {
     return this.http.get(`${baseUrl}/getAllUsers`);
   }
 
+  public getAllUsersExceptAdmin() {
+    return this.http.get(`${baseUrl}/getAllUsersExceptAdmin`);
+  }
+
   public getTopics() {
     return this.http.get(`${baseUrl}/getTopics`);
   }
@@ -161,5 +165,25 @@ export class UserService {
 
   public updateQuestion(id:any,question:any){
     return this.http.put(`${baseUrl}/updateQuestion/`+id,question);
+  }
+
+  public solveQuestion(id:any,questionStatus:any) {
+    return this.http.post(`${baseUrl}/solveQuestion/`+id,questionStatus);
+  }
+
+  public getStatusByQuestionId(id:any) {
+    return this.http.get(`${baseUrl}/getStatusByQuestionId/`+id);
+  }
+
+  public getAuthorList() {
+    return this.http.get(`${baseUrl}/getAuthorList`);
+  }
+
+  public getMentorList() {
+    return this.http.get(`${baseUrl}/getMentorList`);
+  }
+
+  public getTraineeList() {
+    return this.http.get(`${baseUrl}/getTraineeList`);
   }
 }

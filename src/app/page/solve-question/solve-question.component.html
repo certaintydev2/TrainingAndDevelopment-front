@@ -1,0 +1,29 @@
+<div class="container">
+           <div class="row">
+               <div class="col-md-12">
+                   <h2 class="text-center">Add Topic</h2>
+                   <form #topicForm="ngForm" (ngSubmit)="solveQuestion(topicForm.value)">
+                       <mat-form-field class="form-field" appearance="outline">
+                           <mat-label>User Id</mat-label>
+                           <input #courses [(ngModel)]="loggedInUserId" name="userId" type="text" matInput placeholder="Enter Topic">
+                           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                       </mat-form-field>
+                       <mat-form-field class="form-field" appearance="outline">
+                           <mat-label>Status</mat-label>
+                           <mat-select name="status" [(ngModel)]="questionStatus.status">
+                               <mat-option *ngFor="let stat of status"  [value]="stat.statusValue">
+                                   {{stat.value}}
+                               </mat-option>
+                           </mat-select>
+                       </mat-form-field>
+                      
+                       <div class="container text-center">
+                           <div class="example-button-row">
+                               <button type="submit" mat-raised-button color="primary">Solve Question</button>
+                               <button class="navLink button-style" mat-raised-button color="primary" (click)="backButton()">Back To Questions</button>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>

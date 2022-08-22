@@ -24,6 +24,10 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateTopicComponent } from './update-topic/update-topic.component';
 import { UpdateSubTopicComponent } from './update-sub-topic/update-sub-topic.component';
 import { UpdateQuestionComponent } from './update-question/update-question.component';
+import { SolveQuestionComponent } from './solve-question/solve-question.component';
+import { AuthorListComponent } from './author-list/author-list.component';
+import { MentorListComponent } from './mentor-list/mentor-list.component';
+import { TraineeListComponent } from './trainee-list/trainee-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -114,6 +118,22 @@ const routes: Routes = [
   {
     path: 'updateQuestion/:id',
     component: UpdateQuestionComponent
+  },
+  {
+    path: 'solveQuestion/:id',
+    component: SolveQuestionComponent
+  },
+  {
+    path: 'viewAuthors',
+    component: AuthorListComponent
+  },
+  {
+    path: 'viewMentors',
+    component: MentorListComponent
+  },
+  {
+    path: 'viewTrainee',
+    component: TraineeListComponent
   }
 
 ];

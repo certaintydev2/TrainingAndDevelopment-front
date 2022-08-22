@@ -15,7 +15,7 @@
                                             <tbody>
                                                        <tr *ngFor="let question of questions">
                                                                   <td>{{question.id}}</td>
-                                                                  <td><a  class="navLink ml-5" [routerLink]="''">{{question.question}}</a></td>
+                                                                  <td><a  class="navLink ml-5" [routerLink]="['/page/solveQuestion/'+question.id]">{{question.question}}</a></td>
                                                                   <td>status</td>
                                                        </tr>
                                             </tbody>

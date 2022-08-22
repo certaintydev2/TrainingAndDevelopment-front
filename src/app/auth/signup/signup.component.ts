@@ -20,7 +20,6 @@ export class SignupComponent implements OnInit {
   loggedId: any;
   errorMsg: any;
   msg: boolean = false;
-  coursesList: any;
   rolesList:any;
 
   public user: any = {
@@ -32,14 +31,20 @@ export class SignupComponent implements OnInit {
     roles: ''
   };
 
+  coursesList:any=[
+    {value: 'JAVA', courseName: 'JAVA'},
+    {value: 'PYTHON', courseName: 'PYTHON'},
+    {value: 'NODE JS', courseName: 'NODE JS'},
+    {value: 'ANGULAR', courseName: 'ANGULAR'},
+    {value: 'REACT JS', courseName: 'REACT JS'},
+    {value: 'PHP', courseName: 'PHP'}
+  ];
+
+
   ngOnInit(): void {
     this.userService.getAllRoles().subscribe(res => {
       this.roles = res;
       this.adminRole(this.roles);
-    });
-    this.userService.getCourses().subscribe(res => {
-      console.log(res);
-      this.coursesList = res;
     });
     this.loggedId = localStorage.getItem('id');
   }

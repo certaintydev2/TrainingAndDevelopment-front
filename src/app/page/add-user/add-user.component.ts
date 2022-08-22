@@ -14,9 +14,9 @@ export class AddUserComponent implements OnInit {
   constructor(private userService: UserService, private router: Router,private snackBar: MatSnackBar) { }
 
   roles: any;
-  coursesList:any;
   errorMsg:any;
   msg:any;
+  addUserData:any;
 
   public user: any = {
     name: '',
@@ -26,29 +26,37 @@ export class AddUserComponent implements OnInit {
     profile: '',
     roles: ''
   };
+  coursesList:any=[
+    {value: 'JAVA', courseName: 'JAVA'},
+    {value: 'PYTHON', courseName: 'PYTHON'},
+    {value: 'NODE JS', courseName: 'NODE JS'},
+    {value: 'ANGULAR', courseName: 'ANGULAR'},
+    {value: 'REACT JS', courseName: 'REACT JS'},
+    {value: 'PHP', courseName: 'PHP'}
+  ];
+
+  routingLink:any;
 
   ngOnInit(): void {
     this.userService.getAllRoles().subscribe(res => {
       this.roles = res;
       console.log(this.roles);
     });
-    this.userService.getCourses().subscribe(res => {
-      console.log(res);
-      this.coursesList = res;
-    });
   }
 
   formSubmit(data: any) {
     if (data.roles != '' && data.name != '' && data.userName != '', data.password != '', data.profile != '') {
+      // console.log(data);
+      
       this.userService.addUser(data).subscribe(
         (res) => {
-          console.log(res);          
+          this.addUserData=res;        
           let snack = this.snackBar.open("User Added Successfully", "Done");
             snack.afterDismissed().subscribe(() => {
             });
             snack.onAction().subscribe(() => {
             });
-            this.router.navigate(['/page/viewUsers']);
+            this.prevoius();
         }, (err: HttpErrorResponse) => {
           console.log(err);
         }
@@ -58,6 +66,32 @@ export class AddUserComponent implements OnInit {
       this.msg = true;
       this.router.navigate(['/page/addUser']);
     }
+  }
+
+  routePagesByRoles(data:any) {
+    if(data.length>1) {
+      this.routingLink='/page/viewAuthors';
+      this.router.navigate(['/page/viewAuthors']);
+    }else{
+      for (let i = 0; i < data.length; i++) {
+        if(data[i].roleName === "ROLE_TRAINEE"){
+          this.routingLink='/page/viewTrainee';
+            this.router.navigate(['/page/viewTrainee']);
+        }
+        if(data[i].roleName === "ROLE_AUTHOR"){
+          this.routingLink='/page/viewAuthors';
+          this.router.navigate(['/page/viewAuthors']);
+        }
+        if(data[i].roleName === "ROLE_MENTOR"){
+          this.routingLink='/page/viewMentors';
+        this.router.navigate(['/page/viewMentors']);
+        }
+      }
+    }
+  }
+
+  prevoius() {
+    window.history.back();
   }
 
 }

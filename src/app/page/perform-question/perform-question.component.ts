@@ -13,16 +13,14 @@ export class PerformQuestionComponent implements OnInit {
 
   courseName:any;
   questions:any;
+  statusData:any[]=[];
   ngOnInit(): void {
 
     this.courseName = this.route.snapshot.params['courseName'];
   
     this.userService.getQuestionByCourseName(this.courseName).subscribe(res=>{
-      console.log(res);
-      
       this.questions=res;
     });
-    
   }
 
 }

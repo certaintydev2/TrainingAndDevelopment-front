@@ -38,6 +38,14 @@ export class CourseComponent implements OnInit {
     authorId: '',
     mentorId: '',
   };
+  coursesList:any=[
+    {value: 'JAVA', courseName: 'JAVA'},
+    {value: 'PYTHON', courseName: 'PYTHON'},
+    {value: 'NODE JS', courseName: 'NODE JS'},
+    {value: 'ANGULAR', courseName: 'ANGULAR'},
+    {value: 'REACT JS', courseName: 'REACT JS'},
+    {value: 'PHP', courseName: 'PHP'}
+  ];
 
   ngOnInit(): void {
     this.userService.getUser().subscribe(res =>{
