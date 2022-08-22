@@ -11,7 +11,7 @@
                     <form #courseForm="ngForm" (ngSubmit)="AddCourse(courseForm.value)">
                         <div class="row">
                             <div class="col-md-12">
-                                <div>
+                                <!-- <div>
                                     <mat-form-field class="form-field" appearance="outline">
                                         <mat-label>Course</mat-label>
                                         <input (change)="updatelist()" #courses="ngModel" [(ngModel)]="course.courseName"
@@ -23,6 +23,16 @@
                                             Course is required
                                         </div>
                                     </div>
+                                </div> -->
+                                <div>
+                                    <mat-form-field class="form-field" appearance="outline">
+                                        <mat-label>Course</mat-label>
+                                        <mat-select (selectionChange)="updatelist()"  #courses="ngModel" name="courseName" [(ngModel)]="course.courseName">
+                                            <mat-option *ngFor="let courseData of coursesList"  [value]="courseData.value">
+                                                {{courseData.courseName}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
                                 </div>
                                 <div>
                                     <mat-form-field class="form-field" appearance="outline">
