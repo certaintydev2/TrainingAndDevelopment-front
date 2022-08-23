@@ -1,6 +1,6 @@
 .header_component {
   background-color: #fff;
-  padding: 20px;
+  padding: 10px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -310,6 +310,7 @@ a:hover {
 .main_wapper .inner_container {
   height: calc(100vh - 10px);
   overflow: auto;
+  width: 100%;
 }
 .main_wapper .inner_container {
   -ms-overflow-style: none; /* Internet Explorer 10+ */

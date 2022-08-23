@@ -7,8 +7,12 @@
     </form>
 </div>
 <div class="col-md-5">
-    <div>
-        <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+    <div class="pull-right">
+        <button mat-button [matMenuTriggerFor]="beforeMenu">
+            <div class="profile_img">
+                <img class="" src="https://pbs.twimg.com/profile_images/1549157833224208384/SpP7D3Id_400x400.jpg" alt="">
+            </div>
+        </button>
         <mat-menu #beforeMenu="matMenu" xPosition="before">
             <button [routerLink]="'/page/viewProfile'" mat-menu-item>  <i class="fa fa-user" aria-hidden="true"></i>
                 Profile</button>

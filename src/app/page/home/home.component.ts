@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     },
     legend: {
       top: 'bottom'
-      
+
     },
     toolbox: {
       show: true,
@@ -95,6 +95,15 @@ export class HomeComponent implements OnInit {
 
   gradientChart:EChartsOption= {
     tooltip:{},
+    toolbox: {
+      show: true,
+      feature: {
+        mark: { show: true },
+        dataView: { show: true, readOnly: false },
+        restore: { show: true },
+        saveAsImage: { show: true }
+      }
+    },
     xAxis: {
        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       axisLabel: {
