@@ -8,3 +8,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .h-100vh{
     height: 100vh;
 }
+
+.hover_white_color:hover{
+    color: #fff !important;
+}
