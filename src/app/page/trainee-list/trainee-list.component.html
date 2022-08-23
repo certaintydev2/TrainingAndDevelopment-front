@@ -31,14 +31,14 @@
                     <td>{{user.email}}</td>
                     <td>{{user.profile.toUpperCase()}}</td>
                     <td>
-                      <a class="navLink ml-5 button-style" mat-icon-button color="accent"
+                      <a class="text-white" mat-mini-fab color="accent"
                         [routerLink]="['/page/updateUser/'+user.id]">
                         <mat-icon class="mat-18">system_update</mat-icon>
                       </a>
                       <!-- <button class="navLink button-style" mat-icon-button color="accent"><mat-icon (click)="updateUser(user.id)"  class="mat-18">system_update</mat-icon></button> -->
-                      <button class="navLink button-style" mat-icon-button color="warn">
+                      <a class="ml-3 text-white" mat-mini-fab color="primary">
                         <mat-icon (click)="deleteUser(user.id)" class="mat-18">delete</mat-icon>
-                      </button>
+                      </a>
                     </td>
                   </tr>
                 </tbody>

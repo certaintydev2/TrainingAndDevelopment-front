@@ -67,6 +67,12 @@ a {
     background-color: $acent  !important;
 }
 
+table tr td .text-white.mat-mini-fab.mat-button-base{
+&:hover{
+    color: #fff !important;
+}
+}
+
 .logo {
     border-bottom: 1px solid #6d61dd;
     padding: 14px;
