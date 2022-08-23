@@ -1,6 +1,7 @@
-<div class="d-flex h-100vh">
+<div class="main_wapper">
   <app-side-menu class="side_menu"></app-side-menu>
-  <div class="w-100 p-4 mt-5">
+  <div class="inner_container">
+    <app-top-header class="header_component"></app-top-header>
     <section class="user_list_component">
       <div class="container-fluid">
         <div class="row">
@@ -37,7 +38,7 @@
                       </td>
                       <td>
                         <a class="text-white" mat-mini-fab color="accent" [routerLink]="['/page/updateUser/'+user.id]">
-                          <mat-icon class="mat-18">system_update</mat-icon>
+                          <mat-icon class="mat-18">create</mat-icon>
                         </a>
                         <!-- 
                           <button class="navLink button-style" mat-icon-button color="accent">
