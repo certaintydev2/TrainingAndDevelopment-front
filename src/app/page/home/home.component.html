@@ -1,10 +1,10 @@
-<div class="h-100 d-flex">
+<div class="main_wapper">
    <app-side-menu class="side_menu"></app-side-menu>
-   
-   <div class="w-100 p-4 mt-5">
+   <div class="inner_container">
+      <app-top-header class="header_component"></app-top-header>
       <div class="dashboard_top_box container-fluid">
          <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                <div class="card card-stats">
                   <div class="card-header card-header-warning card-header-icon">
                      <div class="card-icon">
@@ -22,7 +22,7 @@
                </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                <div class="card card-stats">
                   <div class="card-header card-header-s card-header-icon">
                      <div class="card-icon">
@@ -40,7 +40,7 @@
                </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                <div class="card card-stats">
                   <div class="card-header card-header-d card-header-icon">
                      <div class="card-icon"><i class="material-icons">info_outline</i></div>
@@ -52,7 +52,7 @@
                   </div>
                </div>
             </div>
-            <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                <div class="card card-stats">
                   <div class="card-header card-header-i card-header-icon">
                      <div class="card-icon"><i class="material-icons">update</i></div>
@@ -63,22 +63,23 @@
                      <div class="stats"><i class="material-icons">update</i> Just Updated </div>
                   </div>
                </div>
-            </div> -->
+            </div>
          </div>
       </div>
-      <br>
+      
       <div class="container-fluid dashboard_table mt-5">
          <div class="row">
             <div class="col-md-6">
                <div class="card p-3">
-                  <h4 class="card-title text-dark mb-0">Graph</h4>
-                  <!-- <div>
-                     <img src="assets/images/chart.png" class="img-fluid" alt="">
-                  </div> -->
                   <div echarts [options]="gradientChart" class="demo-chart"></div>
                </div>
             </div>
             <div class="col-lg-6 col-md-12">
+               <div class="card p-3">
+                  <div echarts [options]="Round" class="demo-chart"></div>
+               </div>
+            </div>
+            <div class="col-lg-12 mt-5 col-md-12">
                <div class="card">
                   <div class="card-header card-header-warning">
                      <h4 class="card-title">Users Stats</h4>

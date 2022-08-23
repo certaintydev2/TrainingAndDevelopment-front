@@ -1,0 +1,19 @@
+<div class="col-md-7">
+    <form>
+        <div class="search_bar">
+            <div class="icon"><i class="fa fa-search"></i></div>
+            <input type="text" placeholder="Search.." name="search">
+        </div>
+    </form>
+</div>
+<div class="col-md-5">
+    <div>
+        <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <button [routerLink]="'/page/viewProfile'" mat-menu-item>  <i class="fa fa-user" aria-hidden="true"></i>
+                Profile</button>
+            <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true"></i>
+                Logout </button>
+        </mat-menu>
+    </div>
+</div>

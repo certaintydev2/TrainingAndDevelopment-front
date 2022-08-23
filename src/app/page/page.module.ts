@@ -38,6 +38,8 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import { MatMenuModule} from '@angular/material/menu';
+
 import { PerformQuestionComponent } from './perform-question/perform-question.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
 import { AddUserComponent } from './add-user/add-user.component';
@@ -52,6 +54,7 @@ import { SolveQuestionComponent } from './solve-question/solve-question.componen
 import { AuthorListComponent } from './author-list/author-list.component';
 import { MentorListComponent } from './mentor-list/mentor-list.component';
 import { TraineeListComponent } from './trainee-list/trainee-list.component';
+import { TopHeaderComponent } from './layout/top-header/top-header.component';
 
 
 @NgModule({
@@ -84,6 +87,7 @@ import { TraineeListComponent } from './trainee-list/trainee-list.component';
     AuthorListComponent,
     MentorListComponent,
     TraineeListComponent,
+    TopHeaderComponent,
   ],
   imports: [
     CommonModule,
@@ -107,6 +111,7 @@ import { TraineeListComponent } from './trainee-list/trainee-list.component';
     MatSidenavModule,
     MatListModule,
     MatDialogModule,
+    MatMenuModule,
     NgMultiSelectDropDownModule.forRoot(),
     NgxEchartsModule.forRoot({
       /**
