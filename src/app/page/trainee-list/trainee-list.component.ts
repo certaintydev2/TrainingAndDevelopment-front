@@ -20,9 +20,13 @@ export class TraineeListComponent implements OnInit {
   }
 
   getTraineeList() {
-    this.userService.getTraineeList().subscribe(res=>{
+    this.userService.getTraineeList().subscribe((res)=>{
       console.log(res);
       this.users = res;   
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
   }
 
@@ -35,7 +39,15 @@ export class TraineeListComponent implements OnInit {
         confirmButtonText: 'Delete'
       }).then((result) => {
         if (result.isConfirmed === true) {
-          this.userService.deleteUser(id).subscribe();
+          this.userService.deleteUser(id).subscribe(
+            (res)=>{
+
+            },(err:HttpErrorResponse)=>{
+        if(err.status===401){
+          this.userService.logout();
+        }
+      }
+          );
           setTimeout(() => {
             this.getTraineeList();
           }, 1000);
@@ -48,6 +60,10 @@ export class TraineeListComponent implements OnInit {
     this.userService.getUserById(id).subscribe(
       (res)=>{
         console.log(res);
+      },(err:HttpErrorResponse)=>{
+        if(err.status===401){
+          this.userService.logout();
+        }
       }
     );
   }

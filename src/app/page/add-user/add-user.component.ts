@@ -38,10 +38,16 @@ export class AddUserComponent implements OnInit {
   routingLink:any;
 
   ngOnInit(): void {
-    this.userService.getAllRoles().subscribe(res => {
+    this.userService.getAllRoles().subscribe(
+      (res) => {
       this.roles = res;
       console.log(this.roles);
-    });
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
+    }
+    );
   }
 
   formSubmit(data: any) {
@@ -58,7 +64,9 @@ export class AddUserComponent implements OnInit {
             });
             this.prevoius();
         }, (err: HttpErrorResponse) => {
-          console.log(err);
+          if(err.status===401){
+            this.userService.logout();
+          }
         }
       );
     } else {

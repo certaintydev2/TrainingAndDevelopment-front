@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-view-profile',
@@ -40,6 +41,10 @@ export class ViewProfileComponent implements OnInit {
       });
       this.userService.getCourses().subscribe(res => {
         this.coursesList = res;
+      },(err:HttpErrorResponse)=>{
+        if(err.status===401){
+          this.userService.logout();
+        }
       });
   }
 

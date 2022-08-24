@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-perform-question',
@@ -18,9 +19,15 @@ export class PerformQuestionComponent implements OnInit {
 
     this.courseName = this.route.snapshot.params['courseName'];
   
-    this.userService.getQuestionByCourseName(this.courseName).subscribe(res=>{
+    this.userService.getQuestionByCourseName(this.courseName).subscribe(
+      (res)=>{
       this.questions=res;
-    });
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
+    }
+    );
   }
 
 }

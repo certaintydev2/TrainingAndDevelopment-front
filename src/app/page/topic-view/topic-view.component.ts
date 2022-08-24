@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-topic-view',
@@ -27,12 +28,17 @@ export class TopicViewComponent implements OnInit {
     this.courseId = this.route.snapshot.params['id'];
     this.getTopics();
    
-    this.userService.getAllUsers().subscribe(res=>{
+    this.userService.getAllUsers().subscribe(
+      (res)=>{
       console.log(res);
       this.users = res;  
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
     this.userService.getUserById(this.loggedInUserId).subscribe(
-      res => {
+      (res) => {
         this.userData = JSON.stringify(res);
         this.loggedInUserData = JSON.parse(this.userData);
         this.user = this.loggedInUserData.name;
@@ -42,7 +48,12 @@ export class TopicViewComponent implements OnInit {
               this.check = true;
           }
         }
-      });
+      },(err:HttpErrorResponse)=>{
+        if(err.status===401){
+          this.userService.logout();
+        }
+      }
+      );
   }
 
   getTopics(){
@@ -61,7 +72,15 @@ export class TopicViewComponent implements OnInit {
         confirmButtonText: 'Delete'
       }).then((result) => {
         if (result.isConfirmed === true) {
-          this.userService.deleteTopic(courseId).subscribe();
+          this.userService.deleteTopic(courseId).subscribe(
+            (res) =>{
+              
+            },(err:HttpErrorResponse)=>{
+              if(err.status===401){
+                this.userService.logout();
+              }
+            }
+          );
           setTimeout(() => {
             this.getTopics();
           }, 1000);

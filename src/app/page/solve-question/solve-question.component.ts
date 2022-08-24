@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-solve-question',
@@ -35,16 +36,22 @@ export class SolveQuestionComponent implements OnInit {
   ngOnInit(): void {
     this.questionId=this.route.snapshot.params['id'];;
     this.userService.getUserById(this.loggedInUserId).subscribe(
-      res => {
+      (res) => {
         this.userData = JSON.stringify(res);
         this.loggedInUserData = JSON.parse(this.userData);
         this.userprofile = this.loggedInUserData.profile;
-      });
+      },(err:HttpErrorResponse)=>{
+        if(err.status===401){
+          this.userService.logout();
+        }
+      }
+      );
   }
 
   solveQuestion(data:any) {
     console.log(data);
-    this.userService.solveQuestion(this.questionId,data).subscribe(res=>{
+    this.userService.solveQuestion(this.questionId,data).subscribe(
+      (res)=>{
       console.log(res); 
       let snack = this.snackBar.open("Status Updated Successfully", "Done");
       snack.afterDismissed().subscribe(() => {
@@ -52,7 +59,12 @@ export class SolveQuestionComponent implements OnInit {
       snack.onAction().subscribe(() => {
     });
     this.router.navigate(['/page/performQuestion/'+this.userprofile]);
-    });
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
+    }
+    );
   }
 
   backButton() {

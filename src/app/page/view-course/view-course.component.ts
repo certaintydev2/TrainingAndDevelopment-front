@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-view-course',
@@ -24,12 +25,16 @@ export class ViewCourseComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.userService.getAllUsers().subscribe(res => {
+    this.userService.getAllUsers().subscribe((res) => {
       console.log(res);
       this.users = res;
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
     this.userService.getUserById(this.loggedInUserId).subscribe(
-      res => {
+      (res) => {
         this.userData = JSON.stringify(res);
         this.loggedInUserData = JSON.parse(this.userData);
         this.user = this.loggedInUserData.name;
@@ -39,14 +44,22 @@ export class ViewCourseComponent implements OnInit {
               this.check = true;
           }
         }
+      },(err:HttpErrorResponse)=>{
+        if(err.status===401){
+          this.userService.logout();
+        }
       });
       this.getAllCourse();
   }
 
   getAllCourse() {
-    this.userService.getCourses().subscribe(res => {
+    this.userService.getCourses().subscribe((res) => {
       console.log(res);
       this.courses = res;
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
   }
   
@@ -59,7 +72,15 @@ export class ViewCourseComponent implements OnInit {
         confirmButtonText: 'Delete'
       }).then((result) => {
         if (result.isConfirmed === true) {
-          this.userService.deleteCourse(courseId).subscribe();
+          this.userService.deleteCourse(courseId).subscribe(
+            (res)=>{
+
+            },(err:HttpErrorResponse)=>{
+                if(err.status===401){
+                  this.userService.logout();
+                }
+            }
+          );
           setTimeout(() => {
             this.getAllCourse();
           }, 1000);

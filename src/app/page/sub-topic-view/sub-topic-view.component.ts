@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sub-topic-view',
@@ -27,7 +28,7 @@ export class SubTopicViewComponent implements OnInit {
     this.topic_id = this.route.snapshot.params['id'];
     this.getSubTopics();
     this.userService.getUserById(this.loggedInUserId).subscribe(
-      res => {
+      (res) => {
         this.userData = JSON.stringify(res);
         this.loggedInUserData = JSON.parse(this.userData);
         this.user = this.loggedInUserData.name;
@@ -37,14 +38,25 @@ export class SubTopicViewComponent implements OnInit {
               this.check = true;
           }
         }
-      });
+      },(err:HttpErrorResponse)=>{
+        if(err.status===401){
+          this.userService.logout();
+        }
+      }
+      );
   }
 
   getSubTopics(){
-    this.userService.getSubTopicsByTopicId(this.topic_id).subscribe(res=>{
+    this.userService.getSubTopicsByTopicId(this.topic_id).subscribe(
+      (res)=>{
       console.log(res);
       this.subTopics = res;
-    });
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
+    }
+    );
   }
 
   deleteSubTopic(id:any) {
@@ -56,7 +68,15 @@ export class SubTopicViewComponent implements OnInit {
         confirmButtonText: 'Delete'
       }).then((result) => {
         if (result.isConfirmed === true) {
-          this.userService.deleteSubTopic(id).subscribe();
+          this.userService.deleteSubTopic(id).subscribe(
+            (res)=>{
+
+            },(err:HttpErrorResponse)=>{
+                  if(err.status===401){
+                    this.userService.logout();
+                  }
+            }
+          );
           setTimeout(() => {
             this.getSubTopics();
           }, 1000);

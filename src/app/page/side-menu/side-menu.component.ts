@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class SideMenuComponent implements OnInit {
   ngOnInit(): void {
     // debugger;
     this.userService.getUserById(this.loggedInUserId).subscribe(
-      res => {
+      (res) => {
         console.log('user', res);
         this.userData = JSON.stringify(res);
         this.loggedInUserData = JSON.parse(this.userData);
@@ -35,7 +36,12 @@ export class SideMenuComponent implements OnInit {
         if(this.userRoleList.length >1){
           this.check = false;
         }
-      });
+      },(err:HttpErrorResponse)=>{
+        if(err.status===401){
+          this.userService.logout();
+        }
+      }
+      );
 
   }
 
@@ -43,8 +49,4 @@ export class SideMenuComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['/auth/login']);
   }
-
-  
-
-
 }

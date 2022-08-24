@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-topic',
@@ -24,9 +25,14 @@ export class TopicComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.userService.getCourses().subscribe(res =>{
+    this.userService.getCourses().subscribe(
+      (res) =>{
       console.log(res);
       this.coursesList = res;
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
 
   }
@@ -37,7 +43,7 @@ export class TopicComponent implements OnInit {
       console.log(data);
       
       this.userService.addTopic(data).subscribe(
-        res => {
+        (res) => {
           if(res === null) {
             let snack = this.snackBar.open("Topic Already Added", "Done");
             snack.afterDismissed().subscribe(() => {
@@ -54,6 +60,10 @@ export class TopicComponent implements OnInit {
             snack.onAction().subscribe(() => {
           });
           this.router.navigate(['/page/topicView/'+this.courseId]);
+          }
+        },(err:HttpErrorResponse)=>{
+          if(err.status===401){
+            this.userService.logout();
           }
         }
       );

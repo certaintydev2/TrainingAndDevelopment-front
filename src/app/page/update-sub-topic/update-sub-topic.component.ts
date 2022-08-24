@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-update-sub-topic',
@@ -24,32 +25,44 @@ export class UpdateSubTopicComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.userService.getTopics().subscribe(res =>{
+    this.userService.getTopics().subscribe((res) =>{
       console.log(res);
       
       this.topicsList = res;
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
     this.subTopicId = this.route.snapshot.params['id'];
     
-    this.userService.getSubTopicBySubTopicId(this.subTopicId).subscribe(res=>{
+    this.userService.getSubTopicBySubTopicId(this.subTopicId).subscribe((res)=>{
       console.log(res);
       this.subTopicData=res;
       this.subTopicName=this.subTopicData.subTopicName;
       this.topicData=this.subTopicData.topic;
       this.topicId=this.subTopicData.topic.id;
       this.topicName=this.subTopicData.topic.topicName;
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
     
   }
 
   updateSubTopic(data:any) {
-    this.userService.updateSubTopic(this.subTopicId,data).subscribe(res=>{
+    this.userService.updateSubTopic(this.subTopicId,data).subscribe((res)=>{
       let snack = this.snackBar.open("SubTopic Updated Successfully", "Done");
             snack.afterDismissed().subscribe(() => {
           });
             snack.onAction().subscribe(() => {
           });
           this.router.navigate(['/page/subTopicView/'+this.topicId]);
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
   }
 

@@ -48,7 +48,8 @@ export class CourseComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe(res =>{
+    this.userService.getUser().subscribe(
+      (res) =>{
       this.user = Object.values(res);
       for (let i = 0; i < this.user.length; i++) {
         this.userData[i] = {"name":this.user[i].split(',')[0],"user_id":this.user[i].split(',')[1],"role_name":this.user[i].split(',')[2],"profile":this.user[i].split(',')[3]}       
@@ -68,7 +69,12 @@ export class CourseComponent implements OnInit {
       }
       this.authorRole = this.userAuthorRole;
       this.mentorRole = this.userMentorRole;
-    });
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
+    }
+    );
   }
 
   AddCourse(data:any) {
@@ -92,11 +98,13 @@ export class CourseComponent implements OnInit {
           }
         },(err:HttpErrorResponse) =>{
           this.errorMsg = err.error.text;
+          if(err.status===401){
+            this.userService.logout();
+          }
           if(this.errorMsg === "Course Already Added") {
             this.msg = true;
             this.router.navigate(['/page/course']);
-            
-          }
+            }
         }
       );
     }

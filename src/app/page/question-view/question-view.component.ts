@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -42,10 +43,15 @@ export class QuestionViewComponent implements OnInit {
   }
 
   getQuestions() {
-    this.userService.getQuestionsBySubTopicId(this.subTopic_id).subscribe(res=>{
-      console.log(res);
+    this.userService.getQuestionsBySubTopicId(this.subTopic_id).subscribe(
+      (res)=>{
       this.questions = res;
-    });
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
+    }
+    );
   }
   
   backButton() {
@@ -66,7 +72,15 @@ export class QuestionViewComponent implements OnInit {
         confirmButtonText: 'Delete'
       }).then((result) => {
         if (result.isConfirmed === true) {
-          this.userService.deleteQuestion(id).subscribe();
+          this.userService.deleteQuestion(id).subscribe(
+            (res)=>{
+
+            },(err:HttpErrorResponse)=>{
+              if(err.status===401){
+                this.userService.logout();
+              }
+            }
+          );
           setTimeout(() => {
             this.getQuestions();
           }, 1000);

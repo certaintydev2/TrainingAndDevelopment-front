@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-update-topic',
@@ -24,7 +25,7 @@ export class UpdateTopicComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.userService.getCourses().subscribe(res =>{
+    this.userService.getCourses().subscribe((res) =>{
       this.coursesList = res;
     });
     this.topicId = this.route.snapshot.params['id'];
@@ -35,17 +36,25 @@ export class UpdateTopicComponent implements OnInit {
       this.courseData=this.topicData.course;
       this.courseId=this.topicData.course.courseId;
       this.courseName=this.topicData.course.courseName;
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
   }
 
   updateTopic(data:any) {
-    this.userService.updateTopic(this.topicId,data).subscribe(res=>{
+    this.userService.updateTopic(this.topicId,data).subscribe((res)=>{
       let snack = this.snackBar.open("Topic Updated Successfully", "Done");
             snack.afterDismissed().subscribe(() => {
           });
             snack.onAction().subscribe(() => {
           });
           this.router.navigate(['/page/topicView/'+this.courseId]);
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
   }
 

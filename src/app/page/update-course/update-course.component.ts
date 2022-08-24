@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-update-course',
@@ -38,7 +39,8 @@ export class UpdateCourseComponent implements OnInit {
   msg:boolean = false;
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe(res =>{
+    this.userService.getUser().subscribe(
+      (res) =>{
       this.user = Object.values(res);
       for (let i = 0; i < this.user.length; i++) {
         this.userData[i] = {"name":this.user[i].split(',')[0],"user_id":this.user[i].split(',')[1],"role_name":this.user[i].split(',')[2],"profile":this.user[i].split(',')[3]}       
@@ -58,27 +60,42 @@ export class UpdateCourseComponent implements OnInit {
       }
       this.authorRole = this.userAuthorRole;
       this.mentorRole = this.userMentorRole;
-    });
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
+    }
+    );
     this.courseId = this.route.snapshot.params['id'];
-    this.userService.getCourseByCourseId(this.courseId).subscribe(res => {
+    this.userService.getCourseByCourseId(this.courseId).subscribe(
+      (res) => {
       this.course=res;
       console.log(this.course);
       
       this.courseName=this.course.courseName;
       this.authorName=this.course.authorId;
       this.mentorName=this.course.mentorId;
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
   }
 
   updateCourse(data:any) {
     console.log(data);
-    this.userService.updateCourse(this.courseId,data).subscribe(res => {
+    this.userService.updateCourse(this.courseId,data).subscribe(
+      (res) => {
       let snack = this.snackBar.open("Course Updated Successfully", "Done");
             snack.afterDismissed().subscribe(() => {
           });
             snack.onAction().subscribe(() => {
           });
           this.router.navigate(['/page/viewCourse']);
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
   }
 

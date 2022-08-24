@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-view-topic',
@@ -14,13 +15,21 @@ export class ViewTopicComponent implements OnInit {
   users:any;
 
   ngOnInit(): void {
-    this.userService.getTopics().subscribe(res=>{
+    this.userService.getTopics().subscribe((res)=>{
       console.log(res);
       this.topics = res;
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
-    this.userService.getAllUsers().subscribe(res=>{
+    this.userService.getAllUsers().subscribe((res)=>{
       console.log(res);
       this.users = res;  
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
     });
   }
 

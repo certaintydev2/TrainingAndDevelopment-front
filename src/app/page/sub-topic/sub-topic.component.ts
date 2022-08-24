@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sub-topic',
@@ -25,15 +26,22 @@ export class SubTopicComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.userService.getTopics().subscribe(res=>{
+    this.userService.getTopics().subscribe(
+      (res)=>{
       console.log(res);
       this.topicsList = res;
-    });
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
+    }
+    );
   }
 
   AddSubTopic(data:any) {
     if(data != null) {
-      this.userService.addSubTopic(data).subscribe(res=>{
+      this.userService.addSubTopic(data).subscribe(
+        (res)=>{
         if(res === null) {
           let snack = this.snackBar.open("SubTopic Already Added", "Done");
           snack.afterDismissed().subscribe(() => {
@@ -53,7 +61,12 @@ export class SubTopicComponent implements OnInit {
         });
         this.router.navigate(['/page/subTopicView/'+this.topicId]);
         }
-      });
+      },(err:HttpErrorResponse)=>{
+        if(err.status===401){
+          this.userService.logout();
+        }
+      }
+      );
     }
   }
 
