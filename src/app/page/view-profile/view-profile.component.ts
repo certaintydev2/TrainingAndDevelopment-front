@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -9,18 +12,29 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ViewProfileComponent implements OnInit {
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,private router: Router,private snackBar: MatSnackBar,private route:ActivatedRoute) { }
 
   loggedInUserId: any = localStorage.getItem('id');
   userData:any;
   roles:any;
-  coursesList:any;
+  // coursesList:any;
   log_name:any;
   log_email:any;
   log_useName:any;
   log_password:any;
   log_profile:any;
-  log_roles:any[]=[];
+  // log_roles:any[]=[];
+  selectedProfile:any;
+  userRole:any;
+
+  coursesList:any=[
+    {value: 'JAVA', courseName: 'JAVA'},
+    {value: 'PYTHON', courseName: 'PYTHON'},
+    {value: 'NODE JS', courseName: 'NODE JS'},
+    {value: 'ANGULAR', courseName: 'ANGULAR'},
+    {value: 'REACT JS', courseName: 'REACT JS'},
+    {value: 'PHP', courseName: 'PHP'}
+  ];
 
   ngOnInit(): void {
     this.userService.getUserById(this.loggedInUserId).subscribe(
@@ -30,26 +44,39 @@ export class ViewProfileComponent implements OnInit {
         this.log_email=this.userData.email;
         this.log_useName=this.userData.userName;
         this.log_password=this.userData.password;
-        this.log_profile=this.userData.profile;
-        
-        for (let i = 0; i < this.userData.roles.length; i++) {
-            this.log_roles.push(this.userData.roles[i].roleName);
-        }
+        this.log_profile=this.userData.profile.toUpperCase();
+        this.userRole=this.userData.roles;
+        setTimeout(() => {
+          for (let i = 0; i < this.userRole.length; i++) {
+            this.selectedProfile=this.userRole[i].roleName;
+          }
+        }, 2000);
       });
       this.userService.getAllRoles().subscribe(res => {
         this.roles = res;
       });
-      this.userService.getCourses().subscribe(res => {
-        this.coursesList = res;
-      },(err:HttpErrorResponse)=>{
-        if(err.status===401){
-          this.userService.logout();
-        }
-      });
+  }
+  changeRole(data:any) {
+    console.log(data);
+    
   }
 
   updateProfile(data:any) {
-    console.log(data);
-    
+   this.userService.updateUser(this.loggedInUserId,data).subscribe(
+    (res)=>{
+      console.log(res);
+      
+      let snack = this.snackBar.open("Profile Updated Successfully", "Done");
+            snack.afterDismissed().subscribe(() => {
+          });
+            snack.onAction().subscribe(() => {
+          });
+          this.router.navigate(['/page/home']);
+    },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
+    }
+   );
   }
 }

@@ -46,6 +46,10 @@ export class UserService {
     return this.http.delete(`${baseUrl}/deleteById/`+id);
   }
 
+  public updateUser(id:any,user:any){
+    return this.http.put(`${baseUrl}/updateUser/`+id,user);
+  }
+
   public addCourse(course:any){
     return this.http.post(`${baseUrl}/add-course`,course);
   }
