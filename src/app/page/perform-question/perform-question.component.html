@@ -1,25 +1,41 @@
-<div class="container">
-           <div class="row">
-                      <div class="col-md-12">
-                                 <h2>Questions Table</h2>
-                                 <a class="navLink ml-5" mat-raised-button color="primary"
-                                            [routerLink]="'/page/home'">Back to Home</a>
-                                 <table class="table table-striped">
-                                            <thead>
-                                                       <tr>
-                                                                  <th>Question Id</th>
-                                                                  <th>Question</th>
-                                                                  <th>Status</th>
-                                                       </tr>
-                                            </thead>
-                                            <tbody>
-                                                       <tr *ngFor="let question of questions">
-                                                                  <td>{{question.id}}</td>
-                                                                  <td><a  class="navLink ml-5" [routerLink]="['/page/solveQuestion/'+question.id]">{{question.question}}</a></td>
-                                                                  <td>status</td>
-                                                       </tr>
-                                            </tbody>
-                                 </table>
-                      </div>
-           </div>
+<div class="main_wapper">
+    <app-side-menu class="side_menu"></app-side-menu>
+    <div class="inner_container">
+        <app-top-header class="header_component"></app-top-header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 reused_table_header">
+                    <div class="card">
+                        <div class="card-header card-header-warning">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="card-title mb-0">Questions Table</h4>
+                                <div>
+                                    <a class="navLink ml-5" mat-raised-button [routerLink]="'/page/home'">Back to
+                                        Home</a>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Question Id</th>
+                                    <th>Question</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let question of questions">
+                                    <td>{{question.id}}</td>
+                                    <td><a class="navLink ml-5"
+                                            [routerLink]="['/page/solveQuestion/'+question.id]">{{question.question}}</a>
+                                    </td>
+                                    <td>status</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
