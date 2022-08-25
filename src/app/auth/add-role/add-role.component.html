@@ -1,16 +1,31 @@
-<form #roleForm="ngForm" (ngSubmit)="addRole(roleForm.value)">
-           <div>
-                      <mat-form-field class="form-field" appearance="outline">
-                                 <mat-label>Role</mat-label>
-                                 <mat-select name="roleName" #roless="ngModel" [(ngModel)]="role.value">
-                                     <mat-option *ngFor="let role of roleList" [value]="role.value">
-                                         {{role.roleName}}
-                                     </mat-option>
-                                 </mat-select>
+<div class="container">
+           <div class="row">
+                      <div class="col-sm-3">
 
-                      </mat-form-field>
+                      </div>
+                      <div class="col-sm-6">
+                                 <div>
+                                            <h4>Add Role</h4>
+                                 </div>
+                                 <form #roleForm="ngForm" (ngSubmit)="addRole(roleForm.value)">
+                                            <div>
+                                                       <mat-form-field class="form-field" appearance="outline">
+                                                                  <mat-label>Role</mat-label>
+                                                                  <mat-select name="roleName" #roless="ngModel" [(ngModel)]="role.value">
+                                                                      <mat-option *ngFor="let role of roleList" [value]="role.value">
+                                                                          {{role.roleName}}
+                                                                      </mat-option>
+                                                                  </mat-select>
+                                 
+                                                       </mat-form-field>
+                                            </div>
+                                            <div>
+                                                       <button type="submit" class="btn" [disabled]="roleForm.invalid" mat-raised-button color="primary" >Add Role</button>
+                                            </div>
+                                 </form>
+                      </div>
+                      <div class="col-sm-3">
+
+                      </div>
            </div>
-           <div>
-                      <button type="submit" class="btn" [disabled]="roleForm.invalid" mat-raised-button color="primary" >Add Role</button>
-           </div>
-</form>
+</div>
