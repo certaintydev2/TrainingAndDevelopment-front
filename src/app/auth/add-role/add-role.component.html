@@ -1,0 +1,16 @@
+<form #roleForm="ngForm" (ngSubmit)="addRole(roleForm.value)">
+           <div>
+                      <mat-form-field class="form-field" appearance="outline">
+                                 <mat-label>Role</mat-label>
+                                 <mat-select name="roleName" #roless="ngModel" [(ngModel)]="role.value">
+                                     <mat-option *ngFor="let role of roleList" [value]="role.value">
+                                         {{role.roleName}}
+                                     </mat-option>
+                                 </mat-select>
+
+                      </mat-form-field>
+           </div>
+           <div>
+                      <button type="submit" class="btn" [disabled]="roleForm.invalid" mat-raised-button color="primary" >Add Role</button>
+           </div>
+</form>

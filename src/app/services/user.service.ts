@@ -18,6 +18,10 @@ export class UserService {
     return this.http.post(`${baseUrl}/authenticate/add-userData`,user);
   }
 
+  public addRole(role:any){
+    return this.http.post(`${baseUrl}/authenticate/add-roles`,role);
+  }
+
   public getAllRoles() {
     return this.http.get(`${baseUrl}/authenticate/getAllRoles`);
   }

@@ -5,6 +5,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SendOtpComponent } from './send-otp/send-otp.component';
 import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AddRoleComponent } from './add-role/add-role.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'changePassword',
     component: ChangePasswordComponent
+  },
+  {
+    path: 'addRole',
+    component: AddRoleComponent
   }
 ];
 
