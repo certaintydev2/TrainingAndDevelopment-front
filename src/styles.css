@@ -12,3 +12,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .hover_white_color:hover{
     color: #fff !important;
 }
+
+.badge-info {
+    color: #fff;
+    background-color: #6052e2;
+    letter-spacing: 1px;
+}

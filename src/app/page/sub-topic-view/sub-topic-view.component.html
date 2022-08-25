@@ -1,34 +1,59 @@
-<div class="container">
-           <div class="row">
-                      <div class="col-md-12">
-                                 <h2>SubTopic Table</h2>
-                                 <button class="navLink button-style" mat-raised-button color="primary" (click)="backButton()">Back To Topic</button>
-                                 <a *ngIf="check" class="navLink" mat-raised-button color="primary" [routerLink]="'/page/subTopic'"> Add
-                                         Sub Topics</a>
-                                 <table class="table table-striped">
-                                            <thead>
-                                                       <tr>
-                                                                  <th>SubTopic Id</th>
-                                                                  <th>SubTopic Name</th>
-                                                                  <th>Topic</th>
-                                                                  <th>Course</th>
-                                                                  <th *ngIf="check">Actions</th>
-                                                       </tr>
-                                            </thead>
-                                            <tbody>
-                                                       <tr *ngFor="let subTopic of subTopics">
-                                                                  <td>{{subTopic.id}}</td>
-                                                                  <td><a  class="navLink ml-5" [routerLink]="['/page/questionView/'+subTopic.id]">{{subTopic.subTopicName}}</a></td>
-                                                                  <td>{{subTopic.topic.topicName}}</td>
-                                                                  <td>{{subTopic.topic.course.courseName}}</td>
-                                                                  <td *ngIf="check">
-                                                                        <a class="navLink ml-5" mat-icon-button color="accent"
-                                                                        [routerLink]="'/page/updateSubTopic/'+subTopic.id"><mat-icon class="mat-18">system_update</mat-icon></a>
-                                                                        <button class="navLink button-style" mat-icon-button color="warn"><mat-icon (click)="deleteSubTopic(subTopic.id)" class="mat-18">delete</mat-icon></button>
-                                                                  </td>
-                                                       </tr>
-                                            </tbody>
-                                 </table>
-                      </div>
-           </div>
+<div class="main_wapper">
+      <app-side-menu class="side_menu"></app-side-menu>
+      <div class="inner_container">
+            <app-top-header class="header_component"></app-top-header>
+            <div class="container-fluid">
+                  <div class="row">
+                        <div class="col-md-12 reused_table_header">
+                              <div class="card">
+                                    <div class="card-header card-header-warning">
+                                          <div class="d-flex justify-content-between align-items-center">
+                                                <h4 class="card-title mb-0">Sub Topic List</h4>
+                                                <div>
+                                                <a *ngIf="check" class="navLink mr-1" mat-raised-button  [routerLink]="'/page/subTopic'">Add Sub Topics</a>
+                                                 <a  mat-raised-button (click)="backButton()">Back To Topic</a>
+                                                </div>
+                                          </div>
+                                    </div>
+                                    <table class="table table-hover">
+                                          <thead>
+                                                <tr>
+                                                      <th>SubTopic Id</th>
+                                                      <th>SubTopic Name</th>
+                                                      <th>Topic</th>
+                                                      <th>Course</th>
+                                                      <th *ngIf="check">Actions</th>
+                                                </tr>
+                                          </thead>
+                                          <tbody>
+                                                <tr *ngFor="let subTopic of subTopics">
+                                                      <td>{{subTopic.id}}</td>
+                                                      <td>
+                                                      <a class="navLink mr-1" [routerLink]="['/page/questionView/'+subTopic.id]">
+                                                      <span class="p-2 badge badge-info">
+                                                            {{subTopic.subTopicName}}
+                                                      </span>
+                                                      </a>
+                                                      </td>
+                                                      <td>{{subTopic.topic.topicName}}</td>
+                                                      <td>{{subTopic.topic.course.courseName}}</td>
+                                                      <td *ngIf="check">
+                                                            <a class="text-white" mat-mini-fab color="accent"
+                                                                  [routerLink]="'/page/updateSubTopic/'+subTopic.id">
+                                                                  <mat-icon class="mat-18">system_update</mat-icon>
+                                                            </a>
+                                                            <a class="ml-3 text-white" mat-mini-fab color="primary">
+                                                                  <mat-icon (click)="deleteSubTopic(subTopic.id)"
+                                                                        class="mat-18">delete
+                                                                  </mat-icon>
+                                                            </a>
+                                                      </td>
+                                                </tr>
+                                          </tbody>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
 </div>
