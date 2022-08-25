@@ -17,13 +17,11 @@ export class ViewProfileComponent implements OnInit {
   loggedInUserId: any = localStorage.getItem('id');
   userData:any;
   roles:any;
-  // coursesList:any;
   log_name:any;
   log_email:any;
   log_useName:any;
   log_password:any;
   log_profile:any;
-  // log_roles:any[]=[];
   selectedProfile:any;
   userRole:any;
 
@@ -51,9 +49,17 @@ export class ViewProfileComponent implements OnInit {
             this.selectedProfile=this.userRole[i].roleName;
           }
         }, 2000);
+      },(err:HttpErrorResponse)=>{
+        if(err.status===401){
+          this.userService.logout();
+        }
       });
-      this.userService.getAllRoles().subscribe(res => {
+      this.userService.getAllRoles().subscribe((res) => {
         this.roles = res;
+      },(err:HttpErrorResponse)=>{
+        if(err.status===401){
+          this.userService.logout();
+        }
       });
   }
   changeRole(data:any) {

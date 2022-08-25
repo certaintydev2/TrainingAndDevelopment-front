@@ -17,10 +17,12 @@ export class HomeComponent implements OnInit {
   check:Boolean=true;
   userList:any;
   authorList:any;
+  traineeList:any;
   courseList:any;
   numberOfCourses:any;
   numberOfUsers:any;
   numberOfAuthors:any;
+  numberOfTrainee:any;
   user: any;
   courseName:any;
   userRoleList:any;
@@ -203,6 +205,19 @@ export class HomeComponent implements OnInit {
           
         this.authorList=res;
         this.numberOfAuthors=this.authorList.length;
+
+        },(err:HttpErrorResponse)=>{
+          if(err.status===401){
+            this.logout();
+          }
+      }
+      );
+
+      this.userService.getTraineeList().subscribe(
+        (res) =>{
+          
+        this.traineeList=res;
+        this.numberOfTrainee=this.traineeList.length;
 
         },(err:HttpErrorResponse)=>{
           if(err.status===401){
