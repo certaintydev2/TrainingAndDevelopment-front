@@ -55,6 +55,7 @@ import { AuthorListComponent } from './author-list/author-list.component';
 import { MentorListComponent } from './mentor-list/mentor-list.component';
 import { TraineeListComponent } from './trainee-list/trainee-list.component';
 import { TopHeaderComponent } from './layout/top-header/top-header.component';
+import { UpdateUserDataComponent } from './update-user-data/update-user-data.component';
 
 
 @NgModule({
@@ -88,6 +89,7 @@ import { TopHeaderComponent } from './layout/top-header/top-header.component';
     MentorListComponent,
     TraineeListComponent,
     TopHeaderComponent,
+    UpdateUserDataComponent,
   ],
   imports: [
     CommonModule,

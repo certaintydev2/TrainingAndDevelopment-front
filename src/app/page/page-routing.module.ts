@@ -17,7 +17,6 @@ import { QuestionViewComponent } from './question-view/question-view.component';
 import { AuthGuardGuard } from '../auth/auth-guard.guard';
 import { EmailComponent } from './email/email.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
-import { UpdateUserComponent } from './update-user/update-user.component';
 import { PerformQuestionComponent } from './perform-question/perform-question.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
 import { AddUserComponent } from './add-user/add-user.component';
@@ -28,6 +27,7 @@ import { SolveQuestionComponent } from './solve-question/solve-question.componen
 import { AuthorListComponent } from './author-list/author-list.component';
 import { MentorListComponent } from './mentor-list/mentor-list.component';
 import { TraineeListComponent } from './trainee-list/trainee-list.component';
+import { UpdateUserDataComponent } from './update-user-data/update-user-data.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -96,10 +96,6 @@ const routes: Routes = [
     component: ViewProfileComponent
   },
   {
-    path: 'updateUser/:id',
-    component: UpdateUserComponent
-  },
-  {
     path: 'performQuestion/:courseName',
     component: PerformQuestionComponent
   },
@@ -134,6 +130,10 @@ const routes: Routes = [
   {
     path: 'viewTrainee',
     component: TraineeListComponent
+  },
+  {
+    path: 'updateUser/:id',
+    component: UpdateUserDataComponent
   }
 
 ];
