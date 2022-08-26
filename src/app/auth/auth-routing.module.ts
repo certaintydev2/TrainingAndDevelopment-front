@@ -4,7 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { SendOtpComponent } from './send-otp/send-otp.component';
 import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -26,10 +25,6 @@ const routes: Routes = [
   {
     path: 'verifyOtp',
     component: VerifyOtpComponent
-  },
-  {
-    path: 'changePassword',
-    component: ChangePasswordComponent
   }
 ];
 

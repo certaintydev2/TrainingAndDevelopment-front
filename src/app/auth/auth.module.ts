@@ -27,7 +27,6 @@ import { JWT_OPTIONS } from '@auth0/angular-jwt';
 import { TokenInterceptorService } from '../services/token-interceptor.service';
 import { SendOtpComponent } from './send-otp/send-otp.component';
 import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
@@ -38,7 +37,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     SignupComponent,
     SendOtpComponent,
     VerifyOtpComponent,
-    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
