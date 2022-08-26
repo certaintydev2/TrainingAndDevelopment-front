@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { PageRoutingModule } from './page-routing.module';
 import { PageComponent } from './page.component';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { HomeComponent } from './home/home.component';
 import {MatCardModule} from '@angular/material/card';
 import { MatSlideToggleModule ,} from '@angular/material/slide-toggle';
@@ -19,7 +21,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
 import {MatSelectModule} from '@angular/material/select';
 
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CourseComponent } from './course/course.component';
 import { TopicComponent } from './topic/topic.component';
@@ -95,6 +96,7 @@ import { UpdateUserDataComponent } from './update-user-data/update-user-data.com
     CommonModule,
     PageRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatSlideToggleModule,
     MatCardModule,

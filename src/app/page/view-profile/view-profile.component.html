@@ -1,3 +1,6 @@
+
+
+
 <div class="main_wapper">
     <app-side-menu class="side_menu"></app-side-menu>
     <section class="inner_container profile_component">
@@ -10,6 +13,27 @@
                             <h4 class="mb-1">View Profile</h4>
                             <p class="mb-0">Complete your profile</p>
                         </div>
+
+
+
+                        <!-- <form [formGroup]="myFormGro">
+                            <div>
+                                <ng-multiselect-dropdown
+                                    name="roles"
+                                    [placeholder]="'Select Role'"
+                                    [data]="roles"
+                                    formControlName="roles"
+                                    [disabled]="disabled"
+                                    [settings]="dropdownSettings"
+                                    (onSelect)="onItemSelect($event)">
+                                </ng-multiselect-dropdown>
+                            </div>
+                        </form> -->
+
+
+
+
+
                         <form #profileForm="ngForm" (ngSubmit)="updateProfile(profileForm.value)">
     
                             <div class="row px-3">
@@ -46,19 +70,15 @@
                                         </select>
                                     </div>
                                     <div>
-                                        <!-- <select class="form-control"  name="roles" #roless="ngModel" [(ngModel)]="userRole">
-                                            <option *ngFor="let roleData of roles" [value]="roleData" [selected]="selectedProfile === roleData.roleName">
-                                                {{roleData.roleName}}
-                                            </option>
-                                        </select> -->
-                                        <mat-form-field class="form-field" appearance="outline">
-                                            <mat-label>Roles</mat-label>
-                                            <mat-select name="roles" #roless="ngModel" [(ngModel)]="userRole" multiple>
-                                                <mat-option *ngFor="let role of roles" [value]="role">
-                                                    {{role.roleName}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
+                                        <ng-multiselect-dropdown
+                                    name="roles"
+                                    [placeholder]="'Select Role'"
+                                    [data]="roles"
+                                    [(ngModel)]="selectedItems"
+                                    [disabled]="disabled"
+                                    [settings]="dropdownSettings"
+                                    (onSelect)="onItemSelect($event)">
+                                </ng-multiselect-dropdown>
                                     </div>
                                     <div class="">
                                         <button type="submit" class="w-100" mat-raised-button color="primary">Update Profile</button>

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { FormBuilder, FormGroup ,Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-update-user-data',
@@ -12,7 +14,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class UpdateUserDataComponent implements OnInit {
 
-  constructor(private userService:UserService,private router: Router,private snackBar: MatSnackBar,private route:ActivatedRoute) { }
+  constructor(private fb: FormBuilder,private userService:UserService,private router: Router,private snackBar: MatSnackBar,private route:ActivatedRoute) { }
+
+  myFormGro!:FormGroup;
 
   userId:any;
   userData:any;
@@ -24,6 +28,7 @@ export class UpdateUserDataComponent implements OnInit {
   log_profile:any;
   selectedProfile:any;
   userRole:any;
+  disabled = false;
 
   coursesList:any=[
     {value: 'JAVA', courseName: 'JAVA'},
@@ -33,6 +38,9 @@ export class UpdateUserDataComponent implements OnInit {
     {value: 'REACT JS', courseName: 'REACT JS'},
     {value: 'PHP', courseName: 'PHP'}
   ];
+
+  selectedItems:any;
+  dropdownSettings:IDropdownSettings = {};
 
 
   ngOnInit(): void {
@@ -64,7 +72,36 @@ export class UpdateUserDataComponent implements OnInit {
           this.userService.logout();
         }
       });
+      this.dropdownSettings= {
+        singleSelection: false,
+        idField: 'id',
+        textField: 'roleName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 3,
+        allowSearchFilter: true
+      };
+    this.myFormGro = this.fb.group({
+      roles: ['', Validators.compose(
+        [Validators.required]
+      )]          
+  });
   }
+
+  ngAfterViewInit(){
+    setTimeout(() => {
+     this.selectedItems=this.userRole;
+     this.myFormGro.patchValue({
+       roles:this.selectedItems
+     });
+    }, 1000);
+   }
+   onItemSelect(item: any) {
+     console.log(item);
+   }
+   onSelectAll(items: any) {
+     console.log(items);
+   }
 
   updateUser(data:any) {
     this.userService.updateUser(this.userId,data).subscribe(

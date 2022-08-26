@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule , HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

@@ -46,16 +46,16 @@
                                 </select>
                             </div>
                             <div>
-                                <mat-form-field class="form-field" appearance="outline">
-                                    <mat-label>Roles</mat-label>
-                                    <mat-select name="roles" #roless="ngModel" [(ngModel)]="userRole" multiple>
-                                        <mat-option *ngFor="let role of roles" [value]="role">
-                                            {{role.roleName}}
-                                        </mat-option>
-                                    </mat-select>
-                    
-                                </mat-form-field>
-                            </div>
+                                        <ng-multiselect-dropdown
+                                    name="roles"
+                                    [placeholder]="'Select Role'"
+                                    [data]="roles"
+                                    [(ngModel)]="selectedItems"
+                                    [disabled]="disabled"
+                                    [settings]="dropdownSettings"
+                                    (onSelect)="onItemSelect($event)">
+                                </ng-multiselect-dropdown>
+                                    </div>
                             <div>
                                 <button type="submit" class="d-block btn w-100" mat-raised-button color="primary">Update User</button>
                             </div>
