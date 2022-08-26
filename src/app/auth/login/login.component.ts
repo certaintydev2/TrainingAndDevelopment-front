@@ -41,13 +41,11 @@ export class LoginComponent implements OnInit {
     this.userService.getAllRoles().subscribe(res=>{
       console.log(res);
       this.roleList=res;
-      if(this.roleList.length===4){
+      if(this.roleList.length===this.roleData.length){
         
       }else{
         for (let i = 0; i < this.roleData.length; i++) {
-            this.userService.addRole(this.roleData[i]).subscribe(res=>{
-              
-            });
+            this.userService.addRole(this.roleData[i]).subscribe(res=>{});
         }
       }
     });
