@@ -28,9 +28,29 @@ export class LoginComponent implements OnInit {
     userName: '',
     password: ''
   };
+  roleList:any;
+  roleData:any=[
+    {roleName:"ROLE_ADMIN"},
+    {roleName:"ROLE_AUTHOR"},
+    {roleName:"ROLE_MENTOR"},
+    {roleName:"ROLE_TRAINEE"},
+  ];
 
 
   ngOnInit(): void {
+    this.userService.getAllRoles().subscribe(res=>{
+      console.log(res);
+      this.roleList=res;
+      if(this.roleList.length===4){
+        
+      }else{
+        for (let i = 0; i < this.roleData.length; i++) {
+            this.userService.addRole(this.roleData[i]).subscribe(res=>{
+              
+            });
+        }
+      }
+    });
   }
 
   loginformSubmit(data:any) {

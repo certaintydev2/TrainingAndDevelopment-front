@@ -4,8 +4,6 @@
             <div class="col-md-6">
                 <div>
                     <div class="bg_ice_white p-4">
-                        <a class="btn btn-block hover_white_color" mat-raised-button color="accent"
-                                    [routerLink]="'/auth/addRole'">Add Role</a>
                         <h3 class="mb-4">Login Now!</h3>
                         <p *ngIf="msg" class="alert alert-danger">{{errorMsg}}</p>
                         <form #loginForm="ngForm" (ngSubmit)="loginformSubmit(loginForm.value)">

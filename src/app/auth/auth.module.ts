@@ -29,7 +29,6 @@ import { SendOtpComponent } from './send-otp/send-otp.component';
 import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { AddRoleComponent } from './add-role/add-role.component';
 
 
 @NgModule({
@@ -39,8 +38,7 @@ import { AddRoleComponent } from './add-role/add-role.component';
     SignupComponent,
     SendOtpComponent,
     VerifyOtpComponent,
-    ChangePasswordComponent,
-    AddRoleComponent
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
