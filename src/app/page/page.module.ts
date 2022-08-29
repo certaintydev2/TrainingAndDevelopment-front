@@ -61,6 +61,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 @NgModule({
@@ -104,6 +105,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     HttpClientModule,
     MatSlideToggleModule,
+    MatChipsModule,
     MatCardModule,
     MatAutocompleteModule,
     MatBadgeModule,

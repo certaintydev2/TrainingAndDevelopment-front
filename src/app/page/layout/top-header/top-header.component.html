@@ -31,23 +31,31 @@
         </form>
     </div>
     <div class="col-md-5">
-        <div class="pull-right">
-            <button mat-button [matMenuTriggerFor]="beforeMenu">
-                <div class="profile_img">
-                    <img class="" src="https://pbs.twimg.com/profile_images/1549157833224208384/SpP7D3Id_400x400.jpg"
-                        alt="">
-                </div>
-            </button>
-            <mat-menu #beforeMenu="matMenu" xPosition="before">
-                <button [routerLink]="'/page/viewProfile'" mat-menu-item> <i class="fa fa-user" aria-hidden="true"></i>
-                    Profile</button>
-                <button [routerLink]="'/page/viewProfile'" mat-menu-item>  <i class="fa fa-user" aria-hidden="true"></i>
-                        {{role}}</button>
-                <!-- <button [routerLink]="'/page/changePassword'" mat-menu-item>  <i class="fa fa-user" aria-hidden="true"></i>
-                        Change Password</button> -->
-                <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true"></i>
-                    Logout </button>
-            </mat-menu>
+        <div class="d-flex justify-content-end align-items-center">
+            <div class="mr-2">
+                <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+                    <mat-chip color="primary" class="text-center" selected>{{role}}</mat-chip>
+                  </mat-chip-list>
+                <!-- <span> {{role}}</span> -->
+            </div>
+            <div>
+                <button mat-button [matMenuTriggerFor]="beforeMenu">
+                    <div class="profile_img">
+                        <img class="" src="https://pbs.twimg.com/profile_images/1549157833224208384/SpP7D3Id_400x400.jpg"
+                            alt="">
+                    </div>
+                </button>
+                <mat-menu #beforeMenu="matMenu" xPosition="before">
+                    <button [routerLink]="'/page/viewProfile'" mat-menu-item> <i class="fa fa-user" aria-hidden="true"></i>
+                        Profile</button>
+                    <!-- <button [routerLink]="'/page/viewProfile'" mat-menu-item>  <i class="fa fa-user" aria-hidden="true"></i> -->
+                            <!-- {{role}}</button> -->
+                    <!-- <button [routerLink]="'/page/changePassword'" mat-menu-item>  <i class="fa fa-user" aria-hidden="true"></i>
+                            Change Password</button> -->
+                    <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true"></i>
+                        Logout </button>
+                </mat-menu>
+            </div>
         </div>
     </div>
 </div>
