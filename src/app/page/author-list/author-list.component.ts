@@ -18,6 +18,7 @@ export class AuthorListComponent implements OnInit {
   count:number=0;
   tableSize:number=5;
   tableSizes:any=[5,10,15,20];
+  searchText:any;
 
   ngOnInit(): void {
     this.getAuthorList();
