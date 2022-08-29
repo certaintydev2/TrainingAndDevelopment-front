@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 reused_table_header">
-            <div class="card p-3">
+            <div class="card">
                 <div class="card-header card-header-warning">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="card-title mb-0">Add Topic</h4>
@@ -10,7 +10,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center mt-4">
+                <div class="pb-3 mt-4">
                     <div class="col-md-12">
                         <form #topicForm="ngForm" (ngSubmit)="AddTopic(topicForm.value)">
                             <mat-form-field class="form-field" appearance="outline">
