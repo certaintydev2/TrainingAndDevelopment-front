@@ -61,6 +61,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService ,
-  ],
+  ]
 })
 export class AuthModule { }

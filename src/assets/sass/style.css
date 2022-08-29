@@ -1,9 +1,7 @@
 .header_component {
   background-color: #fff;
   padding: 10px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
   margin-bottom: 30px;
   box-shadow: 0 12px 23px 0 hsla(0deg, 0%, 44%, 0.04);
   border-bottom: 1px solid #dcdcdc;
@@ -304,13 +302,17 @@ a:hover {
 }
 
 .main_wapper {
-  height: 100vh;
-  display: flex;
+  height: calc(100vh - 111px);
+  width: 100%;
+  overflow: auto;
 }
 .main_wapper .inner_container {
-  height: calc(100vh - 10px);
+  height: 100%;
   overflow: auto;
   width: 100%;
+}
+.main_wapper .inner_container .container-fluid:first-child {
+  margin-top: 22px;
 }
 .main_wapper .inner_container {
   -ms-overflow-style: none;
@@ -367,6 +369,11 @@ table tr td .text-white.mat-mini-fab.mat-button-base:hover {
   font-size: 33px;
   font-weight: 700;
   padding-left: 12px;
+}
+
+.mat-drawer-inner-container {
+  background: #1904E5;
+  width: 220px !important;
 }
 
 .side_menu {

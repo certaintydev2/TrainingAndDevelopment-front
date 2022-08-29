@@ -125,6 +125,7 @@ import { UpdateUserDataComponent } from './update-user-data/update-user-data.com
        */
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
-  ]
+  ],
+  bootstrap:[PageComponent]
 })
 export class PageModule { }

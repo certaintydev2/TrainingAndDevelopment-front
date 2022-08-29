@@ -1,30 +1,41 @@
-<div class="container">
-           <div class="row">
-               <div class="col-md-12">
-                   <h2 class="text-center">Add Topic</h2>
-                   <form #topicForm="ngForm" (ngSubmit)="AddTopic(topicForm.value)">
-                       <mat-form-field class="form-field" appearance="outline">
-                           <mat-label>Topic</mat-label>
-                           <input #courses [(ngModel)]="topic.topicName" name="topicName" type="text" matInput placeholder="Enter Topic">
-                           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                       </mat-form-field>
-                       <mat-form-field class="form-field" appearance="outline">
-                           <mat-label>Course</mat-label>
-                           <mat-select name="course" [(ngModel)]="topic.course">
-                               <mat-option *ngFor="let course of coursesList"  [value]="course">
-                                   {{course.courseName}}
-                               </mat-option>
-                           </mat-select>
-                       </mat-form-field>
-                      
-                       <div class="container text-center">
-                           <div class="example-button-row">
-                               <button type="submit" mat-raised-button color="primary">Add Topic</button>
-                               <a   class="navLink ml-5" mat-raised-button color="primary"
-                                 [routerLink]="'/page/home'">Back to Home</a>
-                           </div>
-                       </div>
-                   </form>
-               </div>
-           </div>
-       </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 reused_table_header">
+            <div class="card p-3">
+                <div class="card-header card-header-warning">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mb-0">Add Topic</h4>
+                        <div>
+                            <a mat-raised-button [routerLink]="'/page/viewCourse'">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-md-12">
+                        <form #topicForm="ngForm" (ngSubmit)="AddTopic(topicForm.value)">
+                            <mat-form-field class="form-field" appearance="outline">
+                                <mat-label>Topic</mat-label>
+                                <input #courses [(ngModel)]="topic.topicName" name="topicName" type="text" matInput
+                                    placeholder="Enter Topic">
+                            </mat-form-field>
+                            <mat-form-field class="form-field" appearance="outline">
+                                <mat-label>Course</mat-label>
+                                <mat-select name="course" [(ngModel)]="topic.course">
+                                    <mat-option *ngFor="let course of coursesList" [value]="course">
+                                        {{course.courseName}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+        
+                            <div class="d-flex justify-content-end">
+                                <div class="">
+                                    <button type="submit" class="w-100 btn btn-block" mat-raised-button color="primary">Add Topic</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

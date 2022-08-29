@@ -30,111 +30,120 @@ import { TraineeListComponent } from './trainee-list/trainee-list.component';
 import { UpdateUserDataComponent } from './update-user-data/update-user-data.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  {
-    path: 'home',
+  { path: '', component: PageComponent ,  children:[
+
+    {
+      path: 'home',
     component: HomeComponent
-  },
-  {
-    path: 'addUser',
-    component: AddUserComponent
-  },
-  {
-    path: 'course',
-    component: CourseComponent
-  },
-  {
-    path: 'topic',
-    component: TopicComponent
-  },
-  {
-    path: 'subTopic',
-    component: SubTopicComponent
-  },
-  {
-    path: 'viewCourse',
-    component: ViewCourseComponent
-  },
-  {
-    path: 'viewUsers',
-    component: ViewUsersComponent
-  },
-  {
-    path: 'viewTopics',
-    component: ViewTopicComponent
-  },
-  {
-    path: 'viewSubTopics',
-    component: ViewSubTopicComponent
-  },
-  {
-    path: 'question',
-    component: QuestionComponent
-  },
-  {
-    path: 'viewQuestions',
-    component: ViewQuestionComponent
-  },
-  {
-    path: 'topicView/:id',
-    component: TopicViewComponent
-  },
-  {
-    path: 'subTopicView/:id',
-    component: SubTopicViewComponent
-  },
-  {
-    path: 'questionView/:id',
-    component: QuestionViewComponent
-  },
-  {
-    path: 'sendEmail',
-    component: EmailComponent
-  },
-  {
-    path: 'viewProfile',
-    component: ViewProfileComponent
-  },
-  {
-    path: 'performQuestion/:courseName',
-    component: PerformQuestionComponent
-  },
-  {
-    path: 'updateCourse/:id',
-    component: UpdateCourseComponent
-  },
-  {
-    path: 'updateTopic/:id',
-    component: UpdateTopicComponent
-  },
-  {
-    path: 'updateSubTopic/:id',
-    component: UpdateSubTopicComponent
-  },
-  {
-    path: 'updateQuestion/:id',
-    component: UpdateQuestionComponent
-  },
-  {
-    path: 'solveQuestion/:id',
-    component: SolveQuestionComponent
-  },
-  {
-    path: 'viewAuthors',
-    component: AuthorListComponent
-  },
-  {
-    path: 'viewMentors',
-    component: MentorListComponent
-  },
-  {
-    path: 'viewTrainee',
-    component: TraineeListComponent
-  },
-  {
-    path: 'updateUser/:id',
-    component: UpdateUserDataComponent
-  }
+    },
+
+    {
+      path: 'addUser',
+      component: AddUserComponent
+    },
+    {
+      path: 'course',
+      component: CourseComponent
+    },
+    {
+      path: 'topic',
+      component: TopicComponent
+    },
+    {
+      path: 'subTopic',
+      component: SubTopicComponent
+    },
+    {
+      path: 'viewCourse',
+      component: ViewCourseComponent
+    },
+    {
+      path: 'viewUsers',
+      component: ViewUsersComponent
+    },
+    {
+      path: 'viewTopics',
+      component: ViewTopicComponent
+    },
+    {
+      path: 'viewSubTopics',
+      component: ViewSubTopicComponent
+    },
+    {
+      path: 'question',
+      component: QuestionComponent
+    },
+    {
+      path: 'viewQuestions',
+      component: ViewQuestionComponent
+    },
+    {
+      path: 'topicView/:id',
+      component: TopicViewComponent
+    },
+    {
+      path: 'subTopicView/:id',
+      component: SubTopicViewComponent
+    },
+    {
+      path: 'questionView/:id',
+      component: QuestionViewComponent
+    },
+    {
+      path: 'sendEmail',
+      component: EmailComponent
+    },
+    {
+      path: 'viewProfile',
+      component: ViewProfileComponent
+    },
+    {
+      path: 'performQuestion/:courseName',
+      component: PerformQuestionComponent
+    },
+    {
+      path: 'updateCourse/:id',
+      component: UpdateCourseComponent
+    },
+    {
+      path: 'updateTopic/:id',
+      component: UpdateTopicComponent
+    },
+    {
+      path: 'updateSubTopic/:id',
+      component: UpdateSubTopicComponent
+    },
+    {
+      path: 'updateQuestion/:id',
+      component: UpdateQuestionComponent
+    },
+    {
+      path: 'solveQuestion/:id',
+      component: SolveQuestionComponent
+    },
+    {
+      path: 'viewAuthors',
+      component: AuthorListComponent
+    },
+    {
+      path: 'viewMentors',
+      component: MentorListComponent
+    },
+    {
+      path: 'viewTrainee',
+      component: TraineeListComponent
+    },
+    {
+      path: 'updateUser/:id',
+      component: UpdateUserDataComponent
+    }
+
+  ]  },
+  // {
+  //   path: 'home',
+  //   component: HomeComponent
+  // },
+  
 
 ];
 

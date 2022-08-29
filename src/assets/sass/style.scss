@@ -20,14 +20,17 @@ a {
 }
 
 .main_wapper{
-    height: 100vh;
-    display: flex;
+    height: calc( 100vh - 111px);
+    width: 100%;
+    overflow: auto;
     .inner_container{
-        height: calc(100vh - 10px);
+        height: 100%;
         overflow: auto;
         width: 100%;
+        .container-fluid:first-child{
+            margin-top: 22px;
+        }
     }
-
     .inner_container {
         -ms-overflow-style: none; 
         scrollbar-width: none; 
@@ -89,6 +92,11 @@ table tr td .text-white.mat-mini-fab.mat-button-base{
     }
 }
 
+.mat-drawer-inner-container{
+    background: $blue ;
+    width: 220px !important;
+
+}
 .side_menu {
     width: 300px;
     padding-top: 15px;
