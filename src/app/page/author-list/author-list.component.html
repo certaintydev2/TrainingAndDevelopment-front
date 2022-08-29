@@ -7,9 +7,15 @@
             <div class="d-flex justify-content-between align-items-center">
               <h4 class="card-title mb-0 ">Author List</h4>
               <div>
+                <div>
+                  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Seach here...."/>
+                </div>
                 <a mat-raised-button [routerLink]="'/page/addUser'">Create User</a>
               </div>
             </div>
+          </div>
+          <div>
+            
           </div>
           <table class="table table-hover">
             <thead>
@@ -21,7 +27,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of users  |  paginate:{
+              <tr *ngFor="let user of users | filter:searchText |  paginate:{
                 itemsPerPage:tableSize,
                 currentPage:page,
                 totalItems:count
