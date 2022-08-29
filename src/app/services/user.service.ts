@@ -114,8 +114,12 @@ export class UserService {
     return this.http.post(`${baseUrl}/authenticate/send-otp`,email);
   }
 
-  public changePassword(data:any) {
+  public forgotPassword(data:any) {
     return this.http.post(`${baseUrl}/authenticate/forgotPassword`,data);
+  }
+
+  public changePassword(id:any,data:any){
+    return this.http.post(`${baseUrl}/changePassword/`+id,data);
   }
 
   public getQuestionByCourseName(courseName:any) {

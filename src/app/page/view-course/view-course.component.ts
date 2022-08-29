@@ -22,6 +22,10 @@ export class ViewCourseComponent implements OnInit {
   userData: any;
   loggedInUserData: any;
   loggedInUserId: any = localStorage.getItem('id');
+  page:number=1;
+  count:number=0;
+  tableSize:number=5;
+  tableSizes:any=[5,10,15,20];
 
 
   ngOnInit(): void {
@@ -50,6 +54,11 @@ export class ViewCourseComponent implements OnInit {
         }
       });
       this.getAllCourse();
+  }
+
+  onTableDataChange(event:any) {
+    this.page=event;
+    this.getAllCourse();
   }
 
   getAllCourse() {

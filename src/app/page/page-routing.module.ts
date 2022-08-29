@@ -28,6 +28,7 @@ import { AuthorListComponent } from './author-list/author-list.component';
 import { MentorListComponent } from './mentor-list/mentor-list.component';
 import { TraineeListComponent } from './trainee-list/trainee-list.component';
 import { UpdateUserDataComponent } from './update-user-data/update-user-data.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   { path: '', component: PageComponent ,  children:[

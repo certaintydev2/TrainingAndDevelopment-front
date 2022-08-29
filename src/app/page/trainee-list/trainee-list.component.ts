@@ -14,10 +14,20 @@ export class TraineeListComponent implements OnInit {
   constructor(private userService:UserService , private router:Router) { }
 
   users:any;
+  page:number=1;
+  count:number=0;
+  tableSize:number=5;
+  tableSizes:any=[5,10,15,20];
 
   ngOnInit(): void {
     this.getTraineeList();
   }
+
+  onTableDataChange(event:any) {
+    this.page=event;
+    this.getTraineeList();
+  }
+
 
   getTraineeList() {
     this.userService.getTraineeList().subscribe((res)=>{

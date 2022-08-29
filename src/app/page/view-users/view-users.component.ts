@@ -14,6 +14,8 @@ export class ViewUsersComponent implements OnInit {
   constructor(private userService:UserService , private router:Router) { }
 
   users:any;
+  name:any;
+  page:number=1
 
   ngOnInit(): void {
     this.getAllUsers();
@@ -28,6 +30,17 @@ export class ViewUsersComponent implements OnInit {
         this.userService.logout();
       }
     });
+  }
+
+  search(){
+    // if(this.name==""){
+    //   this.getAllUsers();
+    // }else{
+    //   this.users=this.users.filter(
+    //     res=>{
+    //     return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase())
+    //   })
+    // }
   }
 
   deleteUser(id:any) {

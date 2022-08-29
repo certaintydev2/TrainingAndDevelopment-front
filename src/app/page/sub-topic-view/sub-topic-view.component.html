@@ -22,7 +22,11 @@
                                     </tr>
                               </thead>
                               <tbody>
-                                    <tr *ngFor="let subTopic of subTopics">
+                                    <tr *ngFor="let subTopic of subTopics |  paginate:{
+                                          itemsPerPage:tableSize,
+                                          currentPage:page,
+                                          totalItems:count
+                                        }; let i = index">
                                           <td>{{subTopic.id}}</td>
                                           <td>
                                           <a class="navLink mr-1" [routerLink]="['/page/questionView/'+subTopic.id]">
@@ -46,6 +50,11 @@
                                           </td>
                                     </tr>
                               </tbody>
+                              <pagination-controls 
+                                                previousLabel="Prev"
+                                                nextLabel="Next"
+                                                (pageChange)="onTableDataChange($event)">
+                                          </pagination-controls>
                         </table>
                   </div>
             </div>
