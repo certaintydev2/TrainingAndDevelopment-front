@@ -133,6 +133,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
        */
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
-  ]
+  ],
+  bootstrap:[PageComponent]
 })
 export class PageModule { }

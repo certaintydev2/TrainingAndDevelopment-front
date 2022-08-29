@@ -1,30 +1,40 @@
-<div class="container">
-           <div class="row">
-               <div class="col-md-12">
-                   <h2 class="text-center">Add Questions</h2>
-                   <form #questionForm="ngForm" (ngSubmit)="AddQuestion(questionForm.value)">
-                       <mat-form-field class="form-field" appearance="outline">
-                           <mat-label>Question</mat-label>
-                           <input [(ngModel)]="question.question" name="question" type="text" matInput placeholder="Enter Question">
-                           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                       </mat-form-field>
-                       <mat-form-field class="form-field" appearance="outline">
-                           <mat-label>SubTopic</mat-label>
-                           <mat-select name="subTopic" [(ngModel)]="question.subTopic">
-                               <mat-option *ngFor="let subTopic of subTopicsList"  [value]="subTopic">
-                                   {{subTopic.subTopicName}}
-                               </mat-option>
-                           </mat-select>
-                       </mat-form-field>
-                      
-                       <div class="container text-center">
-                           <div class="example-button-row">
-                               <button type="submit" mat-raised-button color="primary">Add Question</button>
-                               <a   class="navLink ml-5" mat-raised-button color="primary"
-                                 [routerLink]="'/page/home'">Back to Home</a>
-                           </div>
-                       </div>
-                   </form>
-               </div>
-           </div>
-       </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 reused_table_header">
+            <div class="card">
+                <div class="card-header card-header-warning">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="">Add Questions</h2>
+                        <div>
+                            <a mat-raised-button [routerLink]="'/page/home'">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form #questionForm="ngForm" (ngSubmit)="AddQuestion(questionForm.value)">
+
+                <div>
+
+                    <mat-form-field class="form-field w-100" appearance="outline">
+                        <mat-label>Question</mat-label>
+                        <input [(ngModel)]="question.question" name="question" type="text" matInput
+                            placeholder="Enter Question">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field w-100" appearance="outline">
+                        <mat-label>SubTopic</mat-label>
+                        <mat-select name="subTopic" [(ngModel)]="question.subTopic">
+                            <mat-option *ngFor="let subTopic of subTopicsList" [value]="subTopic">
+                                {{subTopic.subTopicName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn" mat-raised-button color="primary">Add Question</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

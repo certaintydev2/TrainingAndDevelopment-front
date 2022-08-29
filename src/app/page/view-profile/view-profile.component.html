@@ -1,73 +1,66 @@
+<section class="profile_component">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 reused_table_header">
+                <div class="card p-3">
+                    <div class="card-header-danger">
+                        <h4 class="mb-1">View Profile</h4>
+                        <p class="mb-0">Complete your profile</p>
+                    </div>
+                    <form #profileForm="ngForm" (ngSubmit)="updateProfile(profileForm.value)">
 
-
-
-<div class="main_wapper">
-    <app-side-menu class="side_menu"></app-side-menu>
-    <section class="inner_container profile_component">
-    <app-top-header class="header_component"></app-top-header>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header-danger">
-                            <h4 class="mb-1">View Profile</h4>
-                            <p class="mb-0">Complete your profile</p>
-                        </div>
-                        <form #profileForm="ngForm" (ngSubmit)="updateProfile(profileForm.value)">
-    
-                            <div class="row px-3">
-                                <div class="col-md-6">
-                                    <div>
-                                        <mat-form-field class="form-field" appearance="outline">
-                                            <mat-label>Name</mat-label>
-                                            <input [(ngModel)]="log_name" minlength="3" name="name" type="text" matInput
-                                             placeholder="Enter Name" />
-                                        </mat-form-field>
-                                    </div>
-                                    <div>
-                                        <mat-form-field class="form-field" appearance="outline">
-                                            <mat-label>Email</mat-label>
-                                            <input [(ngModel)]="log_email" required #email="ngModel" name="email"
-                                                type="email" matInput readonly placeholder="Enter Email"
-                                                 readonly>
-                                        </mat-form-field>
-                                    </div>
-                                    <div>
-                                        <mat-form-field class="form-field" appearance="outline">
-                                            <mat-label>UserName</mat-label>
-                                            <input minlength="8" [(ngModel)]="log_useName" required #userName="ngModel"
-                                                name="userName" type="text" matInput placeholder="Enter UserName" readonly>
-                                        </mat-form-field>
-                                    </div>
+                        <div class="row px-3">
+                            <div class="col-md-6">
+                                <div>
+                                    <mat-form-field class="form-field" appearance="outline">
+                                        <mat-label>Name</mat-label>
+                                        <input [(ngModel)]="log_name" minlength="3" name="name" type="text" matInput
+                                         placeholder="Enter Name" />
+                                    </mat-form-field>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <select class="form-control"  name="profile" #profile="ngModel" [(ngModel)]="log_profile">
-                                            <option *ngFor="let profile of coursesList" [value]="profile.courseName" [selected]="log_profile === profile.value">
-                                                {{profile.courseName}}
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <ng-multiselect-dropdown
-                                    name="roles"
-                                    [placeholder]="'Select Role'"
-                                    [data]="roles"
-                                    [(ngModel)]="selectedItems"
-                                    [disabled]="disabled"
-                                    [settings]="dropdownSettings"
-                                    (onSelect)="onItemSelect($event)">
-                                </ng-multiselect-dropdown>
-                                    </div>
-                                    <div class="">
-                                        <button type="submit" class="w-100" mat-raised-button color="primary">Update Profile</button>
-                                    </div>
+                                <div>
+                                    <mat-form-field class="form-field" appearance="outline">
+                                        <mat-label>Email</mat-label>
+                                        <input [(ngModel)]="log_email" required #email="ngModel" name="email"
+                                            type="email" matInput readonly placeholder="Enter Email"
+                                             readonly>
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field class="form-field" appearance="outline">
+                                        <mat-label>UserName</mat-label>
+                                        <input minlength="8" [(ngModel)]="log_useName" required #userName="ngModel"
+                                            name="userName" type="text" matInput placeholder="Enter UserName" readonly>
+                                    </mat-form-field>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <select class="form-control"  name="profile" #profile="ngModel" [(ngModel)]="log_profile">
+                                        <option *ngFor="let profile of coursesList" [value]="profile.courseName" [selected]="log_profile === profile.value">
+                                            {{profile.courseName}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <ng-multiselect-dropdown
+                                name="roles"
+                                [placeholder]="'Select Role'"
+                                [data]="roles"
+                                [(ngModel)]="selectedItems"
+                                [disabled]="disabled"
+                                [settings]="dropdownSettings"
+                                (onSelect)="onItemSelect($event)">
+                            </ng-multiselect-dropdown>
+                                </div>
+                                <div class="">
+                                    <button type="submit" class="w-100" mat-raised-button color="primary">Update Profile</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>

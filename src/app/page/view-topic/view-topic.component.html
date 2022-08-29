@@ -1,50 +1,51 @@
-<div class="container">
-           <div class="row">
-                      <div class="col-md-12">
-                                 <h2>Topic Table</h2>
-                                 <a   class="navLink ml-5" mat-raised-button color="primary"
-                                 [routerLink]="'/page/home'">Back to Home</a>
-                                 <table class="table table-striped">
-                                            <thead>
-                                              <tr>
-                                                <th>Topic Id</th>
-                                                <th>Topic Name</th>
-                                                <th>Course</th>
-                                                <th>Author</th>
-                                                <th>Mentor</th>
-                                                <th>Actions</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                             <tr *ngFor="let topic of topics">
-                                            <td>{{topic.id}}</td>
-                                            <td>{{topic.topicName}}</td>
-                                            <td >{{topic.course.courseName}}</td>
-                                            <td>
-                                                       <div *ngFor="let user of users">
-                                                       <span *ngIf="topic.course.authorId === user.id" >
-                                                                  {{user.name}}
-                                                       </span>
-                                                       </div>
-                                                       </td>
-                                            
-                                            <td>
-                                                       <div *ngFor="let user of users">
-                                                       <span *ngIf="topic.course.mentorId === user.id" >
-                                                                  {{user.name}}
-                                                       </span>
-                                                       </div>
-                                            </td>
-                                            
-                                            <td>
-                                                       <a   class="navLink ml-5" mat-raised-button color="primary"
-                                                       [routerLink]="''">Update</a>
-                                                       <a   class="navLink button-style" mat-raised-button color="danger"
-                                                       [routerLink]="''">Delete</a>
-                                            </td>
-                                             </tr>
-                                            </tbody>
-                                          </table>
-                      </div>
-           </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 reused_table_header">
+      <div class="card p-3">
+        <div class="card-header-danger">
+          <h2>Topic List</h2>
+          <a class="" mat-raised-button [routerLink]="'/page/home'">Back to Home</a>
+        </div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Topic Id</th>
+              <th>Topic Name</th>
+              <th>Course</th>
+              <th>Author</th>
+              <th>Mentor</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let topic of topics">
+              <td>{{topic.id}}</td>
+              <td>{{topic.topicName}}</td>
+              <td>{{topic.course.courseName}}</td>
+              <td>
+                <div *ngFor="let user of users">
+                  <span *ngIf="topic.course.authorId === user.id">
+                    {{user.name}}
+                  </span>
+                </div>
+              </td>
+
+              <td>
+                <div *ngFor="let user of users">
+                  <span *ngIf="topic.course.mentorId === user.id">
+                    {{user.name}}
+                  </span>
+                </div>
+              </td>
+
+              <td>
+                <a class="navLink ml-5" mat-raised-button color="primary" [routerLink]="''">Update</a>
+                <a class="navLink button-style" mat-raised-button color="danger" [routerLink]="''">Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

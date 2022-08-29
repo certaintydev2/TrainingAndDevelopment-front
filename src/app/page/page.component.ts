@@ -9,6 +9,9 @@ export class PageComponent implements OnInit {
 
   constructor() { }
 
+  events: string[] = [];
+  opened!: boolean;
+
   ngOnInit(): void {
   }
 
