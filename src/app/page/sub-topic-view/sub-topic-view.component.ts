@@ -23,6 +23,10 @@ export class SubTopicViewComponent implements OnInit {
   loggedInUserData: any;
   loggedInUserId: any = localStorage.getItem('id');
   check:Boolean=false;
+  page:number=1;
+  count:number=0;
+  tableSize:number=5;
+  tableSizes:any=[5,10,15,20];
 
   ngOnInit(): void {
     this.topic_id = this.route.snapshot.params['id'];
@@ -85,6 +89,10 @@ export class SubTopicViewComponent implements OnInit {
     }
   }
 
+  onTableDataChange(event:any) {
+    this.page=event;
+    this.getSubTopics();
+  }
   backButton() {
     for (let i = 0; i < this.subTopics.length; i++) {
       console.log(this.subTopics[i].topic.course.courseId);

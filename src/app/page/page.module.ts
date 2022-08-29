@@ -57,6 +57,10 @@ import { MentorListComponent } from './mentor-list/mentor-list.component';
 import { TraineeListComponent } from './trainee-list/trainee-list.component';
 import { TopHeaderComponent } from './layout/top-header/top-header.component';
 import { UpdateUserDataComponent } from './update-user-data/update-user-data.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -91,6 +95,7 @@ import { UpdateUserDataComponent } from './update-user-data/update-user-data.com
     TraineeListComponent,
     TopHeaderComponent,
     UpdateUserDataComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -116,6 +121,9 @@ import { UpdateUserDataComponent } from './update-user-data/update-user-data.com
     MatListModule,
     MatDialogModule,
     MatMenuModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    NgxPaginationModule,
     NgMultiSelectDropDownModule.forRoot(),
     NgxEchartsModule.forRoot({
       /**
