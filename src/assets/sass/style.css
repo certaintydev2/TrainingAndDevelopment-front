@@ -35,6 +35,65 @@
   cursor: pointer;
   color: #b3b0b0;
 }
+.header_component .userLoginInfo {
+  margin-top: 4px;
+  padding: 9px 36px;
+  letter-spacing: 0.3px;
+  max-width: 300px;
+  border: 1px solid #1904E5;
+  background-color: #ececf9;
+  font-size: 0.7rem;
+  border-radius: 25px;
+}
+.header_component .profile_img {
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(33, 12, 235, 0.28);
+  padding: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  position: relative;
+}
+.header_component .profile_img img {
+  height: 50px;
+  border-radius: 50%;
+}
+.header_component .pulse {
+  width: 10px;
+  height: 10px;
+  background-color: #1904E5;
+  border-radius: 50%;
+  -webkit-animation: pulse 1s infinite;
+          animation: pulse 1s infinite;
+  position: absolute;
+  bottom: 12px;
+  right: -4px;
+  opacity: 0.7;
+}
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 6px #c8ebeb;
+  }
+  50% {
+    box-shadow: 0 0 0 10px #c8ebeb;
+  }
+  100% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 6px #c8ebeb;
+  }
+  50% {
+    box-shadow: 0 0 0 10px #c8ebeb;
+  }
+  100% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+}
 
 .bg_ice_white {
   background-color: #f1f1f1;
@@ -324,6 +383,9 @@ a:hover {
 
 table {
   text-align: center;
+}
+table thead th {
+  border-top: 1px solid transparent !important;
 }
 
 .card {

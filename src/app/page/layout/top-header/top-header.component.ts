@@ -28,7 +28,7 @@ export class TopHeaderComponent implements OnInit {
         this.loggedInUserData = JSON.parse(this.userData);
         this.userRoleList = this.loggedInUserData.roles;
         if(this.userRoleList.length >1){
-          this.role="AUTHOR_MENTOR"
+          this.role="AUTHOR, MENTOR"
         }else{
           for (let i = 0; i < this.userRoleList.length; i++) {
             if (this.userRoleList[i].roleName==="ROLE_ADMIN") {
