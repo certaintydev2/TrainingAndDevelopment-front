@@ -1,131 +1,130 @@
+<div class="container-fluid profile_component">
+    <div class="row">
+        <div class="col-md-12 reused_table_header">
+            <div class="card px-3">
+                <div class="card-header card-header-warning">
+                    <h4 class="mb-0 card-title">Add New User</h4>
+                </div>
+                <p *ngIf="msg" class="alert alert-danger">{{errorMsg}}</p>
+                <form #userForm="ngForm" class="mt-4" (ngSubmit)="formSubmit(userForm.value)">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div>
+                                <mat-form-field class="form-field" appearance="outline">
+                                    <mat-label>Name</mat-label>
+                                    <input [(ngModel)]="user.name" minlength="3" required name="name" #name="ngModel"
+                                        type="text" matInput placeholder="Enter Name" />
 
-        <div class="container-fluid profile_component">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card p-3">
-                        <div class="card-header-danger">
-                            <h4 class="mb-1">Add New User</h4>
-                        </div>
-                        <p *ngIf="msg" class="alert alert-danger">{{errorMsg}}</p>
-                        <form #userForm="ngForm" (ngSubmit)="formSubmit(userForm.value)">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div>
-                                        <mat-form-field class="form-field" appearance="outline">
-                                            <mat-label>Name</mat-label>
-                                            <input [(ngModel)]="user.name" minlength="3" required name="name" #name="ngModel"
-                                                type="text" matInput placeholder="Enter Name" />
-                                            
-                                        </mat-form-field>
-                                        <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
-                                            <div *ngIf="name.errors?.['required']">
-                                                Name is required.
-                                            </div>
-                                            <div *ngIf="name.errors?.['minlength']">
-                                                Name is Invalid.
-                                            </div>
-                                        </div>
+                                </mat-form-field>
+                                <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+                                    <div *ngIf="name.errors?.['required']">
+                                        Name is required.
                                     </div>
-                                    <div>
-            
-                                        <mat-form-field class="form-field" appearance="outline">
-                                            <mat-label>Email</mat-label>
-                                            <input [(ngModel)]="user.email" required #email="ngModel" name="email" type="email"
-                                                matInput placeholder="Enter Email"
-                                                pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
-                                            
-            
-                                        </mat-form-field>
-                                        <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
-                                            <div *ngIf="email.errors?.['required']">
-                                                Email is required.
-                                            </div>
-                                            <div *ngIf="email.errors?.['pattern']">
-                                                Invalid Email
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <mat-form-field class="form-field" appearance="outline">
-                                            <mat-label>UserName</mat-label>
-                                            <input minlength="8" [(ngModel)]="user.userName" required #userName="ngModel"
-                                                name="userName" type="text" matInput placeholder="Enter UserName">
-                                            
-                                        </mat-form-field>
-                                        <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">
-                                            <div *ngIf="userName.errors?.['required']">
-                                                UserName is required.
-                                            </div>
-                                            <div *ngIf="userName.errors?.['minlength']">
-                                                At least 8 characters required
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <mat-form-field class="form-field" appearance="outline">
-                                            <mat-label>Password</mat-label>
-                                            <input minlength="8" [(ngModel)]="user.password" required #password="ngModel"
-                                                name="password" type="password" matInput placeholder="Enter Password">
-                                            
-                                        </mat-form-field>
-                                        <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
-                                            <div *ngIf="password.errors?.['required']">
-                                                Password is required.
-                                            </div>
-                                            <div *ngIf="password.errors?.['minlength']">
-                                                At least 8 characters required
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <div class="col-md-6">
-                                    <div>
-                                        <mat-form-field class="form-field" appearance="outline">
-                                            <mat-label>Profile</mat-label>
-                                            <mat-select required #profile="ngModel" name="profile" [(ngModel)]="user.profile">
-                                                <mat-option *ngFor="let profile of coursesList" [value]="profile.value">
-                                                    {{profile.courseName}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                        <div *ngIf="profile.touched && profile.invalid" class="alert alert-danger">
-                                            <div *ngIf="profile.errors?.['required']">
-                                                Profile is required.
-                                            </div>
-                                        </div>
-                                    </div>
-    
-                                    <div>
-                                        <mat-form-field class="form-field" appearance="outline">
-                                            <mat-label>Roles</mat-label>
-                                            <mat-select name="roles" #roless="ngModel" [(ngModel)]="user.roles" multiple required>
-                                                <mat-option *ngFor="let role of roles" [value]="role">
-                                                    {{role.roleName}}
-                                                </mat-option>
-                                            </mat-select>
-            
-                                        </mat-form-field>
-                                        <div *ngIf="roless.touched && roless.invalid" class="alert alert-danger">
-                                            <div *ngIf="roless.errors?.['required']">
-                                                At least one role is required.
-                                            </div>
-                                        </div>
-                                    </div>
-            
-                                    <div class="text-center">
-                                        <div class="example-button-row">
-                                            <button type="submit" class="btn btn-block" [disabled]="userForm.invalid" mat-raised-button
-                                                color="primary">Add User</button>
-                                                <!-- <button class="navLink button-style" mat-raised-button color="primary" (click)="prevoius()">Back to Users</button> -->
-                                        </div>
+                                    <div *ngIf="name.errors?.['minlength']">
+                                        Name is Invalid.
                                     </div>
                                 </div>
                             </div>
-                            
-                        </form>
+                            <div>
+
+                                <mat-form-field class="form-field" appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input [(ngModel)]="user.email" required #email="ngModel" name="email" type="email"
+                                        matInput placeholder="Enter Email"
+                                        pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
+
+
+                                </mat-form-field>
+                                <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                                    <div *ngIf="email.errors?.['required']">
+                                        Email is required.
+                                    </div>
+                                    <div *ngIf="email.errors?.['pattern']">
+                                        Invalid Email
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <mat-form-field class="form-field" appearance="outline">
+                                    <mat-label>UserName</mat-label>
+                                    <input minlength="8" [(ngModel)]="user.userName" required #userName="ngModel"
+                                        name="userName" type="text" matInput placeholder="Enter UserName">
+
+                                </mat-form-field>
+                                <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">
+                                    <div *ngIf="userName.errors?.['required']">
+                                        UserName is required.
+                                    </div>
+                                    <div *ngIf="userName.errors?.['minlength']">
+                                        At least 8 characters required
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <mat-form-field class="form-field" appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input minlength="8" [(ngModel)]="user.password" required #password="ngModel"
+                                        name="password" type="password" matInput placeholder="Enter Password">
+
+                                </mat-form-field>
+                                <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                                    <div *ngIf="password.errors?.['required']">
+                                        Password is required.
+                                    </div>
+                                    <div *ngIf="password.errors?.['minlength']">
+                                        At least 8 characters required
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <mat-form-field class="form-field" appearance="outline">
+                                    <mat-label>Profile</mat-label>
+                                    <mat-select required #profile="ngModel" name="profile" [(ngModel)]="user.profile">
+                                        <mat-option *ngFor="let profile of coursesList" [value]="profile.value">
+                                            {{profile.courseName}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <div *ngIf="profile.touched && profile.invalid" class="alert alert-danger">
+                                    <div *ngIf="profile.errors?.['required']">
+                                        Profile is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <mat-form-field class="form-field" appearance="outline">
+                                    <mat-label>Roles</mat-label>
+                                    <mat-select name="roles" #roless="ngModel" [(ngModel)]="user.roles" multiple
+                                        required>
+                                        <mat-option *ngFor="let role of roles" [value]="role">
+                                            {{role.roleName}}
+                                        </mat-option>
+                                    </mat-select>
+
+                                </mat-form-field>
+                                <div *ngIf="roless.touched && roless.invalid" class="alert alert-danger">
+                                    <div *ngIf="roless.errors?.['required']">
+                                        At least one role is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <div class="example-button-row">
+                                    <button type="submit" class="btn btn-block" [disabled]="userForm.invalid"
+                                        mat-raised-button color="primary">Add User</button>
+                                    <!-- <button class="navLink button-style" mat-raised-button color="primary" (click)="prevoius()">Back to Users</button> -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                </form>
             </div>
         </div>
-    
+    </div>
+</div>

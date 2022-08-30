@@ -1,13 +1,13 @@
 <section class="profile_component">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 reused_table_header">
                 <div class="card">
-                    <div class="card-header-danger">
-                        <h4 class="mb-1">Update user</h4>
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title mb-0">Update user</h4>
                     </div>
 
-                    <div>
+                    <div class="mt-4">
                         <form #updateUserForm="ngForm" (ngSubmit)="updateUser(updateUserForm.value)">
                             <div class="row px-3">
                                 <div class="col-md-6">
@@ -51,7 +51,7 @@
                                             [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
                                         </ng-multiselect-dropdown>
                                     </div>
-                                    <div>
+                                    <div class="mt-4">
                                         <button type="submit" class="d-block btn w-100" mat-raised-button
                                             color="primary">Update User</button>
                                     </div>
