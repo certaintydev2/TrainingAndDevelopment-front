@@ -41,12 +41,11 @@
                 </td>
               </tr>
             </tbody>
-            <pagination-controls 
-            previousLabel="Prev"
-            nextLabel="Next"
-            (pageChange)="onTableDataChange($event)">
-          </pagination-controls>
           </table>
+          <div class="pb-4 d-flex justify-content-end pr-3">
+            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+            </pagination-controls>
+          </div>
         </div>
       </div>
     </div>

@@ -38,24 +38,22 @@
                                           <td>{{question.subTopic.subTopicName}}</td>
                                           <td>{{question.subTopic.topic.topicName}}</td>
                                           <td *ngIf="check">
-                                                <a class="navLink ml-5" mat-icon-button color="accent"
+                                                <a class="text-white" mat-mini-fab color="accent"
                                                       [routerLink]="'/page/updateQuestion/'+question.id">
                                                       <mat-icon class="mat-18">system_update</mat-icon>
                                                 </a>
-                                                <button class="navLink button-style" mat-icon-button
-                                                      color="warn">
+                                                <a class="ml-3 text-white" mat-mini-fab color="primary" >
                                                       <mat-icon (click)="deleteQuestion(question.id)"
                                                             class="mat-18">delete</mat-icon>
-                                                </button>
+                                                </a>
                                           </td>
                                     </tr>
                               </tbody>
-                              <pagination-controls 
-                                                previousLabel="Prev"
-                                                nextLabel="Next"
-                                                (pageChange)="onTableDataChange($event)">
-                                          </pagination-controls>
                         </table>
+                        <div class="pb-4 d-flex justify-content-end pr-3">
+                              <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                              </pagination-controls>
+                            </div>
                   </div>
             </div>
       </div>

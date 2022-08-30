@@ -6,8 +6,9 @@
                               <div class="d-flex justify-content-between align-items-center">
                                     <h4 class="card-title mb-0">Sub Topic List</h4>
                                     <div>
-                                    <a *ngIf="check" class="navLink mr-1" mat-raised-button  [routerLink]="'/page/subTopic'">Add Sub Topics</a>
-                                     <a  mat-raised-button (click)="backButton()">Back To Topic</a>
+                                          <a *ngIf="check" class="navLink mr-1" mat-raised-button
+                                                [routerLink]="'/page/subTopic'">Add Sub Topics</a>
+                                          <a mat-raised-button (click)="backButton()">Back To Topic</a>
                                     </div>
                               </div>
                         </div>
@@ -29,11 +30,12 @@
                                         }; let i = index">
                                           <td>{{subTopic.id}}</td>
                                           <td>
-                                          <a class="navLink mr-1" [routerLink]="['/page/questionView/'+subTopic.id]">
-                                          <span class="p-2 badge badge-info">
-                                                {{subTopic.subTopicName}}
-                                          </span>
-                                          </a>
+                                                <a class="navLink mr-1"
+                                                      [routerLink]="['/page/questionView/'+subTopic.id]">
+                                                      <span class="p-2 badge badge-info">
+                                                            {{subTopic.subTopicName}}
+                                                      </span>
+                                                </a>
                                           </td>
                                           <td>{{subTopic.topic.topicName}}</td>
                                           <td>{{subTopic.topic.course.courseName}}</td>
@@ -43,19 +45,21 @@
                                                       <mat-icon class="mat-18">system_update</mat-icon>
                                                 </a>
                                                 <a class="ml-3 text-white" mat-mini-fab color="primary">
-                                                      <mat-icon (click)="deleteSubTopic(subTopic.id)"
-                                                            class="mat-18">delete
+                                                      <mat-icon (click)="deleteSubTopic(subTopic.id)" class="mat-18">
+                                                            delete
                                                       </mat-icon>
                                                 </a>
                                           </td>
                                     </tr>
                               </tbody>
-                              <pagination-controls 
-                                                previousLabel="Prev"
-                                                nextLabel="Next"
-                                                (pageChange)="onTableDataChange($event)">
-                                          </pagination-controls>
                         </table>
+
+                        <div class="pb-4 d-flex justify-content-end pr-3">
+                              <pagination-controls previousLabel="Prev" nextLabel="Next"
+                                    (pageChange)="onTableDataChange($event)">
+                              </pagination-controls>
+                        </div>
+
                   </div>
             </div>
       </div>

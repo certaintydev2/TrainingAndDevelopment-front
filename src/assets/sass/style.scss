@@ -162,3 +162,12 @@ table tr td .text-white.mat-mini-fab.mat-button-base{
         margin-bottom: 0;
     }
 }
+
+.ngx-pagination{
+    margin-bottom: 0px !important;
+    margin-top: 10px !important;
+    .current {
+        background: $blue !important;
+        border-radius: 4px;
+    }
+} 
