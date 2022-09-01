@@ -19,7 +19,7 @@ export class ViewProfileComponent implements OnInit {
   myFormGro!:FormGroup;
 
 
-  disabled = false;
+  disabled = true;
   loggedInUserId: any = localStorage.getItem('id');
   userData:any;
   roles:any;

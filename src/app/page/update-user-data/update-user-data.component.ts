@@ -103,6 +103,10 @@ export class UpdateUserDataComponent implements OnInit {
      console.log(items);
    }
 
+   prevoius() {
+    window.history.back();
+  }
+
   updateUser(data:any) {
     this.userService.updateUser(this.userId,data).subscribe(
      (res)=>{
@@ -113,7 +117,7 @@ export class UpdateUserDataComponent implements OnInit {
            });
              snack.onAction().subscribe(() => {
            });
-           this.router.navigate(['/page/home']);
+           this.prevoius();
      },(err:HttpErrorResponse)=>{
        if(err.status===401){
          this.userService.logout();
