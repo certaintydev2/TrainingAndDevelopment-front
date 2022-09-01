@@ -13,8 +13,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: #fff !important;
 }
 
-.badge-info {
-    color: #fff;
+.badge.badge-info {
+    color: #fff !important;
     background-color: #6052e2 !important;
     letter-spacing: 1px;
 }

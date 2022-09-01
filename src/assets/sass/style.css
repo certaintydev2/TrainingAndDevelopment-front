@@ -465,21 +465,18 @@ table tr td .text-white.mat-mini-fab.mat-button-base:hover {
 }
 
 .reused_table_header .card .card-header-warning {
+  background: linear-gradient(60deg, #8a7ef7, #1904e5);
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
-}
-.reused_table_header .card .card-header.card-header-warning {
   border-radius: 3px;
   margin-top: -20px;
   padding: 15px;
   margin-left: 30px;
   margin-right: 30px;
 }
-.reused_table_header .card .card-header-warning {
-  background: linear-gradient(60deg, #8a7ef7, #1904e5);
-}
-.reused_table_header .card-title {
+.reused_table_header .card .card-header-warning .card-title {
   font-size: 18px;
   color: #ffffff;
+  margin-bottom: 0px;
 }
 .reused_table_header .card-category {
   font-size: 15px;
@@ -494,4 +491,11 @@ table tr td .text-white.mat-mini-fab.mat-button-base:hover {
 .ngx-pagination .current {
   background: #1904E5 !important;
   border-radius: 4px;
+}
+
+.swal2-styled.swal2-confirm {
+  background-color: #1904E5 !important;
+}
+.swal2-styled.swal2-confirm:focus {
+  box-shadow: 0 0 0 3px rgba(33, 12, 235, 0.28) !important;
 }/*# sourceMappingURL=style.css.map */

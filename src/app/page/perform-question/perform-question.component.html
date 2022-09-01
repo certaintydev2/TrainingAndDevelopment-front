@@ -6,8 +6,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="card-title mb-0">Questions List</h4>
                         <div>
-                            <a  mat-raised-button [routerLink]="'/page/home'">Back to
-                                Home</a>
+                            <a  mat-raised-button [routerLink]="'/page/home'">Back to Home</a>
                         </div>
                     </div>
                 </div>
@@ -33,12 +32,13 @@
                             <td>status</td>
                         </tr>
                     </tbody>
-                    <pagination-controls 
-                    previousLabel="Prev"
-                    nextLabel="Next"
-                    (pageChange)="onTableDataChange($event)">
-                </pagination-controls>
                 </table>
+
+                <div class="pb-4 d-flex justify-content-end pr-3">
+                    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                    </pagination-controls>
+                  </div>
+
             </div>
         </div>
     </div>
