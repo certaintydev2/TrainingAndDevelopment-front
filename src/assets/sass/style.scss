@@ -20,7 +20,7 @@ a {
 }
 
 .main_wapper {
-    height: calc(100vh - 111px);
+    height: calc(100vh - 82px);
     width: 100%;
     overflow: auto;
 
@@ -28,6 +28,7 @@ a {
         height: 100%;
         overflow: auto;
         width: 100%;
+        padding-top: 30px;
 
         .container-fluid:first-child {
             margin-top: 22px;
