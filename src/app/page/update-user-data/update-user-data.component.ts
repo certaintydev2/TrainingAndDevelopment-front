@@ -94,7 +94,7 @@ export class UpdateUserDataComponent implements OnInit {
      this.myFormGro.patchValue({
        roles:this.selectedItems
      });
-    }, 1000);
+    }, 100);
    }
    onItemSelect(item: any) {
      console.log(item);
