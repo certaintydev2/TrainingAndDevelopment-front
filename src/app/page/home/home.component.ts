@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router, private userService: UserService) { }
 
-  check:Boolean=true;
+  check:Boolean=false;
   userList:any;
   authorList:any;
   traineeList:any;
@@ -169,8 +169,10 @@ export class HomeComponent implements OnInit {
         this.courseName = this.loggedInUserData.profile;
         this.userRoleList = this.loggedInUserData.roles;
         for (let i = 0; i < this.userRoleList.length; i++) {
-          if(this.userRoleList[i].roleName==="ROLE_TRAINEE"){
-            this.check=false;
+          if(this.userRoleList[i].roleName==="ROLE_ADMIN"){
+            this.check=true;
+          }
+          if(this.userRoleList[i].roleName==="ROLE_AUTHOR" || this.userRoleList[i].roleName==="ROLE_MENTOR"){
             this.trainees=true;
           }
         }
@@ -233,7 +235,7 @@ export class HomeComponent implements OnInit {
       this.userService.getAllUsersExceptAdminAndTrainee().subscribe(
         (res)=>{
           this.users=res;
-          console.log(this.user);
+          console.log(this.users);
         },(err:HttpErrorResponse)=>{
           if(err.status===401){
             this.logout();
