@@ -31,6 +31,8 @@ export class HomeComponent implements OnInit {
   loggedInUserId: any = localStorage.getItem('id');
   users:any;
   trainees:Boolean=false;
+  traineeListName:String="Trainee List";
+  userListName:String="Users List";
 
   Round:EChartsOption = {
     tooltip: {
@@ -226,16 +228,6 @@ export class HomeComponent implements OnInit {
         this.traineeList=res;
         this.numberOfTrainee=this.traineeList.length;
 
-        },(err:HttpErrorResponse)=>{
-          if(err.status===401){
-            this.logout();
-          }
-      }
-      );
-      this.userService.getAllUsersExceptAdminAndTrainee().subscribe(
-        (res)=>{
-          this.users=res;
-          console.log(this.users);
         },(err:HttpErrorResponse)=>{
           if(err.status===401){
             this.logout();
