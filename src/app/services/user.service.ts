@@ -70,6 +70,10 @@ export class UserService {
     return this.http.get(`${baseUrl}/getAllUsersExceptAdmin`);
   }
 
+  public getAllUsersExceptAdminAndTrainee() {
+    return this.http.get(`${baseUrl}/getAllUsersExceptTraineeAndAdmin`);
+  }
+
   public getTopics() {
     return this.http.get(`${baseUrl}/getTopics`);
   }

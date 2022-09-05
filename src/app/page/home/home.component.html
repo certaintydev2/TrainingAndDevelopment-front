@@ -76,7 +76,7 @@
                <div echarts [options]="Round" class="demo-chart"></div>
             </div>
          </div>
-         <div class="col-lg-12 mt-5 col-md-12">
+         <div *ngIf="check" class="col-lg-12 mt-5 col-md-12">
             <div class="card">
                <div class="card-header card-header-warning">
                   <h4 class="card-title">Users Stats</h4>
@@ -85,48 +85,41 @@
                <div class="card-body table-responsive">
                   <table class="table table-hover">
                      <thead class="">
-                        <th>ID</th>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
+                        <th>Name</th>
                         <th>Email</th>
-                        <th>Mobile</th>
+                        <th>Profile</th>
+                        <!-- <th>Role</th> -->
                      </thead>
                      <tbody>
-                        <tr>
-                           <td>1</td>
-                           <td>John</td>
-                           <td>Doe</td>
-                           <td>john@example.com</td>
-                           <td>9876543210</td>
+                        <tr *ngFor="let user of users">
+                           <td>{{user.name}}</td>
+                           <td>{{user.email}}</td>
+                           <td>{{user.profile}}</td>
                         </tr>
-                        <tr>
-                           <td>2</td>
-                           <td>Mary</td>
-                           <td>Moe</td>
-                           <td>mary@example.com</td>
-                           <td>9876543210</td>
-                        </tr>
-                        <tr>
-                           <td>3</td>
-                           <td>July</td>
-                           <td>Dooley</td>
-                           <td>july@example.com</td>
-                           <td>9876543210</td>
-                        </tr>
-
-                        <tr>
-                           <td>4</td>
-                           <td>Jun</td>
-                           <td>Wooley</td>
-                           <td>Wuly@example.com</td>
-                           <td>9876543210</td>
-                        </tr>
-                        <tr>
-                           <td>5</td>
-                           <td>May</td>
-                           <td>Joy</td>
-                           <td>joy@example.com</td>
-                           <td>9876543210</td>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div *ngIf="trainees" class="col-lg-12 mt-5 col-md-12">
+            <div class="card">
+               <div class="card-header card-header-warning">
+                  <h4 class="card-title">Users Stats</h4>
+                  <p class="card-category">New Users on 15th September, 2022</p>
+               </div>
+               <div class="card-body table-responsive">
+                  <table class="table table-hover">
+                     <thead class="">
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Profile</th>
+                        <!-- <th>Role</th> -->
+                     </thead>
+                     <tbody>
+                        <tr *ngFor="let user of traineeList">
+                           <td>{{user.name}}</td>
+                           <td>{{user.email}}</td>
+                           <td>{{user.profile}}</td>
                         </tr>
                      </tbody>
                   </table>
