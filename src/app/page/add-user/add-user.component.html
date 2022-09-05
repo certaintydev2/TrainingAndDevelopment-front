@@ -3,7 +3,7 @@
         <div class="col-md-12 reused_table_header">
             <div class="card px-3">
                 <div class="card-header card-header-warning">
-                    <h4 class="mb-0 card-title">Add New User</h4>
+                    <h2 class="mb-0 card-title">Add New User</h2>
                 </div>
                 <p *ngIf="msg" class="alert alert-danger">{{errorMsg}}</p>
                 <form #userForm="ngForm" class="mt-4" (ngSubmit)="formSubmit(userForm.value)">
