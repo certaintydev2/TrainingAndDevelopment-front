@@ -46,6 +46,10 @@ export class UserService {
     return this.http.get(`${baseUrl}/getUser`);
   }
 
+  public getUserProfile() {
+    return this.http.get(`${baseUrl}/getUserProfile`);
+  }
+
   public deleteUser(id:any) {
     return this.http.delete(`${baseUrl}/deleteById/`+id);
   }
@@ -201,5 +205,13 @@ export class UserService {
 
   public getTraineeList() {
     return this.http.get(`${baseUrl}/getTraineeList`);
+  }
+
+  public getAllProfile() {
+    return this.http.get(`${baseUrl}/authenticate/getAllProfile`);
+  }
+
+  public getCourseByCourseName(courseName:any) {
+    return this.http.get(`${baseUrl}/getCourseByCourseName/`+courseName);
   }
 }

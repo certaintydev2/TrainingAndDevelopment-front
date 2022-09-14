@@ -36,6 +36,7 @@ export class AddUserComponent implements OnInit {
   ];
 
   routingLink:any;
+  profileList:any;
 
   ngOnInit(): void {
     this.userService.getAllRoles().subscribe(
@@ -47,6 +48,13 @@ export class AddUserComponent implements OnInit {
         this.userService.logout();
       }
     }
+    );
+    this.userService.getAllProfile().subscribe(
+      (res)=>{
+        console.log(res);
+        
+        this.profileList=res;
+      }
     );
   }
 

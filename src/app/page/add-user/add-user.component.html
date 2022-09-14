@@ -82,9 +82,9 @@
                             <div>
                                 <mat-form-field class="form-field" appearance="outline">
                                     <mat-label>Profile</mat-label>
-                                    <mat-select required #profile="ngModel" name="profile" [(ngModel)]="user.profile">
-                                        <mat-option *ngFor="let profile of coursesList" [value]="profile.value">
-                                            {{profile.courseName}}
+                                    <mat-select required #profile="ngModel" name="profile" multiple [(ngModel)]="user.profile">
+                                        <mat-option *ngFor="let profile of profileList" [value]="profile">
+                                            {{profile.profileName}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>

@@ -30,6 +30,7 @@ export class SignupComponent implements OnInit {
     profile: '',
     roles: ''
   };
+  profileList:any;
 
   coursesList:any=[
     {value: 'JAVA', courseName: 'JAVA'},
@@ -47,6 +48,13 @@ export class SignupComponent implements OnInit {
       this.adminRole(this.roles);
     });
     this.loggedId = localStorage.getItem('id');
+    this.userService.getAllProfile().subscribe(
+      (res)=>{
+        console.log(res);
+        
+        this.profileList=res;
+      }
+    );
   }
 
   adminRole(data:any) {

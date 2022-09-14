@@ -17,6 +17,7 @@ export class UpdateUserDataComponent implements OnInit {
   constructor(private fb: FormBuilder,private userService:UserService,private router: Router,private snackBar: MatSnackBar,private route:ActivatedRoute) { }
 
   myFormGro!:FormGroup;
+  profileGro!:FormGroup;
 
   userId:any;
   userData:any;
@@ -29,6 +30,7 @@ export class UpdateUserDataComponent implements OnInit {
   selectedProfile:any;
   userRole:any;
   disabled = false;
+  profile:any;
 
   coursesList:any=[
     {value: 'JAVA', courseName: 'JAVA'},
@@ -40,7 +42,9 @@ export class UpdateUserDataComponent implements OnInit {
   ];
 
   selectedItems:any;
+  selectedProfileName:any;
   dropdownSettings:IDropdownSettings = {};
+  profileDropdownSettings:IDropdownSettings = {};
 
 
   ngOnInit(): void {
@@ -53,7 +57,7 @@ export class UpdateUserDataComponent implements OnInit {
         this.log_email=this.userData.email;
         this.log_useName=this.userData.userName;
         this.log_password=this.userData.password;
-        this.log_profile=this.userData.profile.toUpperCase();
+        this.log_profile=this.userData.profile;
         this.userRole=this.userData.roles;
         setTimeout(() => {
           for (let i = 0; i < this.userRole.length; i++) {
@@ -72,6 +76,13 @@ export class UpdateUserDataComponent implements OnInit {
           this.userService.logout();
         }
       });
+      this.userService.getAllProfile().subscribe(
+        (res)=>{
+          console.log(res);
+          
+          this.profile=res;
+        }
+      );
       this.dropdownSettings= {
         singleSelection: false,
         idField: 'id',
@@ -81,8 +92,20 @@ export class UpdateUserDataComponent implements OnInit {
         itemsShowLimit: 3,
         allowSearchFilter: true
       };
+      this.profileDropdownSettings= {
+        singleSelection: false,
+        idField: 'id',
+        textField: 'profileName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 3,
+        allowSearchFilter: true
+      };
     this.myFormGro = this.fb.group({
       roles: ['', Validators.compose(
+        [Validators.required]
+      )],
+      profile: ['', Validators.compose(
         [Validators.required]
       )]          
   });
@@ -91,8 +114,10 @@ export class UpdateUserDataComponent implements OnInit {
   ngAfterViewInit(){
     setTimeout(() => {
      this.selectedItems=this.userRole;
+     this.selectedProfileName=this.log_profile;
      this.myFormGro.patchValue({
-       roles:this.selectedItems
+       roles:this.selectedItems,
+       profile:this.selectedProfileName
      });
     }, 100);
    }

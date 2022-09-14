@@ -38,9 +38,12 @@ export class SubTopicViewComponent implements OnInit {
         this.user = this.loggedInUserData.name;
         this.userRoleList = this.loggedInUserData.roles;
         for (let i = 0; i < this.userRoleList.length; i++) {
-            if(this.userRoleList[i].roleName==="ROLE_MENTOR"){
+            if(this.userRoleList[i].roleName==="ROLE_AUTHOR"){
               this.check = true;
           }
+          if(this.userRoleList[i].roleName==="ROLE_ADMIN"){
+            this.check = true;
+        }
         }
       },(err:HttpErrorResponse)=>{
         if(err.status===401){

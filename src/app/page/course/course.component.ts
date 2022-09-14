@@ -29,6 +29,9 @@ export class CourseComponent implements OnInit {
   m=0;
   n=0;
 
+  userProfile:any;
+  userProfileData:any[]=[]
+
   errorMsg:any;
 
   msg:boolean = false;
@@ -36,7 +39,6 @@ export class CourseComponent implements OnInit {
   public course: any = {
     courseName: '',
     authorId: '',
-    mentorId: '',
   };
   coursesList:any=[
     {value: 'JAVA', courseName: 'JAVA'},
@@ -50,26 +52,37 @@ export class CourseComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUser().subscribe(
       (res) =>{
+        console.log(res);
+        
       this.user = Object.values(res);
       for (let i = 0; i < this.user.length; i++) {
-        this.userData[i] = {"name":this.user[i].split(',')[0],"user_id":this.user[i].split(',')[1],"role_name":this.user[i].split(',')[2],"profile":this.user[i].split(',')[3]}       
+        this.userData[i] = {"name":this.user[i].split(',')[0],"user_id":this.user[i].split(',')[1],"role_name":this.user[i].split(',')[2]}       
       }
+      console.log(this.userData);
+      
       for (let i = 0; i < this.userData.length; i++) {
         if(this.userData[i].role_name === "ROLE_AUTHOR") {
           
           this.userAuthorRole[this.j] = this.userData[i];
           this.j++;
         }
-        if(this.userData[i].role_name === "ROLE_MENTOR") {
-          
-          this.userMentorRole[this.k] = this.userData[i];
-          this.k++;
-        }
-
       }
       this.authorRole = this.userAuthorRole;
-      this.mentorRole = this.userMentorRole;
     },(err:HttpErrorResponse)=>{
+      if(err.status===401){
+        this.userService.logout();
+      }
+    }
+    );
+    this.userService.getUserProfile().subscribe(
+      (res)=>{
+        this.userProfile = Object.values(res);
+      for (let i = 0; i < this.userProfile.length; i++) {
+        this.userProfileData[i] = {"name":this.userProfile[i].split(',')[0],"user_id":this.userProfile[i].split(',')[1],"profile_name":this.userProfile[i].split(',')[2],"profile_id":this.userProfile[i].split(',')[3]}       
+      }
+      console.log(this.userProfileData);
+      
+      },(err:HttpErrorResponse)=>{
       if(err.status===401){
         this.userService.logout();
       }
@@ -112,19 +125,23 @@ export class CourseComponent implements OnInit {
   }
   updatelist() {
     let selectedCourseName = this.course.courseName;
-    for (let i = 0; i < this.authorRole.length; i++) {
-      if((this.authorRole[i].profile).toLowerCase() === (selectedCourseName).toLowerCase()) {
-        this.userAuthorCourseRole[this.m] = this.authorRole[i];
-        this.m++;
+    console.log(this.authorRole);
+    for (let j = 0; j < this.userProfileData.length; j++) {
+      for (let i = 0; i < this.authorRole.length; i++) {
+        if(this.authorRole[i].user_id === this.userProfileData[j].user_id){
+          
+          if(this.userProfileData[j].profile_name.toUpperCase()=== selectedCourseName.toUpperCase()){
+            console.log(this.userProfileData[j].name);
+            this.userAuthorCourseRole[this.n] = this.userProfileData[j];
+            this.n++;
+          }
+        }
       }
+      
     }
-    for (let i = 0; i < this.mentorRole.length; i++) {
-      if((this.mentorRole[i].profile).toLowerCase() === (selectedCourseName).toLowerCase()) {
-        this.userMentorCourseRole[this.n] = this.mentorRole[i];
-        this.n++;
-      }
-    }
+    console.log(this.userAuthorCourseRole);
+    
+    
     this.authorRole = this.userAuthorCourseRole;
-    this.mentorRole = this.userMentorCourseRole;
   }
 }

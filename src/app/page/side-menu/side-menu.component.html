@@ -54,10 +54,13 @@
                 View Courses</a>
         </li>
         <li *ngSwitchCase="'ROLE_TRAINEE'" class="nav-item pl-1">
-            <a class="nav-link" [routerLink]="['/page/performQuestion/'+courseName]">
+            <!-- <a class="nav-link" [routerLink]="['/page/performQuestion/'+courseName]">
                 <i class="fa fa-question" aria-hidden="true"></i> 
                 Perform
-                questions</a>
+                questions</a> -->
+                <a class="nav-link" [routerLink]="'/page/viewCourse'">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    View Courses</a>
         </li>
        
     </ul>

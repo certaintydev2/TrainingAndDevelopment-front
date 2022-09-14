@@ -36,14 +36,11 @@
                                 </div>
                                 <div class="col-md-6">
 
-                                    <div class="form-group">
-                                        <select class="form-control" name="profile" #profile="ngModel"
-                                            [(ngModel)]="log_profile">
-                                            <option *ngFor="let profile of coursesList" [value]="profile.courseName"
-                                                [selected]="log_profile === profile.value">
-                                                {{profile.courseName}}
-                                            </option>
-                                        </select>
+                                    <div>
+                                        <ng-multiselect-dropdown name="profile" [placeholder]="'Select Profile'"
+                                            [data]="profile" [(ngModel)]="selectedProfileName" [disabled]="disabled"
+                                            [settings]="profileDropdownSettings" (onSelect)="onItemSelect($event)">
+                                        </ng-multiselect-dropdown>
                                     </div>
                                     <div>
                                         <ng-multiselect-dropdown name="roles" [placeholder]="'Select Role'"

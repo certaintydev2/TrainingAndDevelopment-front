@@ -16,11 +16,11 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>Topic Id</th>
+              <!-- <th>Topic Id</th> -->
               <th>Topic Name</th>
               <th>Course</th>
               <th>Author</th>
-              <th>Mentor</th>
+              <!-- <th>Mentor</th> -->
               <th *ngIf="check">Actions</th>
             </tr>
           </thead>
@@ -30,7 +30,7 @@
               currentPage:page,
               totalItems:count
             }; let i = index">
-              <td>{{topic.id}}</td>
+              <!-- <td>{{topic.id}}</td> -->
               <td>
                 <a class="navLink mr-1" [routerLink]="['/page/subTopicView/'+topic.id]">
                   <span class="p-2 pl-0 text-center badge badge-info">
@@ -47,13 +47,13 @@
                 </div>
               </td>
 
-              <td>
+              <!-- <td>
                 <div *ngFor="let user of users">
                   <span *ngIf="topic.course.mentorId === user.id">
                     {{user.name}}
                   </span>
                 </div>
-              </td>
+              </td> -->
               <td *ngIf="check">
                 <a class="text-white" mat-mini-fab color="accent" [routerLink]="'/page/updateTopic/'+topic.id">
                   <mat-icon class="mat-18">system_update</mat-icon>

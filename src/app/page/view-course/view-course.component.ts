@@ -17,6 +17,7 @@ export class ViewCourseComponent implements OnInit {
   author_name: any;
   mentor_name: any;
   check:Boolean=false;
+  checkUser:Boolean=false;
   user: any;
   userRoleList:any;
   userData: any;
@@ -26,11 +27,14 @@ export class ViewCourseComponent implements OnInit {
   count:number=0;
   tableSize:number=5;
   tableSizes:any=[5,10,15,20];
+  courseByProfile:any[]=[];
+  courseData:any[]=[];
+  otherRole:Boolean=false;
+  userProfile:any[]=[];
 
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe((res) => {
-      console.log(res);
       this.users = res;
     },(err:HttpErrorResponse)=>{
       if(err.status===401){
@@ -42,11 +46,18 @@ export class ViewCourseComponent implements OnInit {
         this.userData = JSON.stringify(res);
         this.loggedInUserData = JSON.parse(this.userData);
         this.user = this.loggedInUserData.name;
+        this.userProfile=this.loggedInUserData.profile;
         this.userRoleList = this.loggedInUserData.roles;
         for (let i = 0; i < this.userRoleList.length; i++) {
             if(this.userRoleList[i].roleName==="ROLE_ADMIN"){
               this.check = true;
-          }
+            }
+            if(this.userRoleList[i].roleName==="ROLE_AUTHOR"){
+              this.checkUser = true;
+            }
+            if(this.userRoleList[i].roleName==="ROLE_MENTOR" || this.userRoleList[i].roleName==="ROLE_TRAINEE"){
+              this.otherRole = true;
+            }
         }
       },(err:HttpErrorResponse)=>{
         if(err.status===401){
@@ -54,7 +65,28 @@ export class ViewCourseComponent implements OnInit {
         }
       });
       this.getAllCourse();
+      setTimeout(() => {
+        this.getCoursesByProfile(this.userProfile)
+      }, 500);
   }
+
+  getCoursesByProfile(data:any){
+    for (let i = 0; i < data.length; i++) {
+      this.userService.getCourseByCourseName(data[i].profileName).subscribe(
+        (res)=>{
+          this.courseData.push(res);
+        }
+      );
+    }
+   setTimeout(() => {
+    for (let i = 0; i < this.courseData.length; i++) {
+      if(this.courseData[i].courseId != null){
+        this.courseByProfile.push(this.courseData[i]);
+      }
+    }
+   }, 500);
+  }
+
 
   onTableDataChange(event:any) {
     this.page=event;
@@ -63,7 +95,6 @@ export class ViewCourseComponent implements OnInit {
 
   getAllCourse() {
     this.userService.getCourses().subscribe((res) => {
-      console.log(res);
       this.courses = res;
     },(err:HttpErrorResponse)=>{
       if(err.status===401){

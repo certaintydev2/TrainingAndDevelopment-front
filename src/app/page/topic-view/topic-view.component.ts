@@ -52,6 +52,9 @@ export class TopicViewComponent implements OnInit {
             if(this.userRoleList[i].roleName==="ROLE_AUTHOR"){
               this.check = true;
           }
+          if(this.userRoleList[i].roleName==="ROLE_ADMIN"){
+            this.check = true;
+        }
         }
       },(err:HttpErrorResponse)=>{
         if(err.status===401){

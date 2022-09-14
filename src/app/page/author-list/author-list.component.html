@@ -35,7 +35,11 @@
               }; let i = index">
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
-                <td>{{user.profile.toUpperCase()}}</td>
+                <td>
+                  <div *ngFor="let profile of user.profile">
+                    {{profile.profileName.toUpperCase()}}
+                  </div>
+                </td>
                 <td>
                   <a class="text-white" mat-mini-fab color="accent" [routerLink]="['/page/updateUser/'+user.id]">
                     <mat-icon class="mat-18">create</mat-icon>
