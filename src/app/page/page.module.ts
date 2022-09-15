@@ -65,6 +65,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { TraineeTestComponent } from './trainee-test/trainee-test.component';
 import { PerformTestComponent } from './perform-test/perform-test.component';
 import { AssignMentorComponent } from './assign-mentor/assign-mentor.component';
+import { AssignMentorsListComponent } from './assign-mentors-list/assign-mentors-list.component';
 
 
 @NgModule({
@@ -103,6 +104,7 @@ import { AssignMentorComponent } from './assign-mentor/assign-mentor.component';
     TraineeTestComponent,
     PerformTestComponent,
     AssignMentorComponent,
+    AssignMentorsListComponent,
   ],
   imports: [
     CommonModule,

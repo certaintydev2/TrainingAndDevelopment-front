@@ -31,6 +31,8 @@ import { UpdateUserDataComponent } from './update-user-data/update-user-data.com
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { TraineeTestComponent } from './trainee-test/trainee-test.component';
 import { PerformTestComponent } from './perform-test/perform-test.component';
+import { AssignMentorComponent } from './assign-mentor/assign-mentor.component';
+import { AssignMentorsListComponent } from './assign-mentors-list/assign-mentors-list.component';
 
 const routes: Routes = [
   { path: '', component: PageComponent ,  children:[
@@ -151,6 +153,14 @@ const routes: Routes = [
     {
       path: 'performTest/:profileName',
       component: PerformTestComponent
+    },
+    {
+      path: 'assignMentor',
+      component: AssignMentorComponent
+    },
+    {
+      path: 'assignMentorList',
+      component: AssignMentorsListComponent
     }
 
   ]  },

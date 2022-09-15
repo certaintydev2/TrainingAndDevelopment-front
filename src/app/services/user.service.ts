@@ -218,4 +218,12 @@ export class UserService {
   public getQuestionsByProfile(profile:any) {
     return this.http.get(`${baseUrl}/getTestByProfile/`+profile);
   }
+
+  public assignMentor(assignMentor:any){
+    return this.http.post(`${baseUrl}/assignMentorToTrainee`,assignMentor);
+  }
+
+  public assignMentorList(){
+    return this.http.get(`${baseUrl}/getAssignedMentorList`);
+  }
 }
