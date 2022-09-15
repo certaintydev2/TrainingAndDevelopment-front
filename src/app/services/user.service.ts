@@ -214,4 +214,8 @@ export class UserService {
   public getCourseByCourseName(courseName:any) {
     return this.http.get(`${baseUrl}/getCourseByCourseName/`+courseName);
   }
+
+  public getQuestionsByProfile(profile:any) {
+    return this.http.get(`${baseUrl}/getTestByProfile/`+profile);
+  }
 }

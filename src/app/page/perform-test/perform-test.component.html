@@ -1,0 +1,18 @@
+<div class="row">
+           <!-- <div class="col-sm-2"></div> -->
+           <ng-container *ngFor="let question of questionsList ; let i = index">
+           <div class="col-sm-8 col-sm-offset-2">
+                      <mat-card>
+                                 <mat-card-subtitle><b>Question : {{i+1}}. </b>{{question.question}}</mat-card-subtitle>
+                                 <mat-card-subtitle><b>Input : </b>{{question.input}}</mat-card-subtitle>
+                                 <mat-card-subtitle><b>Output : </b>{{question.expectedOutput}}</mat-card-subtitle>
+                                 <mat-card-actions>
+                                            <a class="mat-button" [routerLink]="'/page/viewCourse'">
+                                                       <i class="fa fa-list-alt" aria-hidden="true"></i>
+                                            Perform Question</a>
+                                 </mat-card-actions>
+                      </mat-card>
+           </div>
+           </ng-container>
+           <!-- <div class="col-sm-2"></div> -->
+</div>

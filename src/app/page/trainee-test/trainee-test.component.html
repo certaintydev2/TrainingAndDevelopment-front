@@ -1,0 +1,20 @@
+<div class="row">
+           <div class="col-sm-2">
+
+           </div>
+           <ng-container *ngFor="let profile of profileList">
+                      <div class="col-sm-4">
+                                 <mat-card>
+                                            <mat-card-title>{{profile.profileName}}</mat-card-title>
+                                            <mat-card-actions>
+                                                       <a class="mat-button" [routerLink]="['/page/performTest/'+profile.profileName]">
+                                                                  <i class="fa fa-list-alt" aria-hidden="true"></i>
+                                                       Perform Test</a>
+                                            </mat-card-actions>
+                                 </mat-card>
+                      </div>
+           </ng-container>
+           <div class="col-sm-2">
+
+           </div>
+</div>

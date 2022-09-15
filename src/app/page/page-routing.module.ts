@@ -29,6 +29,8 @@ import { MentorListComponent } from './mentor-list/mentor-list.component';
 import { TraineeListComponent } from './trainee-list/trainee-list.component';
 import { UpdateUserDataComponent } from './update-user-data/update-user-data.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { TraineeTestComponent } from './trainee-test/trainee-test.component';
+import { PerformTestComponent } from './perform-test/perform-test.component';
 
 const routes: Routes = [
   { path: '', component: PageComponent ,  children:[
@@ -141,6 +143,14 @@ const routes: Routes = [
     {
       path: 'changePassword',
       component: ChangePasswordComponent
+    },
+    {
+      path: 'traineeTest',
+      component: TraineeTestComponent
+    },
+    {
+      path: 'performTest/:profileName',
+      component: PerformTestComponent
     }
 
   ]  },

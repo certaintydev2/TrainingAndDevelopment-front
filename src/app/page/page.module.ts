@@ -62,6 +62,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatChipsModule} from '@angular/material/chips';
+import { TraineeTestComponent } from './trainee-test/trainee-test.component';
+import { PerformTestComponent } from './perform-test/perform-test.component';
+import { AssignMentorComponent } from './assign-mentor/assign-mentor.component';
 
 
 @NgModule({
@@ -97,6 +100,9 @@ import {MatChipsModule} from '@angular/material/chips';
     TopHeaderComponent,
     UpdateUserDataComponent,
     ChangePasswordComponent,
+    TraineeTestComponent,
+    PerformTestComponent,
+    AssignMentorComponent,
   ],
   imports: [
     CommonModule,
