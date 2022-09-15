@@ -34,6 +34,7 @@
         <div class="d-flex justify-content-end align-items-center">
             <div class="mr-2">
                 <button class="userLoginInfo">{{role}}</button>
+                
                 <!-- <a href="" class="upsale-button"><span>{{role}}</span></a> -->
                 <!-- <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
                     <mat-chip color="primary" class="text-center" selected>{{role}}</mat-chip>
@@ -49,9 +50,12 @@
                             <div class='pulse'></div>
                     </div>
                 </button>
+                
                 <mat-menu #beforeMenu="matMenu" xPosition="before">
                     <button [routerLink]="'/page/viewProfile'" mat-menu-item> <i class="fa fa-user" aria-hidden="true"></i>
                         Profile</button>
+                    <button *ngIf="check" [routerLink]="''" mat-menu-item> <i class="fa fa-user" aria-hidden="true"></i>
+                            Your Mentor : {{mentorName}}</button>
                     <!-- <button [routerLink]="'/page/viewProfile'" mat-menu-item>  <i class="fa fa-user" aria-hidden="true"></i> -->
                             <!-- {{role}}</button> -->
                     <!-- <button [routerLink]="'/page/changePassword'" mat-menu-item>  <i class="fa fa-user" aria-hidden="true"></i>

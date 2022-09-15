@@ -15,15 +15,27 @@ export class TopHeaderComponent implements OnInit {
   userData:any;
   loggedInUserData:any;
   userRoleList:any;
-  role:any
+  role:any;
+  assignMentor:any;
+  userList:any;
+  mentorName:any;
+  assignedMentorId:any;
+  mentorUserData:any;
+  assignedMentorData:any;
+  check:Boolean=false;
 
   loggedInUserId: any = localStorage.getItem('id');
 
   ngOnInit(): void {
+    this.getAllUsers();
+    setTimeout(() => {
+      this.getUserById(this.loggedInUserId);
+    }, 500);
+  }
 
-    this.userService.getUserById(this.loggedInUserId).subscribe(
+  getUserById(id:any){
+    this.userService.getUserById(id).subscribe(
       (res) => {
-        console.log('user', res);
         this.userData = JSON.stringify(res);
         this.loggedInUserData = JSON.parse(this.userData);
         this.userRoleList = this.loggedInUserData.roles;
@@ -40,7 +52,15 @@ export class TopHeaderComponent implements OnInit {
             if (this.userRoleList[i].roleName==="ROLE_MENTOR") {
               this.role="MENTOR"
             }if (this.userRoleList[i].roleName==="ROLE_TRAINEE") {
-              this.role="TRAINEE"
+              this.role="TRAINEE";
+              this.check=true;
+              this.userService.getassignMentorByTraineeId(id).subscribe(
+                (res)=>{
+                  this.assignMentor=res;
+                  this.assignedMentorId=this.assignMentor.mentorId;
+                  this.getUser(this.assignedMentorId);
+                }
+              );
             }
           }
         }
@@ -51,6 +71,24 @@ export class TopHeaderComponent implements OnInit {
       }
       );
   }
+
+  getUser(id:any){
+    for (let i = 0; i < this.userList.length; i++) {
+      if(this.userList[i].id === id) {
+        this.assignedMentorData=this.userList[i];
+        this.mentorName=this.userList[i].name;
+      }
+    }
+  }
+
+  getAllUsers() {
+    this.userService.getAllUsers().subscribe(
+      (res)=>{
+          this.userList=res;
+      }
+    );
+  }
+
 
   logout() {
     localStorage.clear();

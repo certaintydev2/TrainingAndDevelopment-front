@@ -226,4 +226,8 @@ export class UserService {
   public assignMentorList(){
     return this.http.get(`${baseUrl}/getAssignedMentorList`);
   }
+
+  public getassignMentorByTraineeId(traineeId:any) {
+    return this.http.get(`${baseUrl}/getAssignMentorBytraineeId/`+traineeId);
+  }
 }
