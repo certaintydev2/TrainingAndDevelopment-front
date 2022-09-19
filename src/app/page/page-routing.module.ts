@@ -33,6 +33,7 @@ import { TraineeTestComponent } from './trainee-test/trainee-test.component';
 import { PerformTestComponent } from './perform-test/perform-test.component';
 import { AssignMentorComponent } from './assign-mentor/assign-mentor.component';
 import { AssignMentorsListComponent } from './assign-mentors-list/assign-mentors-list.component';
+import { SolveTestComponent } from './solve-test/solve-test.component';
 
 const routes: Routes = [
   { path: '', component: PageComponent ,  children:[
@@ -161,6 +162,10 @@ const routes: Routes = [
     {
       path: 'assignMentorList',
       component: AssignMentorsListComponent
+    },
+    {
+      path: 'solve-test/:id',
+      component: SolveTestComponent
     }
 
   ]  },

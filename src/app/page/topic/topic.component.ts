@@ -17,11 +17,20 @@ export class TopicComponent implements OnInit {
   topicData:any;
   courseId:any;
 
+  timeData:any=[
+    {value: 'Week'},
+    {value: 'Month'},
+    {value: 'Days'},
+  ];
+
   public topic: any = {
     topicName: '',
     course: {
       courseName:''
     },
+    topicDescription:'',
+    days:'',
+    estimatedTime:'',
   };
 
   ngOnInit(): void {

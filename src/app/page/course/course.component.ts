@@ -39,6 +39,7 @@ export class CourseComponent implements OnInit {
   public course: any = {
     courseName: '',
     authorId: '',
+    courseDescription:''
   };
   coursesList:any=[
     {value: 'JAVA', courseName: 'JAVA'},

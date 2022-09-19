@@ -55,6 +55,11 @@
 
                             <div class="col-md-6">
                                 <div>
+                                    <mat-form-field class="form-field" appearance="outline">
+                                        <mat-label>Course Description</mat-label>
+                                        <textarea matInput [(ngModel)]="course.courseDescription" #courseDescription="ngModel"
+                                        name="courseDescription" rows="6"></textarea>
+                                      </mat-form-field>
                                     <!-- <mat-form-field class="form-field" appearance="outline">
                                         <mat-label>Mentor</mat-label>
                                         <mat-select name="mentorId" #mentorId="ngModel" [(ngModel)]="course.mentorId"

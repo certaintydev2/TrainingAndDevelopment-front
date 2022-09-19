@@ -26,6 +26,26 @@
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
+                            <mat-form-field class="form-field" appearance="outline">
+                                <mat-label>Topic Description</mat-label>
+                                <textarea matInput [(ngModel)]="topic.topicDescription" #topicDescription="ngModel"
+                                name="topicDescription" rows="6"></textarea>
+                            </mat-form-field>
+
+                            <mat-form-field class="form-field" appearance="outline">
+                                <mat-label>Estimated Days</mat-label>
+                                <input #days [(ngModel)]="topic.days" name="days" type="text" matInput
+                                    placeholder="Enter Days">
+                            </mat-form-field>
+
+                            <mat-form-field  class="form-field" appearance="outline">
+                                <mat-label>Estimated Time</mat-label>
+                                <mat-select name="estimatedTime" #estimatedTime="ngModel" [(ngModel)]="topic.estimatedTime">
+                                  <mat-option *ngFor="let time of timeData" [value]="time.value">
+                                    {{time.value}}
+                                  </mat-option>
+                                </mat-select>
+                            </mat-form-field>
         
                             <div class="d-flex justify-content-end">
                                 <div class="">

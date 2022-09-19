@@ -230,4 +230,8 @@ export class UserService {
   public getassignMentorByTraineeId(traineeId:any) {
     return this.http.get(`${baseUrl}/getAssignMentorBytraineeId/`+traineeId);
   }
+
+  public solveTest(file:any,questionId:any) {
+    return this.http.post(`${baseUrl}/solveTest/`,file,questionId);
+  }
 }

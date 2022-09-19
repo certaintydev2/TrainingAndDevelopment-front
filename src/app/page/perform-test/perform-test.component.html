@@ -7,7 +7,7 @@
                                  <mat-card-subtitle><b>Input : </b>{{question.input}}</mat-card-subtitle>
                                  <mat-card-subtitle><b>Output : </b>{{question.expectedOutput}}</mat-card-subtitle>
                                  <mat-card-actions>
-                                            <a class="mat-button" [routerLink]="'/page/viewCourse'">
+                                            <a class="mat-button" [routerLink]="['/page/solve-test/']+question.id">
                                                        <i class="fa fa-list-alt" aria-hidden="true"></i>
                                             Perform Question</a>
                                  </mat-card-actions>
