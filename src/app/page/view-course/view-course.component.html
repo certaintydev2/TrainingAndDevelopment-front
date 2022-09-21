@@ -1,6 +1,128 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12 reused_table_header">
+    <div class="card">
+      <div class="card-header card-header-warning">
+        <div class="d-flex justify-content-between align-items-center">
+          <h4 *ngIf="check" class="card-title mb-0 ">All Courses</h4>
+          <h4 *ngIf="otherRole" class="card-title mb-0 ">Your Courses</h4>
+          <div>
+            <a *ngIf="check" mat-raised-button [routerLink]="'/page/course'">Add Course</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let user_roles of userRoleList" [ngSwitch]="user_roles.roleName">
+      
+      <div *ngSwitchCase="'ROLE_ADMIN'">
+        <ng-container *ngFor="let course of courses | paginate:{
+          itemsPerPage:tableSize,
+          currentPage:page,
+          totalItems:count
+        }; let i = index">
+        <div class="col-sm-6 col-sm-offset-3">
+          <mat-card class="card shadow p-3 mb-5 bg-white rounded">
+            <mat-card-title>{{course.courseName.toUpperCase()}}</mat-card-title>
+            <mat-card-content>{{course.courseDescription}}</mat-card-content>
+            <mat-card-actions align="start">
+              <a class="navLink mr-1" [routerLink]="['/page/topicView/'+course.courseId]">
+                <span class="p-2 badge badge-info">Start Learn {{course.courseName.toUpperCase()}}</span>
+              </a>
+            </mat-card-actions>
+            <mat-card-actions align="end">
+              <a class="text-white" mat-mini-fab color="accent"
+                      [routerLink]="['/page/updateCourse/'+course.courseId]">
+                      <mat-icon class="mat-18">create</mat-icon>
+              </a>
+              <a class="ml-3 text-white" mat-mini-fab color="primary">
+                <mat-icon (click)="deleteCourse(course.courseId)" class="mat-18">delete</mat-icon>
+              </a>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        </ng-container>
+      </div>
+      <div *ngSwitchCase="'ROLE_AUTHOR'" class="col-sm-12">
+        <ng-container *ngFor="let course of courseByProfile | paginate:{
+          itemsPerPage:tableSize,
+          currentPage:page,
+          totalItems:count
+        }; let i = index">
+          <div class="col-sm-6 col-sm-offset-3">
+            <mat-card class="card shadow p-3 mb-5 bg-white rounded">
+              <mat-card-title>{{course.courseName.toUpperCase()}}</mat-card-title>
+              <mat-card-content>{{course.courseDescription}}</mat-card-content>
+              <mat-card-actions align="end">
+                <a class="text-white" mat-mini-fab color="accent"
+                        [routerLink]="['/page/updateCourse/'+course.courseId]">
+                        <mat-icon class="mat-18">create</mat-icon>
+                </a>
+                <a class="ml-3 text-white" mat-mini-fab color="primary">
+                  <mat-icon (click)="deleteCourse(course.courseId)" class="mat-18">delete</mat-icon>
+                </a>
+              </mat-card-actions>
+              <mat-card-actions align="start">
+                <a class="navLink mr-1" [routerLink]="['/page/topicView/'+course.courseId]">
+                  <span class="p-2 badge badge-info">Start Learn {{course.courseName.toUpperCase()}}</span>
+                </a>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </ng-container>
+      </div>
+      <div *ngIf="checkUser">
+        <div *ngSwitchCase="'ROLE_MENTOR'" class="col-sm-12">
+          <ng-container *ngFor="let course of courseByProfile | paginate:{
+            itemsPerPage:tableSize,
+            currentPage:page,
+            totalItems:count
+          }; let i = index">
+            <div class="col-sm-6 col-sm-offset-3">
+              <mat-card class="card shadow p-3 mb-5 bg-white rounded">
+                <mat-card-title>{{course.courseName.toUpperCase()}}</mat-card-title>
+                <mat-card-content>{{course.courseDescription}}</mat-card-content>
+                <mat-card-actions align="start">
+                  <a class="navLink mr-1" [routerLink]="['/page/topicView/'+course.courseId]">
+                    <span class="p-2 badge badge-info">Start Learn {{course.courseName.toUpperCase()}}</span>
+                  </a>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div *ngSwitchCase="'ROLE_TRAINEE'" class="col-sm-12">
+        <ng-container *ngFor="let course of courseByProfile | paginate:{
+          itemsPerPage:tableSize,
+          currentPage:page,
+          totalItems:count
+        }; let i = index">
+          <div class="col-sm-6 col-sm-offset-3">
+            <mat-card class="card shadow p-3 mb-5 bg-white rounded">
+              <mat-card-title>{{course.courseName.toUpperCase()}}</mat-card-title>
+              <mat-card-content>{{course.courseDescription}}</mat-card-content>
+              <mat-card-actions align="start">
+                <a class="navLink mr-1" [routerLink]="['/page/topicView/'+course.courseId]">
+                  <span class="p-2 badge badge-info">Start Learn {{course.courseName.toUpperCase()}}</span>
+                </a>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    
+    <div *ngIf="otherRole" class="col-sm-12">
+      
+    </div>
+    <div class="pb-4 d-flex justify-content-end pr-3">
+      <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+      </pagination-controls>
+    </div>
+
+                                          <!-- Table view -->
+
+
+    <!-- <div class="col-md-12 reused_table_header">
       <div class="card">
         <div class="card-header card-header-warning">
           <div class="d-flex justify-content-between align-items-center">
@@ -96,40 +218,6 @@
           </div>
         </div>
       </div>
-    </div> 
-    <div *ngIf="check"  class="col-md-12">
-      <div *ngFor="let course of courses">
-        <mat-card>
-          <mat-card-title>{{course.courseName.toUpperCase()}}</mat-card-title>
-          <mat-card-content>{{course.courseDescription}}</mat-card-content>
-          <mat-card-actions align="end">
-            <a class="text-white" mat-mini-fab color="accent"
-                    [routerLink]="['/page/updateCourse/'+course.courseId]">
-                    <mat-icon class="mat-18">create</mat-icon>
-            </a>
-            <a class="ml-3 text-white" mat-mini-fab color="primary">
-              <mat-icon (click)="deleteCourse(course.courseId)" class="mat-18">delete</mat-icon>
-            </a>
-          </mat-card-actions>
-        </mat-card>
-    </div>
-    </div>
-    <div *ngIf="otherRole"  class="col-md-12">
-      <div *ngFor="let course of courseByProfile">
-        <mat-card>
-          <mat-card-title>{{course.courseName.toUpperCase()}}</mat-card-title>
-          <mat-card-content>{{course.courseDescription}}</mat-card-content>
-          <mat-card-actions align="end" *ngIf="checkUser">
-            <a class="text-white" mat-mini-fab color="accent"
-                    [routerLink]="['/page/updateCourse/'+course.courseId]">
-                    <mat-icon class="mat-18">create</mat-icon>
-            </a>
-            <a class="ml-3 text-white" mat-mini-fab color="primary">
-              <mat-icon (click)="deleteCourse(course.courseId)" class="mat-18">delete</mat-icon>
-            </a>
-          </mat-card-actions>
-        </mat-card>
-    </div>
-    </div>
+    </div>  -->
   </div>
 </div>

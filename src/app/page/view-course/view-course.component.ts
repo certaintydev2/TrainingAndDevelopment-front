@@ -17,7 +17,7 @@ export class ViewCourseComponent implements OnInit {
   author_name: any;
   mentor_name: any;
   check:Boolean=false;
-  checkUser:Boolean=false;
+  checkUser:Boolean=true;
   user: any;
   userRoleList:any;
   userData: any;
@@ -25,8 +25,8 @@ export class ViewCourseComponent implements OnInit {
   loggedInUserId: any = localStorage.getItem('id');
   page:number=1;
   count:number=0;
-  tableSize:number=5;
-  tableSizes:any=[5,10,15,20];
+  tableSize:number=2;
+  tableSizes:any=[1,2,3,4,5];
   courseByProfile:any[]=[];
   courseData:any[]=[];
   otherRole:Boolean=false;
@@ -48,16 +48,17 @@ export class ViewCourseComponent implements OnInit {
         this.user = this.loggedInUserData.name;
         this.userProfile=this.loggedInUserData.profile;
         this.userRoleList = this.loggedInUserData.roles;
-        for (let i = 0; i < this.userRoleList.length; i++) {
+        if(this.userRoleList.length>1){
+          this.checkUser=false;
+        } else{
+          for (let i = 0; i < this.userRoleList.length; i++) {
             if(this.userRoleList[i].roleName==="ROLE_ADMIN"){
               this.check = true;
             }
-            if(this.userRoleList[i].roleName==="ROLE_AUTHOR"){
-              this.checkUser = true;
-            }
-            if(this.userRoleList[i].roleName==="ROLE_MENTOR" || this.userRoleList[i].roleName==="ROLE_TRAINEE"){
+            if(this.userRoleList[i].roleName==="ROLE_MENTOR" || this.userRoleList[i].roleName==="ROLE_TRAINEE" || this.userRoleList[i].roleName==="ROLE_AUTHOR"){
               this.otherRole = true;
             }
+        }
         }
       },(err:HttpErrorResponse)=>{
         if(err.status===401){

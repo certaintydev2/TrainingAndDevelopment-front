@@ -36,6 +36,16 @@ export class LoginComponent implements OnInit {
     {roleName:"ROLE_TRAINEE"},
   ];
 
+  profileData:any=[
+    {profileName:"JAVA"},
+    {profileName:"PYTHON"},
+    {profileName:"ANGULAR"},
+    {profileName:"REACT JS"},
+    {profileName:"PHP"},
+    {profileName:"MACHINE LEARNING"}
+  ];
+  profileList:any;
+
 
   ngOnInit(): void {
     this.userService.getAllRoles().subscribe(res=>{
@@ -47,6 +57,19 @@ export class LoginComponent implements OnInit {
         for (let i = 0; i < this.roleData.length; i++) {
             this.userService.addRole(this.roleData[i]).subscribe(res=>{});
         }
+      }
+    });
+    this.userService.getAllProfile().subscribe(res=>{
+      console.log(res);
+      this.profileList=res;
+      if(this.profileList.length===this.profileData.length){
+        
+      }else{
+        for (let i = 0; i < this.profileData.length; i++) {
+          this.userService.addProfile(this.profileData[i]).subscribe(res=>{
+            console.log(res);
+          });
+      }
       }
     });
   }

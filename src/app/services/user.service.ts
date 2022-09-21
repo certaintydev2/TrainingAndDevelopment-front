@@ -232,6 +232,10 @@ export class UserService {
   }
 
   public solveTest(file:any,questionId:any) {
-    return this.http.post(`${baseUrl}/solveTest/`,file,questionId);
+    return this.http.post(`${baseUrl}/solveTest`,file,questionId);
+  }
+
+  public addProfile(profile:any) {
+    return this.http.post(`${baseUrl}/authenticate/addProfile`,profile);
   }
 }
