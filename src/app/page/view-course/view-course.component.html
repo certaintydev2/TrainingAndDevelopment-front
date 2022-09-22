@@ -6,7 +6,7 @@
           <h4 *ngIf="check" class="card-title mb-0 ">All Courses</h4>
           <h4 *ngIf="otherRole" class="card-title mb-0 ">Your Courses</h4>
           <div>
-            <a *ngIf="check" mat-raised-button [routerLink]="'/page/course'">Add Course</a>
+            <a *ngIf="checkData" mat-raised-button [routerLink]="'/page/course'">Add Course</a>
           </div>
         </div>
       </div>

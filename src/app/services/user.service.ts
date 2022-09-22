@@ -231,8 +231,10 @@ export class UserService {
     return this.http.get(`${baseUrl}/getAssignMentorBytraineeId/`+traineeId);
   }
 
-  public solveTest(file:any,questionId:any) {
-    return this.http.post(`${baseUrl}/solveTest`,file,questionId);
+  public solveTest(file:File,questionId:any) {
+    let formParams = new FormData();
+    formParams.append('file', file)
+    return this.http.post(`${baseUrl}/solveTest`,formParams,questionId);
   }
 
   public addProfile(profile:any) {

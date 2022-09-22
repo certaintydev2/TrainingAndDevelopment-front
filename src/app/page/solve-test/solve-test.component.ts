@@ -25,8 +25,10 @@ export class SolveTestComponent implements OnInit {
     
   }
 
-  solveTest() {
-    this.userService.solveTest(this.file,this.questionId).subscribe(
+  solveTest(data:any) {
+    console.log(data);
+    
+    this.userService.solveTest(data.questionId,this.file).subscribe(
       (res)=>{
         console.log(res);
         

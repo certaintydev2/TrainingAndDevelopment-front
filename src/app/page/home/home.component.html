@@ -93,7 +93,11 @@
                         <tr *ngFor="let user of userList">
                            <td>{{user.name}}</td>
                            <td>{{user.email}}</td>
-                           <td>{{user.profile}}</td>
+                           <td>
+                              <div *ngFor="let profile of user.profile">
+                                 {{profile.profileName.toUpperCase()}}
+                               </div>
+                           </td>
                            <td>
                               <div *ngFor="let role of user.roles">
                                 {{role.roleName}}
@@ -121,7 +125,11 @@
                         <tr *ngFor="let user of traineeList">
                            <td>{{user.name}}</td>
                            <td>{{user.email}}</td>
-                           <td>{{user.profile}}</td>
+                           <td>
+                              <div *ngFor="let profile of user.profile">
+                                 {{profile.profileName.toUpperCase()}}
+                               </div>
+                           </td>
                         </tr>
                      </tbody>
                   </table>

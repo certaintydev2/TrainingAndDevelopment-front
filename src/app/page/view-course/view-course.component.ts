@@ -31,6 +31,8 @@ export class ViewCourseComponent implements OnInit {
   courseData:any[]=[];
   otherRole:Boolean=false;
   userProfile:any[]=[];
+  authoeMentorRole:Boolean=false;
+  checkData:Boolean=false;
 
 
   ngOnInit(): void {
@@ -50,10 +52,13 @@ export class ViewCourseComponent implements OnInit {
         this.userRoleList = this.loggedInUserData.roles;
         if(this.userRoleList.length>1){
           this.checkUser=false;
+          this.otherRole=true;
+          this.checkData=true;
         } else{
           for (let i = 0; i < this.userRoleList.length; i++) {
             if(this.userRoleList[i].roleName==="ROLE_ADMIN"){
               this.check = true;
+              this.checkData = true;
             }
             if(this.userRoleList[i].roleName==="ROLE_MENTOR" || this.userRoleList[i].roleName==="ROLE_TRAINEE" || this.userRoleList[i].roleName==="ROLE_AUTHOR"){
               this.otherRole = true;

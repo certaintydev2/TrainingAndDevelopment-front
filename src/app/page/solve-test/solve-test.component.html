@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <form #solve="ngForm" (ngSubmit)="solveTest()" enctype='multipart/form-data'>
+            <form #solve="ngForm" (ngSubmit)="solveTest(solve.value)" enctype='multipart/form-data'>
                 <mat-form-field class="form-field w-100" appearance="outline">
-                    <mat-label>Trainee Id</mat-label>
-                    <input #traineeId [(ngModel)]="loggedInUserId" name="traineeId" type="text" matInput
-                        placeholder="Enter TraineeId" readonly>
+                    <mat-label>Question Id</mat-label>
+                    <input [(ngModel)]="questionId" name="questionId" type="text" matInput
+                        placeholder="Enter QuestionId" readonly>
                 </mat-form-field>
                 <input (change)="submitFile($event)" type="file" #file name="file" accept="image/png, image/jpeg">
                 <button type="submit" class="w-100" mat-raised-button color="primary">

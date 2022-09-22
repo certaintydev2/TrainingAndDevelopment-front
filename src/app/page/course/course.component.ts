@@ -89,11 +89,6 @@ export class CourseComponent implements OnInit {
       }
     }
     );
-
-    // this.userService.getAuthorList().subscribe((res)=>{
-    //   console.log(res);
-    //   this.authorRole=res;
-    // });
   }
 
   AddCourse(data:any) {
@@ -132,16 +127,9 @@ export class CourseComponent implements OnInit {
   updatelist() {
     let selectedCourseName = this.course.courseName;
     console.log(this.authorRole);
-    // for (let i = 0; i < this.authorRole.length; i++) {
-    //   for (let j = 0; j < this.authorRole[i].profile.length; j++) {
-    //     console.log(this.authorRole[i].profile[j].profileName);
-        
-    //   }
-    // }
     for (let j = 0; j < this.userProfileData.length; j++) {
       for (let i = 0; i < this.authorRole.length; i++) {
         if(this.authorRole[i].user_id === this.userProfileData[j].user_id){
-          // debugger;
           if(this.userProfileData[j].profile_name.toUpperCase()=== selectedCourseName.toUpperCase()){
             console.log(this.userProfileData[j].name);
             this.userAuthorCourseRole[this.n] = this.userProfileData[j];
