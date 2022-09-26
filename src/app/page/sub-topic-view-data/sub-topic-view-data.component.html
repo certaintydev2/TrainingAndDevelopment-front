@@ -1,0 +1,108 @@
+<div class="container-fluid">
+           <div class="row">
+                 <div class="col-md-8 card shadow bg-white rounded border border-secondary text-center" style=" border-right: 1px solid #c9c9c9;">
+                       <h2><b>{{subTopicName}}</b></h2>
+                 </div>
+                 <div class="col-md-4" style=" border-right: 1px solid #c9c9c9;">
+                      <a mat-raised-button (click)="backButton()">Back To Topic</a>
+                </div>
+                 <div class="card bg-white rounded">
+                       <p>{{subTopicDescription}}</p>
+                 </div>
+                 <div class="col-md-12 reused_table_header">
+                       <div class="card">
+                             <div class="card-header card-header-warning">
+                                   <div class="d-flex justify-content-between align-items-center">
+                                         <h4 class="card-title mb-0">Refrence Links</h4>
+                                         <div>
+                                               <a *ngIf="check" class="navLink mr-1" mat-raised-button
+                                                     [routerLink]="'/page/refrenceLink'">Add Refrence Links</a>
+                                         </div>
+                                   </div>
+                             </div>
+                             <table class="table table-hover">
+                                   <thead>
+                                         <tr>
+                                               <th>SNo.</th>
+                                               <th>Refrence Link</th>
+                                         </tr>
+                                   </thead>
+                                   <tbody>
+                                         <tr *ngFor="let refrenceLink of refrenceLinks |  paginate:{
+                                               itemsPerPage:tableSize,
+                                               currentPage:page,
+                                               totalItems:count
+                                             }; let i = index">
+                                               <td>{{i+1}}</td>
+                                               <td>
+                                                     <a class="navLink mr-1"
+                                                           [routerLink]="[refrenceLink.link]">
+                                                           <span class="p-2 badge badge-info">
+                                                                 {{refrenceLink.link}}
+                                                           </span>
+                                                     </a>
+                                               </td>
+                                         </tr>
+                                   </tbody>
+                                   
+                             </table>
+     
+                             <div class="pb-4 d-flex justify-content-end pr-3">
+                                 <pagination-controls previousLabel="Prev" nextLabel="Next"
+                                       (pageChange)="onTableDataChange($event)">
+                                 </pagination-controls>
+                           </div>
+     
+                       </div>
+                 </div>
+                 <div class="col-md-12 reused_table_header">
+                      <div class="card">
+                            <div class="card-header card-header-warning">
+                                  <div class="d-flex justify-content-between align-items-center">
+                                        <h4 class="card-title mb-0">Assessment Links</h4>
+                                        <div>
+                                              <a *ngIf="check" class="navLink mr-1" mat-raised-button
+                                                    [routerLink]="'/page/assessmentLink'">Add Assessment Links</a>
+                                        </div>
+                                  </div>
+                            </div>
+                            <table class="table table-hover">
+                                  <thead>
+                                        <tr>
+                                              <th>SNo.</th>
+                                              <th>Assessment Link</th>
+                                        </tr>
+                                  </thead>
+                                  <tbody>
+                                        <tr *ngFor="let assessmentLink of assessmentLinks 
+                                            let i = index">
+                                              <td>{{i+1}}</td>
+                                              <td>
+                                                    <a class="navLink mr-1"
+                                                          [routerLink]="[assessmentLink.assessmentLinks]">
+                                                          <span class="p-2 badge badge-info">
+                                                                {{assessmentLink.assessmentLinks}}
+                                                          </span>
+                                                    </a>
+                                              </td>
+                                        </tr>
+                                  </tbody>
+                            </table>
+    
+                            <!-- <div class="pb-4 d-flex justify-content-end pr-3">
+                                  <pagination-controls previousLabel="Prev" nextLabel="Next"
+                                        (pageChange)="onTableDataChange($event)">
+                                  </pagination-controls>
+                            </div> -->
+                            <div class="col-md-12 p-3 mb-3 text-right">
+                                 <a class="navLink mr-1"
+                                                      [routerLink]="['/page/questionView/'+subTopic_id]">
+                                                      <span class="p-3 badge badge-info">
+                                                            Perform Question
+                                                      </span>
+                                 </a> 
+                            </div>
+                      </div>
+                </div>
+           </div>
+     </div>

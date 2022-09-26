@@ -34,6 +34,9 @@ import { PerformTestComponent } from './perform-test/perform-test.component';
 import { AssignMentorComponent } from './assign-mentor/assign-mentor.component';
 import { AssignMentorsListComponent } from './assign-mentors-list/assign-mentors-list.component';
 import { SolveTestComponent } from './solve-test/solve-test.component';
+import { SubTopicViewDataComponent } from './sub-topic-view-data/sub-topic-view-data.component';
+import { RefrenceLinkComponent } from './refrence-link/refrence-link.component';
+import { AssessmentLinkComponent } from './assessment-link/assessment-link.component';
 
 const routes: Routes = [
   { path: '', component: PageComponent ,  children:[
@@ -166,7 +169,19 @@ const routes: Routes = [
     {
       path: 'solve-test/:id',
       component: SolveTestComponent
-    }
+    },
+    {
+      path: 'subTopicData/:id',
+      component: SubTopicViewDataComponent
+    },
+    {
+      path: 'refrenceLink',
+      component: RefrenceLinkComponent
+    },
+    {
+      path: 'assessmentLink',
+      component: AssessmentLinkComponent
+    },
 
   ]  },
   // {

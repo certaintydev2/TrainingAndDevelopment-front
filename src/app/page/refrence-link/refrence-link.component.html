@@ -1,0 +1,41 @@
+<div class="container-fluid">
+           <div class="row justify-content-center">
+               <div class="col-md-10 reused_table_header">
+                   <div class="card p-3">
+                       <div class="card-header card-header-warning">
+                           <div class="d-flex justify-content-between align-items-center">
+                               <h2 class="card-title mb-0">Add Refrence Link</h2>
+                               <div>
+                                   <a mat-raised-button [routerLink]="'/page/home'">Back to Home</a>
+                               </div>
+                           </div>
+                       </div>
+                       <form #questionForm="ngForm"  (ngSubmit)="AddRefrenceLink(questionForm.value)">
+       
+                           <div class="mt-4">
+           
+                               <mat-form-field class="form-field w-100" appearance="outline">
+                                   <mat-label>Refrence Link</mat-label>
+                                   <input [(ngModel)]="refrenceLink.link" name="link" type="text" matInput
+                                       placeholder="Enter Link">
+                               </mat-form-field>
+           
+                               <mat-form-field class="form-field w-100" appearance="outline">
+                                   <mat-label>SubTopic</mat-label>
+                                   <mat-select name="subTopic" [(ngModel)]="refrenceLink.subTopic">
+                                       <mat-option *ngFor="let subTopic of subTopicsList" [value]="subTopic">
+                                           {{subTopic.subTopicName}}
+                                       </mat-option>
+                                   </mat-select>
+                               </mat-form-field>
+           
+                               <div class="text-right">
+                                   <button type="submit" class="btn" mat-raised-button color="primary">Add Refrence Link</button>
+                               </div>
+                           </div>
+                       </form>
+                   </div>
+                   
+               </div>
+           </div>
+       </div>

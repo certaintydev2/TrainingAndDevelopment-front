@@ -67,12 +67,13 @@ export class QuestionViewComponent implements OnInit {
   }
   
   backButton() {
-    for (let i = 0; i < this.questions.length; i++) {
-      this.topic_id=this.questions[i].subTopic.topic.id;
-      console.log(this.questions[i].subTopic.topic.id);
+    // for (let i = 0; i < this.questions.length; i++) {
+    //   this.topic_id=this.questions[i].subTopic.topic.id;
+    //   console.log(this.questions[i].subTopic.topic.id);
       
-    }
-    this.router.navigate(['/page/subTopicView/'+this.topic_id]);
+    // }
+    // this.router.navigate(['/page/subTopicView/'+this.topic_id]);
+    window.history.back();
   }
 
   deleteQuestion(id:any) {

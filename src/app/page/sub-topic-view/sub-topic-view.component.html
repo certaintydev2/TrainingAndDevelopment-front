@@ -4,7 +4,7 @@
                   <h2><b>{{topicName}}</b></h2>
             </div>
             <div class="col-md-4 card shadow bg-white rounded border border-secondary">
-                  <h3>{{esimatedTime}}</h3>
+                  <h3>Estimated Time : {{esimatedTime}}</h3>
             </div>
             <div class="card bg-white rounded">
                   <p>{{topicDescription}}</p>
@@ -40,8 +40,14 @@
                                           <!-- <td>{{subTopic.id}}</td> -->
                                           <td>{{i+1}}</td>
                                           <td>
-                                                <a class="navLink mr-1"
+                                                <!-- <a class="navLink mr-1"
                                                       [routerLink]="['/page/questionView/'+subTopic.id]">
+                                                      <span class="p-2 badge badge-info">
+                                                            {{subTopic.subTopicName}}
+                                                      </span>
+                                                </a> -->
+                                                <a class="navLink mr-1"
+                                                      [routerLink]="['/page/subTopicData/'+subTopic.id]">
                                                       <span class="p-2 badge badge-info">
                                                             {{subTopic.subTopicName}}
                                                       </span>

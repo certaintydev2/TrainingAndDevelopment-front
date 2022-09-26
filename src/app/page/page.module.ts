@@ -67,6 +67,9 @@ import { PerformTestComponent } from './perform-test/perform-test.component';
 import { AssignMentorComponent } from './assign-mentor/assign-mentor.component';
 import { AssignMentorsListComponent } from './assign-mentors-list/assign-mentors-list.component';
 import { SolveTestComponent } from './solve-test/solve-test.component';
+import { SubTopicViewDataComponent } from './sub-topic-view-data/sub-topic-view-data.component';
+import { RefrenceLinkComponent } from './refrence-link/refrence-link.component';
+import { AssessmentLinkComponent } from './assessment-link/assessment-link.component';
 
 
 @NgModule({
@@ -107,6 +110,9 @@ import { SolveTestComponent } from './solve-test/solve-test.component';
     AssignMentorComponent,
     AssignMentorsListComponent,
     SolveTestComponent,
+    SubTopicViewDataComponent,
+    RefrenceLinkComponent,
+    AssessmentLinkComponent,
   ],
   imports: [
     CommonModule,

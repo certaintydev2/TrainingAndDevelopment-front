@@ -240,4 +240,20 @@ export class UserService {
   public addProfile(profile:any) {
     return this.http.post(`${baseUrl}/authenticate/addProfile`,profile);
   }
+
+  public getRefrenceBySubTopicId(subTopicId:any) {
+    return this.http.get(`${baseUrl}/getLinksBySubTopicId/`+subTopicId);
+  }
+
+  public getAssessmentLinksBySubTopicId(subTopicId:any) {
+    return this.http.get(`${baseUrl}/getAssessmentLinksBySubTopicId/`+subTopicId);
+  }
+
+  public addRefrenceLink(link:any) {
+    return this.http.post(`${baseUrl}/addRefrenceLinks`,link);
+  }
+
+  public addAssessmentLinks(link:any) {
+    return this.http.post(`${baseUrl}/addOnlineAssessmentLinks`,link);
+  }
 }
