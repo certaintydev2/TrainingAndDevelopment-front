@@ -1,5 +1,14 @@
 <div class="container-fluid">
       <div class="row">
+            <div class="col-md-8 card shadow bg-white rounded border border-secondary" style=" border-right: 1px solid #c9c9c9;">
+                  <h2><b>{{topicName}}</b></h2>
+            </div>
+            <div class="col-md-4 card shadow bg-white rounded border border-secondary">
+                  <h3>{{esimatedTime}}</h3>
+            </div>
+            <div class="card bg-white rounded">
+                  <p>{{topicDescription}}</p>
+            </div>
             <div class="col-md-12 reused_table_header">
                   <div class="card">
                         <div class="card-header card-header-warning">
@@ -15,10 +24,10 @@
                         <table class="table table-hover">
                               <thead>
                                     <tr>
-                                          <!-- <th>SubTopic Id</th> -->
+                                          <th>SNo.</th>
                                           <th>SubTopic Name</th>
-                                          <th>Topic</th>
-                                          <th>Course</th>
+                                          <!-- <th>Topic</th>
+                                          <th>Course</th> -->
                                           <th *ngIf="check">Actions</th>
                                     </tr>
                               </thead>
@@ -29,6 +38,7 @@
                                           totalItems:count
                                         }; let i = index">
                                           <!-- <td>{{subTopic.id}}</td> -->
+                                          <td>{{i+1}}</td>
                                           <td>
                                                 <a class="navLink mr-1"
                                                       [routerLink]="['/page/questionView/'+subTopic.id]">
@@ -37,8 +47,8 @@
                                                       </span>
                                                 </a>
                                           </td>
-                                          <td>{{subTopic.topic.topicName}}</td>
-                                          <td>{{subTopic.topic.course.courseName}}</td>
+                                          <!-- <td>{{subTopic.topic.topicName}}</td>
+                                          <td>{{subTopic.topic.course.courseName}}</td> -->
                                           <td *ngIf="check">
                                                 <a class="text-white" mat-mini-fab color="accent"
                                                       [routerLink]="'/page/updateSubTopic/'+subTopic.id">

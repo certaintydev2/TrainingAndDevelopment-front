@@ -22,6 +22,7 @@ export class SubTopicComponent implements OnInit {
     topic: {
       topicName:''
     },
+    subTopicDescription:'',
   };
 
 

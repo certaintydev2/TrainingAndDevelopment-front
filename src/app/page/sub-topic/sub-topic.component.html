@@ -16,6 +16,11 @@
                         <input [(ngModel)]="subTopic.subTopicName" name="subTopicName" type="text" matInput
                             placeholder="Enter Topic">
                     </mat-form-field>
+                    <mat-form-field class="form-field" appearance="outline">
+                        <mat-label>SubTopic Description</mat-label>
+                        <textarea matInput [(ngModel)]="subTopic.subTopicDescription" #subTopicDescription="ngModel"
+                        name="subTopicDescription" rows="6"></textarea>
+                    </mat-form-field>
 
                     <mat-form-field class="form-field" appearance="outline">
                         <mat-label>Topic</mat-label>

@@ -25,8 +25,11 @@ export class SubTopicViewComponent implements OnInit {
   check:Boolean=false;
   page:number=1;
   count:number=0;
-  tableSize:number=5;
+  tableSize:number=3;
   tableSizes:any=[5,10,15,20];
+  topicName:any;
+  esimatedTime:any;
+  topicDescription:any;
 
   ngOnInit(): void {
     this.topic_id = this.route.snapshot.params['id'];
@@ -58,6 +61,9 @@ export class SubTopicViewComponent implements OnInit {
       (res)=>{
       console.log(res);
       this.subTopics = res;
+      this.topicName=this.subTopics[0].topic.topicName.toUpperCase();
+      this.esimatedTime=this.subTopics[0].topic.days+" "+this.subTopics[0].topic.estimatedTime;
+      this.topicDescription=this.subTopics[0].topic.topicDescription;
     },(err:HttpErrorResponse)=>{
       if(err.status===401){
         this.userService.logout();
