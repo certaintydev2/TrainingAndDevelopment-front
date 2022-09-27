@@ -1,31 +1,55 @@
-<form #assignMentorForm="ngForm" class="mt-4" (ngSubmit)="AssignMentor(assignMentorForm.value)">
-           <div>
-                      <mat-form-field appearance="fill">
-                                 <mat-label>Select Profile</mat-label>
-                                 <mat-select (selectionChange)="updateList()" #profile="ngModel" name="profile" [(ngModel)]="assignMentor.profile">
-                                   <mat-option *ngFor="let profile of profileList" [value]="profile.profileName">
-                                     {{profile.profileName}}
-                                   </mat-option>
-                                 </mat-select>
-                      </mat-form-field>
-                      <mat-form-field appearance="fill">
-                                 <mat-label>Select Mentor</mat-label>
-                                 <mat-select #mentorId="ngModel" name="mentorId" [(ngModel)]="assignMentor.mentorId">
-                                   <mat-option *ngFor="let mentor of mentorList" [value]="mentor.id">
-                                     {{mentor.name}}
-                                   </mat-option>
-                                 </mat-select>
-                      </mat-form-field>
-                      <mat-form-field appearance="fill">
-                                 <mat-label>Select Trainee</mat-label>
-                                 <mat-select #traineeId="ngModel" name="traineeId" [(ngModel)]="assignMentor.traineeId">
-                                   <mat-option *ngFor="let trainee of traineeList" [value]="trainee.id">
-                                     {{trainee.name}}
-                                   </mat-option>
-                                 </mat-select>
-                      </mat-form-field>
-                      <div class="example-button-row">
-                                 <button type="submit" class="btn" mat-raised-button color="primary">Assign Mentor</button>
-                      </div>
-           </div>
-</form>
+<div class="container-fluid profile_component">
+  <div class="row">
+    <div class="col-md-12 reused_table_header">
+      <div class="card px-3">
+        <div class="card-header card-header-warning">
+          <h2 class="mb-0 card-title">Assign Mentor</h2>
+        </div>
+
+
+        <form #assignMentorForm="ngForm" class="mt-4" (ngSubmit)="AssignMentor(assignMentorForm.value)">
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="form-field w-100" appearance="outline">
+                <mat-label>Select Profile</mat-label>
+                <mat-select (selectionChange)="updateList()" #profile="ngModel" name="profile" [(ngModel)]="assignMentor.profile">
+                  <mat-option *ngFor="let profile of profileList" [value]="profile.profileName">
+                    {{profile.profileName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="form-field w-100" appearance="outline">
+                <mat-label>Select Trainee</mat-label>
+                <mat-select #traineeId="ngModel" name="traineeId" [(ngModel)]="assignMentor.traineeId">
+                  <mat-option *ngFor="let trainee of traineeList" [value]="trainee.id">
+                    {{trainee.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+            </div>
+            <div class="col-md-6">
+
+              <mat-form-field class="form-field w-100" appearance="outline">
+                <mat-label>Select Mentor</mat-label>
+                <mat-select #mentorId="ngModel" name="mentorId" [(ngModel)]="assignMentor.mentorId">
+                  <mat-option *ngFor="let mentor of mentorList" [value]="mentor.id">
+                    {{mentor.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <div class="mt-2 float-right">
+                <button type="submit" class="btn" mat-raised-button color="primary">Assign Mentor</button>
+              </div>
+            </div>
+            
+            
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
