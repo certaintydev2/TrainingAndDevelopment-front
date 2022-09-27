@@ -47,11 +47,11 @@
                                    
                              </table>
      
-                             <div class="pb-4 d-flex justify-content-end pr-3">
+                              <div class="pb-4 d-flex justify-content-end pr-3">
                                  <pagination-controls previousLabel="Prev" nextLabel="Next"
                                        (pageChange)="onTableDataChange($event)">
                                  </pagination-controls>
-                           </div>
+                              </div>
      
                        </div>
                  </div>
@@ -74,7 +74,11 @@
                                         </tr>
                                   </thead>
                                   <tbody>
-                                        <tr *ngFor="let assessmentLink of assessmentLinks 
+                                        <tr *ngFor="let assessmentLink of assessmentLinks |  paginate:{
+                                          itemsPerPage:tableSize1,
+                                          currentPage:page1,
+                                          totalItems:count1
+                                        }; 
                                             let i = index">
                                               <td>{{i+1}}</td>
                                               <td>
@@ -89,11 +93,11 @@
                                   </tbody>
                             </table>
     
-                            <!-- <div class="pb-4 d-flex justify-content-end pr-3">
+                            <div class="pb-4 d-flex justify-content-end pr-3">
                                   <pagination-controls previousLabel="Prev" nextLabel="Next"
-                                        (pageChange)="onTableDataChange($event)">
+                                        (pageChange)="onTableDataChangeNew($event)">
                                   </pagination-controls>
-                            </div> -->
+                            </div>
                             <div class="col-md-12 p-3 mb-3 text-right">
                                  <a class="navLink mr-1"
                                                       [routerLink]="['/page/questionView/'+subTopic_id]">

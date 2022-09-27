@@ -33,6 +33,10 @@ export class SubTopicViewDataComponent implements OnInit {
   subTopicDescription:any;
   refrenceLinks:any;
   assessmentLinks:any;
+  page1:number=1;
+  count1:number=0;
+  tableSize1:number=3;
+  tableSizes1:any=[5,10,15,20];
 
   ngOnInit(): void {
     this.subTopic_id = this.route.snapshot.params['id'];
@@ -88,6 +92,10 @@ export class SubTopicViewDataComponent implements OnInit {
 
   onTableDataChange(event:any) {
     this.page=event;
+  }
+
+  onTableDataChangeNew(event:any) {
+    this.page1=event;
   }
   backButton() {
    window.history.back();
